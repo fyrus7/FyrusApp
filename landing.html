@@ -20,21 +20,20 @@
       font-weight: bold;
     }
     .form-container {
-      margin-top: 5px; /* Adds small space between profile and form */
+      margin-top: 5px;
     }
     .collect-box {
       margin-top: 10px;
       display: none;
     }
-    /* Popup styles */
     #popupMessage {
-      display: none; /* Hidden by default */
+      display: none;
       position: fixed;
       top: 30%;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 20px;
-      background-color: #F2BF0C; /* Green background */
+      background-color: #F2BF0C;
       color: black;
       font-size: 30px;
       font-weight: bold;
@@ -51,7 +50,6 @@
 <center>
   <h1>RPC 1 | Lalaport, KL</h1>
   <form style="text-align: left; display: inline-block;">
-    
     <div class="profile-display" id="profileNameDisplay">Crew: </div>
 
     <div class="form-container">
@@ -96,8 +94,11 @@
       return;
     }
 
+    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+    const googleScriptURL = 'https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec';
+
     if (!firstSearchDone) {
-      fetch('https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec?action=search', {
+      fetch(corsProxy + googleScriptURL + '?action=search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -131,7 +132,7 @@
         }
       }
 
-      fetch('https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec?action=collect', {
+      fetch(corsProxy + googleScriptURL + '?action=collect', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -143,7 +144,7 @@
         })
       })
       .then(() => {
-        fetch('https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec?action=search', {
+        fetch(corsProxy + googleScriptURL + '?action=search', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -176,7 +177,10 @@
     document.getElementById('collectBy2').value = '';
     document.getElementById('collectBoxes').style.display = 'none';
 
-    fetch('https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec?action=clear', { method: 'POST' })
+    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+    const googleScriptURL = 'https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec';
+
+    fetch(corsProxy + googleScriptURL + '?action=clear', { method: 'POST' })
       .then(() => firstSearchDone = false)
       .catch(error => console.error('Error:', error));
   }
