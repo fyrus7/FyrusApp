@@ -3,7 +3,44 @@
 <head>
   <base target="_top">
   <style>
-    /* Your existing styles */
+    .search-box {
+      width: 345px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .result-box {
+      margin-top: 10px;
+      font-size: 16px;
+      white-space: pre-wrap;
+      width: 360px;
+    }
+    .profile-display {
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .form-container {
+      margin-top: 5px; /* Adds small space between profile and form */
+    }
+    .collect-box {
+      margin-top: 10px;
+      display: none;
+    }
+    /* Popup styles */
+    #popupMessage {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #F2BF0C; /* Green background */
+      color: black;
+      font-size: 30px;
+      font-weight: bold;
+      border-radius: 5px;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body>
