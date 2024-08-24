@@ -94,11 +94,10 @@
       return;
     }
 
-    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
     const googleScriptURL = 'https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec';
 
     if (!firstSearchDone) {
-      fetch(corsProxy + googleScriptURL + '?action=search', {
+      fetch(googleScriptURL + '?action=search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -108,7 +107,12 @@
           searchOption: searchOption
         })
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(showResult)
       .catch(error => console.error('Error:', error));
 
@@ -132,7 +136,7 @@
         }
       }
 
-      fetch(corsProxy + googleScriptURL + '?action=collect', {
+      fetch(googleScriptURL + '?action=collect', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -144,7 +148,7 @@
         })
       })
       .then(() => {
-        fetch(corsProxy + googleScriptURL + '?action=search', {
+        fetch(googleScriptURL + '?action=search', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -177,10 +181,9 @@
     document.getElementById('collectBy2').value = '';
     document.getElementById('collectBoxes').style.display = 'none';
 
-    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
     const googleScriptURL = 'https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec';
 
-    fetch(corsProxy + googleScriptURL + '?action=clear', { method: 'POST' })
+    fetch(googleScriptURL + '?action=clear', { method: 'POST' })
       .then(() => firstSearchDone = false)
       .catch(error => console.error('Error:', error));
   }
