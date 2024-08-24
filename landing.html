@@ -79,79 +79,30 @@
 
 <audio id="markSound" src="https://github.com/fyrus7/sound/blob/main/achive-sound-132273.mp3?raw=true"></audio>
 
-<script>
-  let firstSearchDone = false;
+ <script>
+    let firstSearchDone = false;
 
-  function search() {
-    const searchTerm = document.getElementById('searchTerm').value.trim();
-    const searchOption = document.getElementById('searchOption').value;
-    const profileName = localStorage.getItem('userProfileName');
-    const collectBy1 = document.getElementById('collectBy1').value.trim();
-    const collectBy2 = document.getElementById('collectBy2').value.trim();
+    function search() {
+      const searchTerm = document.getElementById('searchTerm').value.trim();
+      const searchOption = document.getElementById('searchOption').value;
+      const profileName = localStorage.getItem('userProfileName');
+      const collectBy1 = document.getElementById('collectBy1').value.trim();
+      const collectBy2 = document.getElementById('collectBy2').value.trim();
 
-    if (!searchTerm) {
-      document.getElementById('result').innerHTML = '';
-      return;
-    }
-
-    const googleScriptURL = 'https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec';
-
-    if (!firstSearchDone) {
-      fetch(googleScriptURL + '?action=search', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          searchTerm: searchTerm,
-          searchOption: searchOption
-        })
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(showResult)
-      .catch(error => console.error('Error:', error));
-
-      firstSearchDone = true;
-    } else {
-      const checkboxes = document.getElementsByClassName('markGreenCheckBox');
-      const markedRows = [];
-      const markSound = document.getElementById('markSound');
-
-      for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-          markedRows.push({
-            row: checkboxes[i].getAttribute('data-row'),
-            collectBy1: collectBy1,
-            collectBy2: collectBy2
-          });
-          setTimeout(() => {
-            markSound.play();
-            showPopupMessage();
-          }, 3000);
-        }
+      if (!searchTerm) {
+        document.getElementById('result').innerHTML = '';
+        return;
       }
 
-      fetch(googleScriptURL + '?action=collect', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          markedRows: markedRows,
-          colorOption: localStorage.getItem('colorOption'),
-          profileName: profileName
-        })
-      })
-      .then(() => {
+      const googleScriptURL = 'https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec';
+
+      if (!firstSearchDone) {
         fetch(googleScriptURL + '?action=search', {
           method: 'POST',
+          mode: 'cors',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Origin': 'https://bib.lariansawahpadi.com'
           },
           body: JSON.stringify({
             searchTerm: searchTerm,
@@ -159,80 +110,137 @@
           })
         })
         .then(response => response.json())
-        .then(showResult);
-      })
-      .catch(error => console.error('Error:', error));
+        .then(showResult)
+        .catch(error => console.error('Error:', error));
 
-      firstSearchDone = false;
+        firstSearchDone = true;
+      } else {
+        const checkboxes = document.getElementsByClassName('markGreenCheckBox');
+        const markedRows = [];
+        const markSound = document.getElementById('markSound');
+
+        for (let i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            markedRows.push({
+              row: checkboxes[i].getAttribute('data-row'),
+              collectBy1: collectBy1,
+              collectBy2: collectBy2
+            });
+            setTimeout(() => {
+              markSound.play();
+              showPopupMessage();
+            }, 3000);
+          }
+        }
+
+        fetch(googleScriptURL + '?action=collect', {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+            'Origin': 'https://bib.lariansawahpadi.com'
+          },
+          body: JSON.stringify({
+            markedRows: markedRows,
+            colorOption: localStorage.getItem('colorOption'),
+            profileName: profileName
+          })
+        })
+        .then(() => {
+          fetch(googleScriptURL + '?action=search', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+              'Origin': 'https://bib.lariansawahpadi.com'
+            },
+            body: JSON.stringify({
+              searchTerm: searchTerm,
+              searchOption: searchOption
+            })
+          })
+          .then(response => response.json())
+          .then(showResult);
+        })
+        .catch(error => console.error('Error:', error));
+
+        firstSearchDone = false;
+      }
     }
-  }
 
-  function showResult(result) {
-    document.getElementById('result').innerHTML = result;
-    
-    const checkboxes = document.getElementsByClassName('markGreenCheckBox');
-    document.getElementById('collectBoxes').style.display = checkboxes.length > 0 ? 'block' : 'none';
-  }
+    function showResult(result) {
+      document.getElementById('result').innerHTML = result;
+      
+      const checkboxes = document.getElementsByClassName('markGreenCheckBox');
+      document.getElementById('collectBoxes').style.display = checkboxes.length > 0 ? 'block' : 'none';
+    }
 
-  function clearSearch() {
-    document.getElementById('searchTerm').value = '';
-    document.getElementById('result').innerHTML = '';
-    document.getElementById('collectBy1').value = '';
-    document.getElementById('collectBy2').value = '';
-    document.getElementById('collectBoxes').style.display = 'none';
+    function clearSearch() {
+      document.getElementById('searchTerm').value = '';
+      document.getElementById('result').innerHTML = '';
+      document.getElementById('collectBy1').value = '';
+      document.getElementById('collectBy2').value = '';
+      document.getElementById('collectBoxes').style.display = 'none';
 
-    const googleScriptURL = 'https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec';
+      const googleScriptURL = 'https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec';
 
-    fetch(googleScriptURL + '?action=clear', { method: 'POST' })
+      fetch(googleScriptURL + '?action=clear', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Origin': 'https://bib.lariansawahpadi.com'
+        }
+      })
       .then(() => firstSearchDone = false)
       .catch(error => console.error('Error:', error));
-  }
-
-  function showPopupMessage() {
-    const popup = document.getElementById('popupMessage');
-    popup.style.display = 'block';
-    setTimeout(() => popup.style.display = 'none', 3000);
-  }
-
-  function initializePage() {
-    const profile = localStorage.getItem('userProfile');
-    let profileName = '';
-    let colorOption = '';
-
-    switch (profile) {
-      case 'noor':
-        colorOption = 'lightgreen';
-        profileName = 'Noor';
-        break;
-      case 'amila':
-        colorOption = 'yellow';
-        profileName = 'Amila';
-        break;
-      case 'lily':
-        colorOption = 'cyan';
-        profileName = 'Lily';
-        break;
-      case 'nurul':
-        colorOption = 'lightblue';
-        profileName = 'Nurul';
-        break;
-      case 'zuraini':
-        colorOption = 'orange';
-        profileName = 'Zuraini';
-        break;
-      case 'admin':
-        colorOption = 'grey';
-        profileName = 'Admin';
-        break;
     }
 
-    localStorage.setItem('userProfileName', profileName);
-    localStorage.setItem('colorOption', colorOption);
+    function showPopupMessage() {
+      const popup = document.getElementById('popupMessage');
+      popup.style.display = 'block';
+      setTimeout(() => popup.style.display = 'none', 3000);
+    }
 
-    document.getElementById('profileNameDisplay').textContent = 'Crew: ' + profileName;
-  }
+    function initializePage() {
+      const profile = localStorage.getItem('userProfile');
+      let profileName = '';
+      let colorOption = '';
 
-  window.onload = initializePage;
-</script>
+      switch (profile) {
+        case 'noor':
+          colorOption = 'lightgreen';
+          profileName = 'Noor';
+          break;
+        case 'amila':
+          colorOption = 'yellow';
+          profileName = 'Amila';
+          break;
+        case 'lily':
+          colorOption = 'cyan';
+          profileName = 'Lily';
+          break;
+        case 'nurul':
+          colorOption = 'lightblue';
+          profileName = 'Nurul';
+          break;
+        case 'zuraini':
+          colorOption = 'orange';
+          profileName = 'Zuraini';
+          break;
+        case 'admin':
+          colorOption = 'grey';
+          profileName = 'Admin';
+          break;
+      }
+
+      localStorage.setItem('userProfileName', profileName);
+      localStorage.setItem('colorOption', colorOption);
+
+      document.getElementById('profileNameDisplay').textContent = 'Crew: ' + profileName;
+    }
+
+    window.onload = initializePage;
+  </script>
 </body>
 </html>
