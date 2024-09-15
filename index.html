@@ -1,94 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    /* Add custom styles for the search box */
-    .search-box {
-      width: 200px; /* Adjust this value to make the box longer */
-      padding: 10px;
-      font-size: 16px;
-      text-align: center;
-    }
-    
-    .dropdown {
-      width: 220px; /* Same width as the search box */
-      padding: 10px;
-      font-size: 16px;
-      text-align: left;
-    }
-  </style>
   <title>LSPTK RPC SYSTEM</title>
 </head>
 <body>
 <center>
   <br>
   <br>
-  <br>
-    <!-- Page Title -->
-    <h1>Login</h1>
-
-    <!-- Login Form -->
-    <form id="login-form">
-      <select id="profile" name="profile" class="dropdown">
-        <option value="" disabled selected>Select Profile</option>
-        <option value="Noor">Noor</option>
-        <option value="Amila">Amila</option>
-        <option value="Lily">Lily</option>
-        <option value="Nurul">Nurul</option>
-        <option value="Zuraini">Zuraini</option>
-        <option value="Admin">Admin</option>
-      </select><br><br>
-      
-      <input type="password" id="pwd" name="password" class="search-box" placeholder="Password"><br><br>
-
-      <input type="button" value="Submit" onclick="validateLogin()" style="width: 100px; height: 30px; font-size: 16px; padding: 5px;">
-    </form>
-
-    <!-- Error message div -->
-    <br>
-    <div id="error-message" style="color:red; font-weight:bold; margin-top:10px; font-size:18px;"></div>
-
-    <!-- Scripts for handling login -->
-    <script>
-      function validateLogin() {
-        var selectedProfile = document.getElementById('profile').value.toLowerCase(); // Get the selected profile
-        var enteredPassword = document.getElementById('pwd').value;
-
-        if (!selectedProfile) {
-          document.getElementById('error-message').innerText = "Please select a profile.";
-          return;
-        }
-
-        fetch('https://script.google.com/macros/s/AKfycby7_y0exo4YQUSQkuA8o_ePRD70L_My_SUcXILtmFbF2hJPdBVm0w_IYVD9OHRFMA_mxA/exec', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: new URLSearchParams({
-            'username': selectedProfile,
-            'password': enteredPassword
-          })
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === "success") {
-            // Store the selected profile in local storage
-            localStorage.setItem('userProfile', selectedProfile);
-
-            // Redirects to the index page on GitHub Pages
-            window.location.href = "https://fyrus7.github.io/web/landing.html";
-          } else {
-            // Shows an error message if credentials are invalid
-            document.getElementById('error-message').innerText = "Salah Password";
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          document.getElementById('error-message').innerText = "Error during login. Please try again.";
-        });
-      }
-    </script>
-
+  
+<iframe 
+  src="https://script.google.com/macros/s/AKfycby6XVwhM4285DUDjJtgGGt_vOOKUDqPO3pNLnsEJOUggz65cnyqsRBdMBUqmQizMfVe4Q/exec" 
+  width="100%" 
+  height="600px"
+  allow="camera"
+  style="border:none;">
+</iframe>
 </center>
 </body>
 </html>
