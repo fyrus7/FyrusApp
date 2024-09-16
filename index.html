@@ -20,7 +20,7 @@
   <!-- meta tags for responsive web on mobile/desktop -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
+ <style>
     /* Make sure body and html take up the full height */
     html, body {
       margin: 0;
@@ -41,12 +41,66 @@
       height: 100%;
       border: none;
     }
+
+    /* Style for custom install button */
+    #install-prompt {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
   </style>
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Show your custom install prompt
+      document.getElementById('install-prompt').style.display = 'block';
+    });
+
+    document.getElementById('install-prompt').addEventListener('click', () => {
+      // Hide your custom install prompt
+      document.getElementById('install-prompt').style.display = 'none';
+      // Show the install prompt
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
 </head>
 <body>
   <iframe 
     src="https://script.google.com/macros/s/AKfycby6XVwhM4285DUDjJtgGGt_vOOKUDqPO3pNLnsEJOUggz65cnyqsRBdMBUqmQizMfVe4Q/exec"
     allow="camera">
   </iframe>
+  <button id="install-prompt">Install App</button>
 </body>
 </html>
