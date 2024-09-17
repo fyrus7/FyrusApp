@@ -1,6 +1,6 @@
 {
-    "name": "LSPTK",
-    "short_name": "LSPTK",
+    "name": "RPC APP",
+    "short_name": "RPC",
     "icons": [
         {
             "src": "/favicon/android-chrome-192x192.png",
