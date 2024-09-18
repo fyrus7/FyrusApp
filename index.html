@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-  <!-- favicon & app install to phobe/pc -->
+  <!-- favicon & app install to phone/pc -->
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -14,7 +13,7 @@
   <meta name="msapplication-TileColor" content="#ffc40d">
   <meta name="msapplication-config" content="/favicon/browserconfig.xml">
   <meta name="theme-color" content="#000000">
-  
+
   <title>FYRUS RPC SYSTEM</title>
 
   <!-- meta tags for responsive web on mobile/desktop -->
@@ -26,27 +25,48 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
     }
 
-    /* Centering the iframe vertically and horizontally */
-    body {
+    /* Style for the welcome container */
+    .welcome-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
     }
 
-    /* Make iframe fill the entire height of the screen */
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    /* Style for the welcome image */
+    .welcome-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    /* Style for the welcome text */
+    .welcome-text {
+      font-size: 24px;
+      color: #333;
+      margin: 20px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+      .welcome-text {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <iframe 
-    src="https://script.google.com/macros/s/AKfycbxkzRCsgEY7vepEjpOqmsm5yKphHbGMOWeKCt51qj2fv6Gt384RblpHvXgE_gjF9i3rFQ/exec"
-    allow="camera">
-  </iframe>
+  <div class="welcome-container">
+    <img class="welcome-image" src="/path/to/your/image.png" alt="Welcome Image">
+    <div class="welcome-text">
+      Welcome to the FYRUS RPC SYSTEM! We're glad to have you here.
+    </div>
+  </div>
 </body>
 </html>
