@@ -1,0 +1,19 @@
+{
+    "name": "IAMFYRUS",
+    "short_name": "IAMFYRUS",
+    "icons": [
+        {
+            "src": "/favicon-home/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-home/android-chrome-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#8b0000",
+    "background_color": "#8b0000",
+    "display": "standalone"
+}
