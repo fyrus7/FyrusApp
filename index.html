@@ -71,11 +71,28 @@
       animation: slide-in-left 1s ease-out; /* Apply slide-in-left animation */
     }
     
+    /* Style for the transparent grey box wrapping body-text */
+    .grey-box {
+      background-color: rgba(128, 128, 128, 0.5); /* Transparent grey */
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0; /* Initially invisible */
+      animation: fade-in-box 2s forwards; /* Fade-in animation */
+    }
     /* Style for the body text (slides from right) */
     .body-text {
       font-size: 18px;
       margin: 10px 20px;
       animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
+    }
+    /* Fade-in animation for the grey box */
+    @keyframes fade-in-box {
+      from {
+        opacity: 0; /* Start with invisible */
+      }
+      to {
+        opacity: 1; /* Fully visible */
+      }
     }
 
     /* Animation to slide the button from bottom */
@@ -135,11 +152,14 @@
     
     <p class="welcome-text">Welcome to the FYRUS SYSTEM!</p>
 
+    <!-- Transparent grey box wrapping body-text -->
+    <div class="grey-box">
     <p class="body-text">
       ** RPC : Race Pack Collection ** <br><br>
       This app is made to ease event collection system.<br><br>
       Low cost, no messy excel/sheets.
     </p>
+    </div>
     
     <br><br>
     <a href="/demo" class="redirect-button">Go to Demo Page</a>
