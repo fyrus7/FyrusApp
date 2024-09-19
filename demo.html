@@ -95,8 +95,18 @@
       margin: 10px 20px;
       animation: slide-in-left 1.5s ease-out; /* Apply slide-in-right animation */
       text-align: left;
-      line-height: 0.8; /* Adjust to reduce the spacing */
     }
+
+    /* Style for the container with custom spacing */
+    .custom-spacing {
+      line-height: 1.5; /* Adjust line height for general spacing */
+    }
+    /* Specific style for <br> tags inside .custom-spacing */
+    .custom-spacing br {
+      margin: 0; /* Remove extra space around <br> */
+      line-height: 0.5em; /* Reduce spacing caused by <br> */
+    }
+
 
     /* Fade-in animation for the grey box */
     @keyframes fade-in-box {
@@ -223,7 +233,7 @@
     </div>
     <br>
 
-    <p class="desc-text">
+    <p class="desc-text custom-spacing">
       • Basic: No login, no record of user.
       <br><br>
       • Standard: User login, Marked user.
