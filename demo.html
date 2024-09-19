@@ -106,7 +106,13 @@
         opacity: 1; /* Fully visible at the end */
       }
     }
-    
+
+    /* Flexbox container for horizontal button alignment */
+    .button-container {
+      display: flex;
+      justify-content: center; /* Center the buttons horizontally */
+      gap: 10px; /* Add space between the buttons */
+    } 
     /* Style for the button */
     .redirect-button {
       padding: 10px 20px;
@@ -117,8 +123,8 @@
       border-radius: 5px;
       cursor: pointer;
       text-decoration: none;
-      width: 100px; /* Set a fixed width */
       text-align: center; /* Center the text within the button */
+      width: 100px; /* Set a fixed width */
       animation: slide-in-bottom 1.5s ease-out; /* Apply slide-in-bottom animation */
     }
     .redirect-button:hover {
@@ -185,8 +191,14 @@
     </div
     
     <br><br>
-    <a href="/basic" class="redirect-button">Basic</a><a href="/standard" class="redirect-button">Standard</a><a href="/advance" class="redirect-button">Advance</a>
-    <br>
+    
+    <!-- Button container for horizontal alignment -->
+    <div class="button-container">
+      <a href="/basic" class="redirect-button">Basic</a>
+      <a href="/standard" class="redirect-button">Standard</a>
+      <a href="/advance" class="redirect-button">Advance</a>
+    </div>
+    
     <br>
   </div>
 
