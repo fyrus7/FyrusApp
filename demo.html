@@ -102,6 +102,16 @@
       text-decoration: none;
       animation: slide-in-bottom 1.5s ease-out; /* Apply slide-in-bottom animation */
     }
+    .redirect-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Home button container style */
+    .home-container {
+      text-align: center; /* Center the home button */
+      margin-bottom: 20px; /* Add space between the home button and copyright */
+    }
+    /* Home button style */
     .redirect-home {
       padding: 10px 20px;
       font-size: 18px;
@@ -112,9 +122,6 @@
       cursor: pointer;
       text-decoration: none;
     }
-    .redirect-button:hover {
-      background-color: #0056b3;
-    }
 
     /* Copyright text */
     .copyright {
@@ -124,7 +131,7 @@
       width: 100%; /* Ensure it takes up the full width */
       padding: 10px 0;
       background-color: #000;
-       margin-top: -20px;
+      margin-bottom: 10px;
     }
 
 
@@ -165,8 +172,10 @@
     <br>
   </div>
 
-  <a href="/index" class="redirect-home">Home</a>
-  
+  <!-- Home button container -->
+  <div class="home-container">
+    <a href="/index" class="redirect-home">Home</a>
+  </div>
 
   <div class="copyright">
     &copy; 2024 FYRUS RPC System. All rights reserved.
