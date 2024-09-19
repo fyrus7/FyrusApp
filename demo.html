@@ -70,12 +70,29 @@
       margin: 20px;
       animation: slide-in-left 1s ease-out; /* Apply slide-in-left animation */
     }
-    
+
+    /* Style for the transparent grey box wrapping body-text */
+    .grey-box {
+      background-color: rgba(128, 128, 128, 0.5); /* Transparent grey */
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0; /* Initially invisible */
+      animation: fade-in-box 2s forwards; /* Fade-in animation */
+    }
     /* Style for the body text (slides from right) */
     .body-text {
       font-size: 18px;
       margin: 10px 20px;
       animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
+    }
+    /* Fade-in animation for the grey box */
+    @keyframes fade-in-box {
+      from {
+        opacity: 0; /* Start with invisible */
+      }
+      to {
+        opacity: 1; /* Fully visible */
+      }
     }
 
     /* Animation to slide the button from bottom */
@@ -154,6 +171,8 @@
     <p class="welcome-text">Choose Between 3 Plan</p>
       <br>
 
+    <!-- Transparent grey box wrapping body-text -->
+    <div class="grey-box">
     <p class="body-text">
       - Basic / Standard / Advance -
       <br><br>
@@ -161,6 +180,7 @@
       <br>
       1010, 2020, 3030, 4040, 5050
     </p>
+    </div
     
     <br><br>
     <a href="/basic" class="redirect-button">Basic</a>
