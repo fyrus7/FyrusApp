@@ -16,6 +16,8 @@
       font-family: Helvetica, Arial, sans-serif;
       background-color: #000000; /* Set background to black */
       color: #ffffff; /* Set font color to white */
+      display: flex;
+      flex-direction: column;
     }
 
     /* Style for the welcome container */
@@ -100,6 +102,17 @@
       text-decoration: none;
       animation: slide-in-bottom 1.5s ease-out; /* Apply slide-in-bottom animation */
     }
+    .redirect-home {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      animation: slide-in-bottom 1.5s ease-out; /* Apply slide-in-bottom animation */
+    }
     .redirect-button:hover {
       background-color: #0056b3;
     }
@@ -149,6 +162,9 @@
     <a href="/standard" class="redirect-button">Standard</a>
     <br>
     <a href="/advance" class="redirect-button">Advance</a>
+    <br>
+    <br>
+    <a href="/index" class="redirect-home">Home</a>
   </div>
   
 
