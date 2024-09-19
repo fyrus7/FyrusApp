@@ -16,6 +16,5 @@
     "theme_color": "#000000",
     "background_color": "#000000",
     "display": "standalone"
-  "start_url": "/lsptk/",  // Ensure the start URL is the correct path
-  "scope": "/lsptk/",      // Scope should cover the /lsptk/ path
+  "start_url": "/lsptk/",
 }
