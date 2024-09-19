@@ -41,30 +41,42 @@
     }
 
     /* Animation to slide the text from left */
-    @keyframes slide-in {
-      from {
-        transform: translateX(-100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0; /* Invisible at the start */
+  }
+  to {
+    transform: translateX(0); /* Move to the original position */
+    opacity: 1; /* Fully visible at the end */
+  }
+}
 
-    /* Style for the welcome text */
-    .welcome-text {
-      font-size: 24px;
-      margin: 20px;
-      animation: slide-in 1s ease-out; /* Apply slide-in animation */
-    }
+/* Animation to slide the text from right */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Invisible at the start */
+  }
+  to {
+    transform: translateX(0); /* Move to the original position */
+    opacity: 1; /* Fully visible at the end */
+  }
+}
 
-    /* Style for the body text */
-    .body-text {
-      font-size: 18px;
-      margin: 10px 20px;
-      animation: slide-in 1.5s ease-out; /* Apply slide-in animation with a slight delay */
-    }
+/* Style for the welcome text (slides from left) */
+.welcome-text {
+  font-size: 24px;
+  margin: 20px;
+  animation: slide-in-left 1s ease-out; /* Apply slide-in-left animation */
+}
+
+/* Style for the body text (slides from right) */
+.body-text {
+  font-size: 18px;
+  margin: 10px 20px;
+  animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
+}
 
     /* Style for the button */
     .redirect-button {
