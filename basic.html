@@ -38,6 +38,45 @@
       height: 100%;
       border: none;
     }
+
+        /* Centering the Back button container */
+    .back-container {
+      text-align: center; /* Center the home button */
+      margin-bottom: 20px;
+    }
+
+    /* Back button style */
+    .redirect-back {
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* Copyright text */
+    .copyright {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+      width: 100%; /* Ensure it takes up the full width */
+      padding: 10px 0;
+      background-color: #D3D3D3;
+    }
+
+    /* Footer area to hold the button and copyright */
+    .footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      background-color: #D3D3D3;
+    }
+    
   </style>
 </head>
 <body>
@@ -45,5 +84,17 @@
     src="https://script.google.com/macros/s/AKfycbzGnavsqQQGzyUGClBSU_2U_xXre1uJmV6iB_CRM2PRCwzSzGDC_lz3hu12kSSfsVQ6/exec"
     allow="camera">
   </iframe>
+
+    <!-- Footer area to center the home button and copyright -->
+  <div class="footer">
+    <div class="back-container">
+      <a href="/demo" class="redirect-back">back to demo</a>
+    </div>
+
+    <div class="copyright">
+      &copy; 2024 Fyrus System. All rights reserved.
+    </div>
+  </div>
+  
 </body>
 </html>
