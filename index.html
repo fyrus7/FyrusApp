@@ -12,6 +12,13 @@
   <meta name="msapplication-config" content="/favicon-home/browserconfig.xml">
   <meta name="theme-color" content="#8b0000">
 
+  <title>FYRUS SYSTEM</title>
+
+  <!-- meta tags for responsive web on mobile/desktop -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    
   if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js')
     .then(() => console.log('Service Worker Registered'));
@@ -40,14 +47,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
     });
   });
 });
-
-
-  <title>FYRUS SYSTEM</title>
-
-  <!-- meta tags for responsive web on mobile/desktop -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
     /* Make sure body and html take up the full height */
     html, body {
       margin: 0;
