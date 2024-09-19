@@ -23,27 +23,23 @@
       margin: 0;
       padding: 0;
       height: 100%;
-    }
-
-    /* Centering the iframe vertically and horizontally */
-    body {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
     }
 
-    /* Make iframe fill the entire height of the screen */
+    /* Centering the iframe and making it take up the available space */
     iframe {
       width: 100%;
-      height: 100%;
+      flex-grow: 1; /* Allow iframe to grow and take up space */
       border: none;
     }
 
-    /* Home button container style */
+    /* Centering the Home button container */
     .home-container {
       text-align: center; /* Center the home button */
-      margin-bottom: 20px; /* Add space between the home button and copyright */
+      margin-bottom: 10px;
     }
+
     /* Home button style */
     .redirect-home {
       padding: 10px 20px;
@@ -64,7 +60,15 @@
       width: 100%; /* Ensure it takes up the full width */
       padding: 10px 0;
       background-color: #000;
-      margin-bottom: 10px;
+    }
+
+    /* Footer area to hold the button and copyright */
+    .footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
     }
   </style>
 </head>
@@ -73,13 +77,16 @@
     src="https://script.google.com/macros/s/AKfycbzZ144ls3Kz3xb9VAlOtYUT9MpSWc06LnXTc48nAjLQxn5D3acDky6ogtgjbjCBaY4w/exec"
     allow="camera">
   </iframe>
-  <!-- Home button container -->
-  <div class="home-container">
-    <a href="/index" class="redirect-home">Home</a>
-  </div>
+  
+  <!-- Footer area to center the home button and copyright -->
+  <div class="footer">
+    <div class="home-container">
+      <a href="/index" class="redirect-home">Home</a>
+    </div>
 
-  <div class="copyright">
-    &copy; 2024 FYRUS RPC System. All rights reserved.
+    <div class="copyright">
+      &copy; 2024 FYRUS RPC System. All rights reserved.
+    </div>
   </div>
 </body>
 </html>
