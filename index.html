@@ -36,77 +36,75 @@
       max-width: 300px; /* Resize the image */
       height: auto;
       position: relative;
-      top: -10px; /* Move image up by 10px */
+      /*top: -10px; /* Move image up by 10px */
       margin-bottom: 20px;
     }
 
     /* Animation to slide the text from left */
-@keyframes slide-in-left {
-  from {
-    transform: translateX(-100%); /* Start off-screen to the left */
-    opacity: 0; /* Invisible at the start */
-  }
-  to {
-    transform: translateX(0); /* Move to the original position */
-    opacity: 1; /* Fully visible at the end */
-  }
-}
-
-/* Animation to slide the text from right */
-@keyframes slide-in-right {
-  from {
-    transform: translateX(100%); /* Start off-screen to the right */
-    opacity: 0; /* Invisible at the start */
-  }
-  to {
-    transform: translateX(0); /* Move to the original position */
-    opacity: 1; /* Fully visible at the end */
-  }
-}
-
-/* Style for the welcome text (slides from left) */
-.welcome-text {
-  font-size: 24px;
-  margin: 20px;
-  animation: slide-in-left 1s ease-out; /* Apply slide-in-left animation */
-}
-
-/* Style for the body text (slides from right) */
-.body-text {
-  font-size: 18px;
-  margin: 10px 20px;
-  animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
-}
+    @keyframes slide-in-left {
+      from {
+        transform: translateX(-100%); /* Start off-screen to the left */
+        opacity: 0; /* Invisible at the start */
+      }
+      to {
+        transform: translateX(0); /* Move to the original position */
+        opacity: 1; /* Fully visible at the end */
+      }
+    }
+    
+    /* Animation to slide the text from right */
+    @keyframes slide-in-right {
+      from {
+        transform: translateX(100%); /* Start off-screen to the right */
+        opacity: 0; /* Invisible at the start */
+      }
+      to {
+        transform: translateX(0); /* Move to the original position */
+        opacity: 1; /* Fully visible at the end */
+      }
+    }
+    
+    /* Style for the welcome text (slides from left) */
+    .welcome-text {
+      font-size: 24px;
+      margin: 20px;
+      animation: slide-in-left 1s ease-out; /* Apply slide-in-left animation */
+    }
+    
+    /* Style for the body text (slides from right) */
+    .body-text {
+      font-size: 18px;
+      margin: 10px 20px;
+      animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
+    }
 
     /* Animation to slide the button from bottom */
-@keyframes slide-in-bottom {
-  from {
-    transform: translateY(100%); /* Start off-screen at the bottom */
-    opacity: 0; /* Invisible at the start */
-  }
-  to {
-    transform: translateY(0); /* Move to the original position */
-    opacity: 1; /* Fully visible at the end */
-  }
-}
-
-/* Style for the button */
-.redirect-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  animation: slide-in-bottom 1.5s ease-out; /* Apply slide-in-bottom animation */
-}
-
-.redirect-button:hover {
-  background-color: #0056b3;
-}
-
+    @keyframes slide-in-bottom {
+      from {
+        transform: translateY(100%); /* Start off-screen at the bottom */
+        opacity: 0; /* Invisible at the start */
+      }
+      to {
+        transform: translateY(0); /* Move to the original position */
+        opacity: 1; /* Fully visible at the end */
+      }
+    }
+    
+    /* Style for the button */
+    .redirect-button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      animation: slide-in-bottom 1.5s ease-out; /* Apply slide-in-bottom animation */
+    }
+    .redirect-button:hover {
+      background-color: #0056b3;
+    }
 
     /* Copyright text */
     .copyright {
@@ -116,6 +114,7 @@
       width: 100%; /* Ensure it takes up the full width */
       padding: 10px 0;
       background-color: #000;
+       margin-top: -20px;
     }
 
     /* Responsive styles */
