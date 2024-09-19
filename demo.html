@@ -20,12 +20,12 @@
 
     /* Style for the welcome container */
     .welcome-container {
+      flex-grow: 1; /* Make the container take up available space */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start; /* Move content to the top */
       text-align: center;
-      height: 100%;
       padding-top: 50px; /* Optional padding for spacing */
     }
 
@@ -38,10 +38,42 @@
       margin-bottom: 20px;
     }
 
-    /* Style for the welcome text */
+    /* Animation to slide the text from left */
+    @keyframes slide-in-left {
+      from {
+        transform: translateX(-100%); /* Start off-screen to the left */
+        opacity: 0; /* Invisible at the start */
+      }
+      to {
+        transform: translateX(0); /* Move to the original position */
+        opacity: 1; /* Fully visible at the end */
+      }
+    }
+    
+    /* Animation to slide the text from right */
+    @keyframes slide-in-right {
+      from {
+        transform: translateX(100%); /* Start off-screen to the right */
+        opacity: 0; /* Invisible at the start */
+      }
+      to {
+        transform: translateX(0); /* Move to the original position */
+        opacity: 1; /* Fully visible at the end */
+      }
+    }
+    
+    /* Style for the welcome text (slides from left) */
     .welcome-text {
       font-size: 24px;
       margin: 20px;
+      animation: slide-in-left 1s ease-out; /* Apply slide-in-left animation */
+    }
+    
+    /* Style for the body text (slides from right) */
+    .body-text {
+      font-size: 18px;
+      margin: 10px 20px;
+      animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
     }
 
     /* Animation to slide the button from bottom */
@@ -99,15 +131,17 @@
 <body>
   <div class="welcome-container">
     <img class="welcome-image" src="/media/FyrusStripeRed.png" alt="Welcome Image">
-    <div class="welcome-text">
-      Choose Between 3 Plan
+     
+    <p class="welcome-text">Choose Between 3 Plan</p>
       <br>
+
+    <p class="body-text">
       - Basic / Standard / Advance -
       <br><br>
       Search data value:
       <br>
       1010, 2020, 3030, 4040, 5050
-      </div>
+    </p>
     
     <br><br>
     <a href="/basic" class="redirect-button">Basic</a>
