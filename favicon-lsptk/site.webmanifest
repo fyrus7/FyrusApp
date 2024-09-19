@@ -16,5 +16,6 @@
     "theme_color": "#000000",
     "background_color": "#000000",
     "display": "standalone",
-  "start_url": "/lsptk/"
+  "start_url": "/lsptk/",
+  "scope": "/lsptk/"
 }
