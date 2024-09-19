@@ -16,16 +16,18 @@
       font-family: Helvetica, Arial, sans-serif;
       background-color: #000000; /* Set background to black */
       color: #ffffff; /* Set font color to white */
+      display: flex;
+      flex-direction: column;
     }
 
     /* Style for the welcome container */
     .welcome-container {
+      flex-grow: 1; /* Make the container take up available space */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start; /* Move content to the top */
       text-align: center;
-      height: 100%;
       padding-top: 50px; /* Optional padding for spacing */
     }
 
@@ -34,14 +36,34 @@
       max-width: 300px; /* Resize the image */
       height: auto;
       position: relative;
-      top: -10px; /* Move image up by 50px */
+      top: -10px; /* Move image up by 10px */
       margin-bottom: 20px;
+    }
+
+    /* Animation to slide the text from left */
+    @keyframes slide-in {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
     /* Style for the welcome text */
     .welcome-text {
       font-size: 24px;
       margin: 20px;
+      animation: slide-in 1s ease-out; /* Apply slide-in animation */
+    }
+
+    /* Style for the body text */
+    .body-text {
+      font-size: 18px;
+      margin: 10px 20px;
+      animation: slide-in 1.5s ease-out; /* Apply slide-in animation with a slight delay */
     }
 
     /* Style for the button */
@@ -60,27 +82,15 @@
       background-color: #0056b3;
     }
 
-    /* Copyright text pinned to the bottom */
-    /*.copyright {
-      position: fixed;
-      bottom: 10px; // Adjust this value to move the text up or down
-      width: 100%;
-      text-align: center;
-      font-size: 14px;
-      color: #888;
-      padding: 10px 0;
-      background-color: #000;
-    } */
-    /* Copyright text */
     /* Copyright text */
     .copyright {
       font-size: 14px;
       color: #888;
-      margin-top: -50px; /* Move the text up by 20px */
       text-align: center;
       width: 100%; /* Ensure it takes up the full width */
+      padding: 10px 0;
+      background-color: #000;
     }
-
 
     /* Responsive styles */
     @media (max-width: 600px) {
@@ -97,16 +107,15 @@
 <body>
   <div class="welcome-container">
     <img class="welcome-image" src="/media/fairus_kufi.png" alt="Welcome Image">
-    <div class="welcome-text">
-      Welcome to the FYRUS SYSTEM! We're glad to have you here.
-      <br><br>
-      ** RPC : Race Pack Collection **
-      <br><br>
-      This app is made to ease event collection system.
-      <br><br>
+    
+    <p class="welcome-text">Welcome to the FYRUS SYSTEM!</p>
+
+    <p class="body-text">
+      ** RPC : Race Pack Collection ** <br><br>
+      This app is made to ease event collection system.<br><br>
       Low cost, no messy excel/sheets.
-      
-    </div>
+    </p>
+    
     <br><br>
     <a href="/demo" class="redirect-button">Go to Demo Page</a>
   </div>
