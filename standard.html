@@ -38,12 +38,48 @@
       height: 100%;
       border: none;
     }
+
+    /* Home button container style */
+    .home-container {
+      text-align: center; /* Center the home button */
+      margin-bottom: 20px; /* Add space between the home button and copyright */
+    }
+    /* Home button style */
+    .redirect-home {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* Copyright text */
+    .copyright {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+      width: 100%; /* Ensure it takes up the full width */
+      padding: 10px 0;
+      background-color: #000;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
   <iframe 
-    src="https://script.google.com/macros/s/AKfycbxkzRCsgEY7vepEjpOqmsm5yKphHbGMOWeKCt51qj2fv6Gt384RblpHvXgE_gjF9i3rFQ/exec"
+    src="https://script.google.com/macros/s/AKfycbzZ144ls3Kz3xb9VAlOtYUT9MpSWc06LnXTc48nAjLQxn5D3acDky6ogtgjbjCBaY4w/exec"
     allow="camera">
   </iframe>
+  <!-- Home button container -->
+  <div class="home-container">
+    <a href="/index" class="redirect-home">Home</a>
+  </div>
+
+  <div class="copyright">
+    &copy; 2024 FYRUS RPC System. All rights reserved.
+  </div>
 </body>
 </html>
