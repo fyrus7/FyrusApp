@@ -177,9 +177,9 @@
   background-color: #2d2d2d; /* Dark gray background */
   color: white; /* White text */
   border-radius: 8px; /* Rounded corners */
-  width: 70%; /* Width is 80% of the viewport width */
-  max-width: 300px; /* Optional max width */
-  padding: 20px;
+  width: 49%; /* Reduced from 70% to 49% (30% smaller) */
+  max-width: 210px; /* Reduced from 300px to 210px (30% smaller) */
+  padding: 14px; /* Reduced padding to make content more compact */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   text-align: left;
   position: relative;
@@ -187,18 +187,18 @@
 
 /* "Install app?" title */
 .install-title {
-  font-size: 24px;
+  font-size: 17px; /* Reduced from 24px to 17px */
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 14px; /* Reduced margin */
   text-align: center;
 }
 
 /* Close button */
 .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
+  top: 7px; /* Adjusted top position */
+  right: 7px; /* Adjusted right position */
+  font-size: 14px; /* Reduced from 20px to 14px */
   color: white;
   cursor: pointer;
 }
@@ -207,24 +207,24 @@
 .modal-header {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 14px; /* Reduced margin */
 }
 
 .modal-header img {
-  width: 50px;
-  height: 50px;
-  margin-right: 15px;
+  width: 35px; /* Reduced from 50px to 35px */
+  height: 35px; /* Reduced from 50px to 35px */
+  margin-right: 10px; /* Reduced margin */
 }
 
 /* App name */
 .app-name {
-  font-size: 16px;
+  font-size: 11px; /* Reduced from 16px to 11px */
   font-weight: bold;
 }
 
 /* URL text */
 .app-url {
-  font-size: 12px;
+  font-size: 8px; /* Reduced from 12px to 8px */
   color: #b0b0b0; /* Lighter gray for URL */
 }
 
@@ -232,16 +232,16 @@
 .modal-footer {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: 14px; /* Reduced margin */
 }
 
 .btn {
   border: none;
-  padding: 10px 20px;
+  padding: 7px 14px; /* Reduced button size */
   cursor: pointer;
   border-radius: 5px;
-  font-size: 14px;
-  margin-left: 10px;
+  font-size: 10px; /* Reduced from 14px to 10px */
+  margin-left: 7px; /* Reduced margin */
 }
 
 /* Install button */
@@ -256,6 +256,8 @@
   color: #b0b0b0; /* Gray for cancel */
 }
 
+  
+
   </style>
 </head>
 <body>
@@ -266,7 +268,7 @@
     <!-- Adding the text above icon -->
     <h3 style="text-align: left; color: white; font-weight: normal;">Install app?</h3> 
       <div class="modal-header">
-        <img src="/favicon-home/favicon-32x32.png" alt="App Icon">
+        <img src="/favicon-home/favicon-192x192.png" alt="App Icon">
         <div>
           <div class="app-name">IAMFYRUS | Awesome App</div>
           <div class="app-url">iamfyrus.com</div>
