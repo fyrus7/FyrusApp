@@ -51,8 +51,8 @@
   background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
   display: flex;
   justify-content: center;
-  align-items: center; /*flex-start; /* Align closer to top */
-/*  padding-top: 30px; /* Space from the top */
+  align-items: flex-start; /* Align closer to top */
+  padding-top: 30px; /* Space from the top */
 }
 
 /* Modal content */
@@ -71,10 +71,10 @@
 
 /* "Install app?" title */
 .install-title {
-  font-size: 18px; /* Reduced from 24px to 22px */
-  font-weight: bold;
+  font-size: 16px; /* Reduced from 24px to 22px */
+/*  font-weight: bold; */
   margin-bottom: 18px; /* Reduced margin */
-  text-align: center;
+  text-align: left;
 }
 
 /* Close button */
@@ -154,7 +154,7 @@
     <div class="modal-content">
       <span class="close" id="closeBtn">&times;</span>
     <!-- Adding the text above icon -->
-    <h3 style="text-align: left; color: white; font-weight: normal;">Install app?</h3> 
+    <div style="install-title">Install app?</div> 
       <div class="modal-header">
         <img src="/favicon-lsptk/android-chrome-192x192.png" alt="App Icon">
         <div>
