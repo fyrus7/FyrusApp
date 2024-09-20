@@ -259,6 +259,25 @@
   </style>
 </head>
 <body>
+  <!-- Modal structure -->
+  <div id="installModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeBtn">&times;</span>
+    <!-- Adding the text above icon -->
+    <h3 style="text-align: left; color: white; font-weight: normal;">Install app?</h3> 
+      <div class="modal-header">
+        <img src="/favicon-home/favicon-32x32.png" alt="App Icon">
+        <div>
+          <div class="app-name">IAMFYRUS | Awesome App</div>
+          <div class="app-url">iamfyrus.com</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-cancel" id="cancelBtn">Cancel</button>
+        <button class="btn btn-install" id="installBtn">Install</button>
+      </div>
+    </div>
+  </div>
   
   <div class="welcome-container">
     <img class="welcome-image" src="/media/FyrusStripeRed.png" alt="Welcome Image">
@@ -287,26 +306,6 @@
 
   <div class="copyright">
     &copy; 2024 Fyrus System. All rights reserved.
-  </div>
-
-    <!-- Modal structure -->
-  <div id="installModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeBtn">&times;</span>
-    <!-- Adding the text above icon -->
-    <h3 style="text-align: left; color: white; font-weight: normal;">Install app?</h3> 
-      <div class="modal-header">
-        <img src="/favicon-home/favicon-32x32.png" alt="App Icon">
-        <div>
-          <div class="app-name">IAMFYRUS | Awesome App</div>
-          <div class="app-url">iamfyrus.com</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-cancel" id="cancelBtn">Cancel</button>
-        <button class="btn btn-install" id="installBtn">Install</button>
-      </div>
-    </div>
   </div>
 
   <script>
