@@ -57,12 +57,13 @@
 
 /* Modal content */
 .modal-content {
-  background-color: #2d2d2d; /* Dark gray background */
+  background-color: rgba(45, 45, 45, 0.5); /* Dark gray background with transparency */
+ /* background-color: #2d2d2d; /* Dark gray background */
   color: white; /* White text */
   border-radius: 8px; /* Rounded corners */
-  width: 70%; /* Width is 80% of the viewport width */
-  max-width: 300px; /* Optional max width */
-  padding: 20px;
+  width: 63%; /* Reduced from 70% to 63% (10% smaller) */
+  max-width: 270px; /* Reduced from 300px to 270px (10% smaller) */
+  padding: 18px; /* Reduced padding to match content size */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   text-align: left;
   position: relative;
@@ -70,18 +71,18 @@
 
 /* "Install app?" title */
 .install-title {
-  font-size: 24px;
+  font-size: 18px; /* Reduced from 24px to 22px */
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 18px; /* Reduced margin */
   text-align: center;
 }
 
 /* Close button */
 .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
+  top: 9px; /* Adjusted top position */
+  right: 9px; /* Adjusted right position */
+  font-size: 18px; /* Reduced from 20px to 18px */
   color: white;
   cursor: pointer;
 }
@@ -90,24 +91,24 @@
 .modal-header {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px; /* Reduced margin */
 }
 
 .modal-header img {
-  width: 50px;
-  height: 50px;
-  margin-right: 15px;
+  width: 45px; /* Reduced from 50px to 45px */
+  height: 45px; /* Reduced from 50px to 45px */
+  margin-right: 13px; /* Reduced margin */
 }
 
 /* App name */
 .app-name {
-  font-size: 16px;
+  font-size: 14px; /* Reduced from 16px to 14px */
   font-weight: bold;
 }
 
 /* URL text */
 .app-url {
-  font-size: 12px;
+  font-size: 11px; /* Reduced from 12px to 11px */
   color: #b0b0b0; /* Lighter gray for URL */
 }
 
@@ -115,16 +116,16 @@
 .modal-footer {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: 18px; /* Reduced margin */
 }
 
 .btn {
   border: none;
-  padding: 10px 20px;
+  padding: 9px 18px; /* Reduced button size slightly */
   cursor: pointer;
   border-radius: 5px;
-  font-size: 14px;
-  margin-left: 10px;
+  font-size: 13px; /* Reduced from 14px to 13px */
+  margin-left: 9px; /* Reduced margin */
 }
 
 /* Install button */
@@ -138,18 +139,24 @@
   background-color: transparent;
   color: #b0b0b0; /* Gray for cancel */
 }
+
   </style>
 </head>
 <body>
 
-  <!-- Modal structure -->
+  <iframe 
+    src="https://script.google.com/macros/s/AKfycbxkzRCsgEY7vepEjpOqmsm5yKphHbGMOWeKCt51qj2fv6Gt384RblpHvXgE_gjF9i3rFQ/exec"
+    allow="camera">
+  </iframe>
+
+   <!-- Modal structure -->
   <div id="installModal" class="modal">
     <div class="modal-content">
       <span class="close" id="closeBtn">&times;</span>
     <!-- Adding the text above icon -->
     <h3 style="text-align: left; color: white; font-weight: normal;">Install app?</h3> 
       <div class="modal-header">
-        <img src="/favicon-lsptk/favicon-32x32.png" alt="App Icon">
+        <img src="/favicon-lsptk/android-chrome-192x192.png" alt="App Icon">
         <div>
           <div class="app-name">LSPTK | Awesome RPC App</div>
           <div class="app-url">lariansawahapdi.com</div>
@@ -160,12 +167,7 @@
         <button class="btn btn-install" id="installBtn">Install</button>
       </div>
     </div>
-  </div>
-
-  <iframe 
-    src="https://script.google.com/macros/s/AKfycbxkzRCsgEY7vepEjpOqmsm5yKphHbGMOWeKCt51qj2fv6Gt384RblpHvXgE_gjF9i3rFQ/exec"
-    allow="camera">
-  </iframe>
+  </div> 
 
   <script>
   // Register the service worker
