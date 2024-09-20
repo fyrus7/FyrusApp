@@ -156,33 +156,32 @@
       }
     }
 
-    /* Modal background */
+   /* Modal container */
     .modal {
-      display: none; /* Hidden by default */
+      display: none;
       position: fixed;
       z-index: 1000;
       left: 0;
-      top: 0;
+      top: 0; /* Align to the top */
       width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      height: 100%; /* Keep it full height if you want the overlay to cover the screen */
+      background-color: rgba(0, 0, 0, 0.5); /* Background dim effect */
+      justify-content: center; /* Center horizontally */
+      align-items: flex-start; /* Align to top */
+      padding-top: 20px; /* Add some spacing from the top */
     }
-
-    /* Modal content */
+  /* Modal content */
     .modal-content {
-      background-color: #2d2d2d; /* Dark gray background */
-      color: white; /* White text */
-      border-radius: 8px; /* Rounded corners */
-      width: 400px; /* Adjust width */
+      background-color: #FFA500; /* Orange background */
       padding: 20px;
+      border-radius: 5px;
+      text-align: center;
       box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-      text-align: left;
-      position: relative;
-    }
-
+      width: 70%; /* Horizontal width */
+      max-width: 500px; /* Limit width for larger screens */
+      color: #FFFFFF;
+      margin-top: 20px; /* Add some top margin so it doesn't stick right at the top */
+    }}
     /* Close button */
     .close {
       position: absolute;
@@ -192,40 +191,34 @@
       color: white;
       cursor: pointer;
     }
-
     /* App icon and text */
     .modal-header {
       display: flex;
       align-items: center;
       margin-bottom: 20px;
     }
-
     .modal-header img {
       width: 50px;
       height: 50px;
-      border-radius: 50%;
+      border-radius: 0%;
       margin-right: 15px;
     }
-
     /* App name */
     .app-name {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
     }
-
     /* URL text */
     .app-url {
-      font-size: 14px;
+      font-size: 12px;
       color: #b0b0b0; /* Lighter gray for URL */
     }
-
     /* Buttons container */
     .modal-footer {
       display: flex;
       justify-content: flex-end;
       margin-top: 20px;
     }
-
     .btn {
       border: none;
       padding: 10px 20px;
@@ -234,13 +227,11 @@
       font-size: 14px;
       margin-left: 10px;
     }
-
     /* Install button */
     .btn-install {
       background-color: #4285F4; /* Blue for install */
       color: white;
     }
-
     /* Cancel button */
     .btn-cancel {
       background-color: transparent;
@@ -283,6 +274,8 @@
   <div id="installModal" class="modal">
     <div class="modal-content">
       <span class="close" id="closeBtn">&times;</span>
+    <!-- Adding the text above icon -->
+    <h2 style="text-align: center; color: white;">Install app?</h2> 
       <div class="modal-header">
         <img src="/favicon-home/favicon-32x32.png" alt="App Icon">
         <div>
