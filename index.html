@@ -96,6 +96,15 @@
       animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
       text-align: left;
     }
+    /* Style for the container with custom spacing */
+    .custom-spacing {
+      line-height: 1.2; /* Adjust line height for general spacing */
+    }
+    /* Specific style for <br> tags inside .custom-spacing */
+    .custom-spacing br {
+      margin: 0; /* Remove extra space around <br> */
+      line-height: 0.7; /* Reduce spacing caused by <br> */
+    }
     /* Fade-in animation for the grey box */
     @keyframes fade-in-box {
       from {
@@ -322,17 +331,19 @@
 
     <!-- Transparent grey box wrapping body-text -->
     <div class="grey-box">
-    <p class="body-text">
+    <p class="body-text custom-spacing">
 
-      This app is made to ease RPC day.
+      This app is made to ease your RPC day.
       <br><br>
-      Low cost & easy to use.
+      • Low cost & easy to use.
       <br><br>
-      No messy excel/sheets.
+      • No more messy excel/sheets.
       <br><br>
-      [ optimize for smartphone ]
+      • Responsive app for all screen size.
       <br><br>
-      ** RPC : Race Pack Collection
+      • Optimize for smartphone usage.
+      <br><br>
+      ** RPC : Race Pack Collection.
     </p>
     </div>
     
