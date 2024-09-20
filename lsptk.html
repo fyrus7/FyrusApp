@@ -39,59 +39,127 @@
       border: none;
     }
     
-    /* Modal container */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 25px;
-    }
-    /* Modal content */
-    .modal-content {
-      background-color: #FFA500; /* Orange background */
-      padding: 5px 10px; /* Adjust padding for top/bottom and sides */
-      border-radius: 5px;
-      text-align: center;
-      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-      width: 70%; /* Increase the horizontal width */
-      max-width: 500px; /* Set a max width for larger screens */
-      color: #FFFFFF; /* Text color */
-    }
-    /* Close button */
-    .close {
-      position: absolute;
-      top: 20px; /* Move the close button down */
-      right: 30px;
-      font-size: 20px;
-      cursor: pointer;
-    }
-    /* Install button in modal */
-    #confirmInstall {
-      background-color: #007BFF; /* Blue button */
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+/* Modal background */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align closer to top */
+  padding-top: 30px; /* Space from the top */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #2d2d2d; /* Dark gray background */
+  color: white; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  width: 70%; /* Width is 80% of the viewport width */
+  max-width: 300px; /* Optional max width */
+  padding: 20px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+}
+
+/* "Install app?" title */
+.install-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+/* App icon and text */
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header img {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+/* App name */
+.app-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* URL text */
+.app-url {
+  font-size: 12px;
+  color: #b0b0b0; /* Lighter gray for URL */
+}
+
+/* Buttons container */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn {
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+/* Install button */
+.btn-install {
+  background-color: #4285F4; /* Blue for install */
+  color: white;
+}
+
+/* Cancel button */
+.btn-cancel {
+  background-color: transparent;
+  color: #b0b0b0; /* Gray for cancel */
+}
   </style>
 </head>
 <body>
 
+  <!-- Modal structure -->
   <div id="installModal" class="modal">
-  <div class="modal-content">
-    <span id="closeModal" class="close">&times;</span>
-    <p><b>INSTALL APP TO HOME SCREEN</b></p>
-    <button id="confirmInstall">Install</button>
-  </div>
+    <div class="modal-content">
+      <span class="close" id="closeBtn">&times;</span>
+    <!-- Adding the text above icon -->
+    <h3 style="text-align: left; color: white; font-weight: normal;">Install app?</h3> 
+      <div class="modal-header">
+        <img src="/favicon-lsptk/favicon-32x32.png" alt="App Icon">
+        <div>
+          <div class="app-name">LSPTK | Awesome RPC App</div>
+          <div class="app-url">lariansawahapdi.com</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-cancel" id="cancelBtn">Cancel</button>
+        <button class="btn btn-install" id="installBtn">Install</button>
+      </div>
+    </div>
   </div>
 
   <iframe 
@@ -100,55 +168,60 @@
   </iframe>
 
   <script>
-    // Register the service worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then((registration) => {
-            console.log('Service Worker registered with scope:', registration.scope);
-          })
-          .catch((error) => {
-            console.error('Service Worker registration failed:', error);
-          });
-      });
-    }
-
-    // PWA install prompt
-    let deferredPrompt;
-    const installModal = document.getElementById('installModal');
-    const confirmInstallButton = document.getElementById('confirmInstall');
-    const closeModalButton = document.getElementById('closeModal');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installModal.style.display = 'flex';  // Show the modal
+  // Register the service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
     });
+  }
 
-    confirmInstallButton.addEventListener('click', () => {
-      installModal.style.display = 'none';  // Hide the modal
-      deferredPrompt.prompt();
+  // PWA install prompt
+  let deferredPrompt;
+  const installModal = document.getElementById('installModal');
+  const installButton = document.getElementById('installBtn');
+  const closeModalButton = document.getElementById('closeBtn');
+  const cancelButton = document.getElementById('cancelBtn');
 
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-        deferredPrompt = null;
-      });
-    });
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installModal.style.display = 'flex';  // Show the modal
+  });
 
-    closeModalButton.addEventListener('click', () => {
-      installModal.style.display = 'none';
-    });
+  installButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+    deferredPrompt.prompt();
 
-    window.addEventListener('click', (e) => {
-      if (e.target === installModal) {
-        installModal.style.display = 'none';
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
       }
+      deferredPrompt = null;
     });
-  </script>
+  });
+
+  closeModalButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  cancelButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === installModal) {
+      installModal.style.display = 'none';  // Close modal if user clicks outside of it
+    }
+  });
+</script>
 
 </body>
 </html>
