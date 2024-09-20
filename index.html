@@ -155,6 +155,97 @@
         padding: 8px 16px;
       }
     }
+
+    /* Modal background */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Modal content */
+    .modal-content {
+      background-color: #2d2d2d; /* Dark gray background */
+      color: white; /* White text */
+      border-radius: 8px; /* Rounded corners */
+      width: 400px; /* Adjust width */
+      padding: 20px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+      text-align: left;
+      position: relative;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* App icon and text */
+    .modal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    /* App name */
+    .app-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* URL text */
+    .app-url {
+      font-size: 14px;
+      color: #b0b0b0; /* Lighter gray for URL */
+    }
+
+    /* Buttons container */
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    .btn {
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-left: 10px;
+    }
+
+    /* Install button */
+    .btn-install {
+      background-color: #4285F4; /* Blue for install */
+      color: white;
+    }
+
+    /* Cancel button */
+    .btn-cancel {
+      background-color: transparent;
+      color: #b0b0b0; /* Gray for cancel */
+    }
   </style>
 </head>
 <body>
@@ -187,6 +278,81 @@
   <div class="copyright">
     &copy; 2024 Fyrus System. All rights reserved.
   </div>
+
+    <!-- Modal structure -->
+  <div id="installModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeBtn">&times;</span>
+      <div class="modal-header">
+        <img src="/favicon-home/favicon-32x32.png" alt="App Icon">
+        <div>
+          <div class="app-name">IAMFYRUS | Awesome RPC App</div>
+          <div class="app-url">iamfyrus.com</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-cancel" id="cancelBtn">Cancel</button>
+        <button class="btn btn-install" id="installBtn">Install</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // Register the service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+    });
+  }
+
+  // PWA install prompt
+  let deferredPrompt;
+  const installModal = document.getElementById('installModal');
+  const installButton = document.getElementById('installBtn');
+  const closeModalButton = document.getElementById('closeBtn');
+  const cancelButton = document.getElementById('cancelBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installModal.style.display = 'flex';  // Show the modal
+  });
+
+  installButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+
+  closeModalButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  cancelButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === installModal) {
+      installModal.style.display = 'none';  // Close modal if user clicks outside of it
+    }
+  });
+</script>
+
   
 </body>
 </html>
