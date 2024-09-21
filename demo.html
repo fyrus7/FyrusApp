@@ -79,7 +79,7 @@
     .grey-box {
       background-color: rgba(128, 128, 128, 0.5); /* Transparent grey */
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 5px;
       opacity: 0; /* Initially invisible */
       animation: fade-in-box 2s forwards; /* Fade-in animation */
     }
@@ -191,15 +191,27 @@
       }
       .redirect-button {
         font-size: 16px;
-        padding: 8px 16px;
+        padding: 8px 25px;
       }
     }
+	
+	/* Hide the <br> tag on desktop */
+	.mobile-only {
+	display: none; /* Default: hidden */
+	}
+	/* Show the <br> tag on screens smaller than 600px (mobile) */
+	@media (max-width: 600px) {
+	.mobile-only {
+        display: block; /* Show on mobile */
+    }
+}
+
   </style>
 </head>
 <body>
   <div class="welcome-container">
     <img class="welcome-image" src="/media/fyrus-kufi-banner.png" alt="Welcome Image">
-     
+	
     <p class="welcome-text">Choose Between 3 Apps</p>
       <br>
 
@@ -209,29 +221,30 @@
       Search value:
       <br>
       1010, 2020, 3030, 4040, 5050
-      <br>
+      <br class="mobile-only">
       or
-      <br>
+      <br class="mobile-only">
       1111, 2222, 3333, 4444, 5555
       <br><br>
       Use Comma for multiple data search.
-      <br>
+	  <br class="mobile-only">
       ( example: 1010,3030 )
       <br><br>
       RESET the apps to test again.
-      <br>
-      ( the 'Clear Data' button )
+	  <br class="mobile-only">
+	  ( the 'Clear Data' button )
     </p>
-    </div
-    
-    <br><br>
-    
-    <!-- Button container for horizontal alignment -->
+    </div>
+	
+	<br>
+	
+	<!-- Button container for horizontal alignment -->
     <div class="button-container">
       <a href="/basic" class="redirect-button">Basic</a>
       <a href="/standard" class="redirect-button">Standard</a>
       <a href="/advance" class="redirect-button">Advance</a>
     </div>
+	
     <br>
 
     <p class="desc-text custom-spacing">
@@ -244,6 +257,8 @@
     
     <br>
   </div>
+  
+  <br>
 
   <!-- Home button container -->
   <div class="home-container">
