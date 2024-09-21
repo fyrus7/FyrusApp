@@ -1,0 +1,65 @@
+    /* Make sure body and html take up the full height */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Centering the iframe and making it take up the available space */
+    iframe {
+      width: 100%;
+      flex-grow: 1; /* Allow iframe to grow and take up space */
+      border: none;
+    }
+
+    /* Centering the Back button container */
+    .back-container {
+      text-align: center; /* Center the home button */
+      margin-bottom: 20px;
+    }
+
+    /* Back button style */
+    .redirect-back {
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+	  margin-right: 5px;
+    }
+	/* Reload button */
+    .reload-page {
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* Copyright text */
+    .copyright {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+      width: 100%; /* Ensure it takes up the full width */
+      padding: 10px 0;
+      background-color: #000;
+    }
+
+    /* Footer area to hold the button and copyright */
+    .footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      background-color: #000;
+    }
