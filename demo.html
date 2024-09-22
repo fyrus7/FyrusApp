@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-home/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-home/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-home/favicon-16x16.png">
   <link rel="shortcut icon" href="/favicon-home/favicon.ico">
@@ -17,15 +18,14 @@
       margin: 0;
       padding: 0;
       height: 100%;
-   /*   font-family: Helvetica, Arial, sans-serif; */
       background-color: #000000; /* Set background to black */
       color: #ffffff; /* Set font color to white */
       display: flex;
       flex-direction: column;
     }
 
-    /* Style for the welcome container */
-    .welcome-container {
+    /* Style for the page container */
+    .page-container {
       flex-grow: 1; /* Make the container take up available space */
       display: flex;
       flex-direction: column;
@@ -81,7 +81,7 @@
       padding: 20px;
       border-radius: 5px;
       opacity: 0; /* Initially invisible */
-      animation: fade-in-box 2s forwards; /* Fade-in animation */
+      animation: fade-in-box 5s forwards; /* Fade-in animation */
     }
     /* Style for the body text (slides from right) */
     .body-text {
@@ -209,7 +209,7 @@
   </style>
 </head>
 <body>
-  <div class="welcome-container">
+  <div class="page-container">
     <img class="welcome-image" src="/media/fyrus-kufi-banner.png" alt="Welcome Image">
 	
     <p class="welcome-text">Choose Between 3 Apps</p>

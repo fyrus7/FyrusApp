@@ -16,8 +16,8 @@
 
   <!-- meta tags for responsive web on mobile/desktop -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-<style>
+
+  <style>
     /* Make sure body and html take up the full height */
     html, body {
       margin: 0;
@@ -40,41 +40,14 @@
       padding-top: 50px; /* Optional padding for spacing */
     }
 
-
     /* Style for the welcome image */
     .welcome-image {
-      max-width: 300px; /* Resize the image */
+      max-width: 350px; /* Resize the image */
       height: auto;
       position: relative;
-      /*top: -10px; /* Move image up by 10px */
+      /*top: -10px; /* Move image up by 50px */
       margin-bottom: 20px;
     }
-	
-  .image-container {
-    display: block;
-    /*justify-content: center; /* Center images horizontally */
-    align-items: center; /* Align images vertically */
-    position: relative; /* Relative positioning for z-index */
-    margin-bottom: -150px; /* Pull the images up */
-    z-index: 0; /* Behind the grey box */
-  }
-
-  .home-image1, .home-image2 {
-    max-width: 400px; /* Resize the images */
-    height: auto;
-    position: relative;
-    top: 10px; /* Adjust position if needed */
-    margin: 0 5px; /* Add horizontal space between images */
-    margin-bottom: 5px; /* Space below images */
-    animation: slide-in-left 2s ease-out; /* Animation for image 1 */
-    opacity: 0.5; /* Optional: make them slightly transparent */
-  }
-
-  /* Ensure the second image uses the right animation */
-  .home-image2 {
-    animation: slide-in-right 2s ease-out; /* Animation for image 2 */
-  }
-
 
     /* Animation to slide the text from left */
     @keyframes slide-in-left {
@@ -106,24 +79,30 @@
       margin: 20px;
       animation: slide-in-left 1s ease-out; /* Apply slide-in-left animation */
     }
-    
-    
-  .grey-box {
-    position: relative;
-    z-index: 1; /* Ensure it sits above the images */
-    background-color: rgba(128, 128, 128, 0.8); /* Semi-transparent grey */
-    padding: 20px;
-    border-radius: 10px;
-	margin-top: -210px;
-  }
+
+    /* Style for the transparent grey box wrapping body-text */
+    .grey-box {
+      background-color: rgba(128, 128, 128, 0.5); /* Transparent grey */
+      padding: 20px;
+      border-radius: 5px;
+      opacity: 0; /* Initially invisible */
+      animation: fade-in-box 5s forwards; /* Fade-in animation */
+    }
     /* Style for the body text (slides from right) */
     .body-text {
-      font-size: 17px;
+      font-size: 18px;
       margin: 10px 20px;
       animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
       text-align: left;
-	  color: white;
     }
+
+    .desc-text {
+      font-size: 18px;
+      margin: 10px 20px;
+      animation: slide-in-left 1.5s ease-out; /* Apply slide-in-right animation */
+      text-align: left;
+    }
+
     /* Style for the container with custom spacing */
     .custom-spacing {
       line-height: 1.2; /* Adjust line height for general spacing */
@@ -133,6 +112,8 @@
       margin: 0; /* Remove extra space around <br> */
       line-height: 0.7; /* Reduce spacing caused by <br> */
     }
+
+
     /* Fade-in animation for the grey box */
     @keyframes fade-in-box {
       from {
@@ -165,7 +146,6 @@
       border-radius: 5px;
       cursor: pointer;
       text-decoration: none;
-	  margin-top: 80px;
       animation: slide-in-bottom 1.5s ease-out; /* Apply slide-in-bottom animation */
     }
     .redirect-button:hover {
@@ -180,7 +160,7 @@
       width: 100%; /* Ensure it takes up the full width */
       padding: 10px 0;
       background-color: #000;
-     /* margin-bottom: 10px; */
+      margin-bottom: 10px;
     }
 
     /* Responsive styles */
@@ -215,11 +195,6 @@
     <p class="welcome-text">Welcome to the Fyrus Apps!</p>
     <br>
 
-	<div class="image-container">	
-	<img class="home-image1" src="/media/site1.jpg" alt="Home Image">
-	<br>
-	<img class="home-image2" src="/media/site2.jpg" alt="Home Image">
-	</div>
     <!-- Transparent grey box wrapping body-text -->
     <div class="grey-box">
     <p class="body-text">
@@ -236,9 +211,6 @@
       • Optimize for smartphone.
     </p>
     </div>
-	<br>
-	
-
     
     <br><br>
     <a href="/demo" class="redirect-button">Go to Demo Page</a>
