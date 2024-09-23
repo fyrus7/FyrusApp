@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-standard/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-standard/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-standard/favicon-16x16.png">
+  <link rel="manifest" href="/favicon-standard/site.webmanifest">
+  <link rel="mask-icon" href="/favicon-standard/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/favicon-standard/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/favicon-standard/browserconfig.xml">
+  <meta name="theme-color" content="#dddddd">
+  
+  <title>FYRUS SYSTEM | STANDARD DEMO</title>
+
+  <!-- meta tags for responsive web on mobile/desktop -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="3DemoStyles.css?v=9.5"> <!-- Linking to external CSS file -->
+
+</head>
+<body>
+  <iframe 
+    src="https://script.google.com/macros/s/AKfycbzZ144ls3Kz3xb9VAlOtYUT9MpSWc06LnXTc48nAjLQxn5D3acDky6ogtgjbjCBaY4w/exec"
+    allow="camera">
+  </iframe>
+  
+    <!-- Footer area to center the home button and copyright -->
+  <footer>
+  <section class="buttons-section">
+    <a href="/" class="btn-link">
+            <button class="btn">Back</button></a>
+			
+	<a href="javascript:void(0)" class="btn-link">
+	  <button id="reloadButton" class="btn">Reload</button></a>
+    </section>
+
+    <div class="copyright">
+      &copy; <span id="year"></span> Fyrus Apps. All rights reserved.
+    </div>
+  </footer>
+ 
+
+    <script>
+        document.getElementById('reloadButton').addEventListener('click', function() {
+            // Force reload without cache (Ctrl+F5)
+            window.location.reload(true);
+        });
+    </script>
+	
+	<script>
+	    // Get the current year from the device and update the copyright span
+		document.getElementById("year").textContent = new Date().getFullYear();
+	</script>
+  
+</body>
+</html>

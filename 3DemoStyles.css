@@ -1,0 +1,66 @@
+    /* Make sure body and html take up the full height */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+	
+	body {
+    font-family: Arial, sans-serif;
+    background-color: #E8ECEF;
+}
+
+    /* Centering the iframe and making it take up the available space */
+    iframe {
+      width: 100%;
+      flex-grow: 1; /* Allow iframe to grow and take up space */
+      border: none;
+    }
+	
+.buttons-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;  /* More space on top */
+    margin-bottom: 10px; /* Less space below */
+}
+
+.btn-link {
+    text-decoration: none;
+}
+
+.btn {
+    background-color: #455A64;
+    color: white;
+    border: none;
+    padding: 0; /* Remove padding to use line-height for centering */
+    width: 80px; /* Set a smaller fixed width */
+    height: 25px; /* Set a slightly larger height for better visibility */
+    margin: 0 5px; /* Maintain horizontal spacing */
+    font-size: 12px; /* Adjust font size if needed */
+    cursor: pointer;
+    border-radius: 5px;
+    line-height: 25px; /* Set line-height equal to height for vertical centering */
+    text-align: center; /* Center the text horizontally */
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1C313A;
+}
+
+.copyright {
+    margin-top: 10px; /* Add some space between social icons and copyright */
+    font-size: 14px; /* Font size for copyright text */
+    color: #455A64; /* Copyright text color */
+}
+
+    /* Footer area to hold the button and copyright */
+footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    background-color: #E8ECEF; /* Match background color */
+    padding: 10px; /* Add padding */
+    color: #455A64; /* Change text color for visibility */
+    text-align: center;
+}
