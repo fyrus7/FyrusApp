@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E8ECEF;
+}
+
+header {
+    width: 100%; /* Full width header */
+    background-color: #37474F;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Slanted background effect */
+}
+
+.header-content {
+    display: inline-block;
+    transform: none; /* Remove any tilt on the content */
+}
+
+
+.profile-pic {
+    width: 70%; /* Set width relative to container */
+    max-width: 500px; /* Limit maximum width */
+    height: auto; /* Keep aspect ratio */
+    display: block;
+    margin: 0 auto 20px; /* Center the image */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 14px;
+    color: #B0BEC5;
+}
+
+.text-container {
+    max-width: 800px; /* Set a max width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Optional: Add padding to the left and right */
+}
+.text-container p {
+    text-align: left; /* Keep text aligned to the left */
+    font-size: 16px; /* Set font size for the paragraph */
+    color: #455A64; /* Set color for the paragraph */
+    margin: 0; /* Reset margin for the paragraph */
+    padding: 20px; /* Optional padding for aesthetics */
+}
+
+.text-box {
+    border: 2px solid #455A64; 
+    padding: 20px 30px; /* 20px top/bottom, 30px left/right */
+    border-radius: 5px; 
+    background-color: #455A64; 
+    width: 90%; 
+    max-width: 600px; /* Corrected max-width property */
+    margin: 0 auto; 
+}
+.text-box p {
+	text-align: left;
+    color: #FFFFFF; /* Change font color */
+	font-size: 16px;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    .text-box {
+        width: 70%; /* Adjust width for desktop */
+        max-width: 800px; /* Increase max-width for desktop */
+    }
+}
+@media (min-width: 1200px) {
+    .text-box {
+        width: 50%; /* Further reduce width for larger screens */
+        max-width: 1000px; /* Maximum width for very large screens */
+    }
+}
+
+
+
+/* Hide the <br> tag on desktop */
+	.mobile-text {
+	display: none; /* Default: hidden */
+	}
+	/* Show the <br> tag on screens smaller than 600px (mobile) */
+	@media (max-width: 600px) {
+	.mobile-text {
+        display: block; /* Show on mobile */
+    }
+}
+
+.text-button {
+	margin-top: 20px;
+    text-align: center; /* Center content inside the container */
+    margin-bottom: -25px; /* Add space below the text */
+}
+
+.choose-text {
+    font-size: 20px; /* Adjust font size */
+    font-weight: bold; /* Make the text bold */
+    color: #37474F; /* Set text color */
+    margin: 0; /* Reset default margin for the paragraph */
+	padding-bottom: 20px;
+}
+
+.hr-container {
+    width: 40%; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container */
+}
+.line-break {
+    width: 100%; /* Full width inside the container */
+    border: none;
+    border-top: 1px solid #455A64; /* Customize the line */
+    margin: 10px 0; /* Adds space above and below the line */
+}
+
+
+
+.buttons-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;  /* More space on top */
+    margin-bottom: 20px; /* Less space below */
+}
+
+.btn-link {
+    text-decoration: none;
+}
+
+.btn {
+    background-color: #455A64;
+    color: white;
+    border: none;
+    padding: 5px 10px; /* Reduce padding for smaller buttons */
+    width: 120px; /* Set a smaller fixed width */
+    height: 40px; /* Set a smaller fixed height */
+    margin: 0 5px; /* Maintain horizontal spacing */
+    font-size: 16px; /* Adjust font size if needed */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1C313A;
+}
+
+footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    background-color: #E8ECEF; /* Match background color */
+    padding: 20px; /* Add padding */
+    color: #455A64; /* Change text color for visibility */
+    text-align: center;
+}
+
+.social-links a {
+    color: #455A64;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #1C313A;
+}
+
+.copyright {
+    margin-top: 10px; /* Add some space between social icons and copyright */
+    font-size: 14px; /* Font size for copyright text */
+    color: #455A64; /* Copyright text color */
+}
+
+/* Responsive adjustments */
+/* Styles for mobile */
+@media (max-width: 600px) {
+    .text-container {
+        margin: 10px 5px; /* Keep vertical margin and small horizontal margin */
+    }
+}
+
+/* Styles for desktop */
+@media (min-width: 601px) {
+    .text-container {
+        margin: 10px 300px; /* Increase horizontal margin on desktop */
+    }
+}
+
+    .btn {
+        margin: 5px; /* Adjust margin for better spacing */
+    }
+}

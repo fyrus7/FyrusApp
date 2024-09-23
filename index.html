@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-home/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-home/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-home/favicon-16x16.png">
+  <link rel="manifest" href="/favicon-home/site.webmanifest">
+  <link rel="mask-icon" href="/favicon-home/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/favicon-home/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/favicon-home/browserconfig.xml">
+  <meta name="theme-color" content="#8b0000">
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <title>Fyrus Apps</title>
+	
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" href="styles.css?v=11.7">
+
+<style>	
+	/* Modal background */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align closer to top */
+  padding-top: 30px; /* Space from the top */
+}
+
+/* Modal content */
+.modal-content {
+/*  background-color: rgba(45, 45, 45, 0.5); /* Dark gray background with transparency */
+  background-color: #2d2d2d; /* Dark gray background */
+  color: white; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  width: 63%; /* Reduced from 70% to 63% (10% smaller) */
+  max-width: 270px; /* Reduced from 300px to 270px (10% smaller) */
+  padding: 18px; /* Reduced padding to match content size */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+}
+
+/* "Install app?" title */
+.install-title {
+  font-size: 16px; /* Reduced from 24px to 22px */
+/*  font-weight: bold; */
+  margin-bottom: 18px; /* Reduced margin */
+  text-align: left;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 9px; /* Adjusted top position */
+  right: 9px; /* Adjusted right position */
+  font-size: 18px; /* Reduced from 20px to 18px */
+  color: white;
+  cursor: pointer;
+}
+
+/* App icon and text */
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px; /* Reduced margin */
+}
+
+.modal-header img {
+  width: 45px; /* Reduced from 50px to 45px */
+  height: 45px; /* Reduced from 50px to 45px */
+  margin-right: 13px; /* Reduced margin */
+}
+
+/* App name */
+.app-name {
+  font-size: 14px; /* Reduced from 16px to 14px */
+  font-weight: bold;
+}
+
+/* URL text */
+.app-url {
+  font-size: 11px; /* Reduced from 12px to 11px */
+  color: #b0b0b0; /* Lighter gray for URL */
+}
+
+/* Buttons container */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px; /* Reduced margin */
+}
+
+/* Common button styles */
+.btn {
+  padding: 9px 18px; /* Consistent button size */
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 13px;
+  margin-left: 9px;
+}
+
+/* Install button */
+.btn-install {
+  background-color: #4285F4; /* Blue for install */
+  color: white;
+  border: none; /* No border for Install button */
+}
+
+/* Cancel button */
+.btn-cancel {
+  background-color: transparent;
+  color: #b0b0b0; /* Gray for cancel */
+  border: 1px solid #b0b0b0; /* Add a gray border for Cancel */
+}
+  </style>
+
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="/media/FyrusStripe.png" alt="Profile Picture" class="profile-pic">
+            <h1>RPC APPS</h1>
+            <p>SERVE & COLLECT SYSTEM</p>
+        </div>
+		<br><br>
+    </header>
+	<br>
+	<div class="text-container">
+	<p>
+	<b>This app is made to ease RPC day.
+	<br class="mobile-text">
+	( Race Pack Collection )</b>
+	<br><br>
+	• Mobile-first app.
+	<br class="mobile-text">
+	( expected empty space on large screen )
+	<br>
+	• Low cost & easy to use.
+	<br>
+	• No more messy excel/sheets.
+	<br>
+	• Responsive for all screen size.
+	<br>
+	• Optimize for small screen.
+	</p>
+	</div>
+	
+	<div class="hr-container">
+    <hr class="line-break">
+	</div>
+	
+	<section class="text-button">
+    <p class="choose-text"># Choose Between 3 Apps #</p>
+	</section>
+	
+	<div class="text-container">
+	<p>
+	• <b>Basic &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :</b> No login, no record of user.
+     <br>
+    • <b>Standard :</b> User login, Marked user.
+     <br>
+    • <b>Advance &nbsp;:</b> User login, Marked user, 2 layer collection for use on two different screen.
+	</p>
+	</div>
+  
+    <section class="buttons-section">
+        <a href="/basic" class="btn-link">
+            <button class="btn">BASIC</button>
+        </a>
+        <a href="/standard" class="btn-link">
+            <button class="btn">STANDARD</button>
+        </a>
+        <a href="/advance" class="btn-link">
+            <button class="btn">ADVANCE</button>
+        </a>
+    </section>
+	
+	<div class="hr-container">
+    <hr class="line-break">
+	</div>
+	
+	<div class="text-container">
+	<p>
+	  <b>Test search value:</b>
+      <br><br>
+      1010, 2020, 3030, 4040, 5050
+      <br class="mobile-text">
+      or
+      <br class="mobile-text">
+      1111, 2222, 3333, 4444, 5555
+      <br><br>
+      Use Comma for multiple data search.
+	  <br class="mobile-text">
+      ( example: 1010,3030,5050 )
+      <br><br>
+      RESET the apps to test again.
+	  <br class="mobile-text">
+	  ( the 'Clear Data' button )
+	  </p>
+	</div>
+	<br>
+	
+	<div class="text-box">
+	<p>
+	  <b>Future App Posiblility</b>
+      <br><br>
+      Buy & Sell Bib Marketplace.
+      <br class="mobile-text">
+      ( in the making )
+      <br><br>
+      Runner info swap
+	  <br class="mobile-text">
+      ( in the making )
+	  <br><br>
+	  More to come...
+	  </p>
+	</div>
+	
+	    <br><br>
+
+    <!-- WhatsApp Contact Form -->
+	<div class="whatsapp-form">
+	<h4>Contact Me on WhatsApp</h4>
+    <form id="whatsappForm" onsubmit="openWhatsApp(event)">
+        <input type="text" id="whatsappMessage" placeholder="Type your message here..." required>
+        <br><button type="submit" class="btn">Send</button>
+    </form>
+	</div>
+	
+	
+	<br><br>
+    <footer>
+        <div class="social-links">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://app.iamfyrus.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://api.whatsapp.com/send?text=RPC APP%20https://app.iamfyrus.com" target="_blank" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://app.iamfyrus.com&text=Check This Awesome App" target="_blank" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://telegram.me/share/url?url=https://app.iamfyrus.com" target="_blank" target="_blank"><i class="fab fa-telegram"></i></a>
+        </div>
+		<br>
+
+		    <!-- Copyright text -->
+			<div class="copyright">
+			&copy; <span id="year"></span> Fyrus Apps. All rights reserved.
+			</div>
+	</footer>
+	
+	<script>
+    // Get the current year from the device and update the copyright span
+    document.getElementById("year").textContent = new Date().getFullYear();
+	</script>
+	
+	   <!-- Modal structure -->
+	<div id="installModal" class="modal">
+		<div class="modal-content">
+			<span class="close" id="closeBtn">&times;</span>
+			<!-- Adding the text above icon -->
+			<div class="install-title">Install app?</div> 
+			<div class="modal-header">
+				<img src="/favicon-home/android-chrome-192x192.png" alt="App Icon">
+				<div>
+					<div class="app-name">Fyrus App</div>
+					<div class="app-url">iamfyrus.com</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-cancel" id="cancelBtn">Cancel</button>
+				<button class="btn btn-install" id="installBtn">Install</button>
+			</div>
+		</div>
+	</div>
+
+<script>
+  // Register the service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+    });
+  }
+
+  // PWA install prompt
+  let deferredPrompt;
+  const installModal = document.getElementById('installModal');
+  const installButton = document.getElementById('installBtn');
+  const closeModalButton = document.getElementById('closeBtn');
+  const cancelButton = document.getElementById('cancelBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installModal.style.display = 'flex';  // Show the modal
+  });
+
+  installButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+
+  closeModalButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  cancelButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === installModal) {
+      installModal.style.display = 'none';  // Close modal if user clicks outside of it
+    }
+  });
+</script>
+
+
+<script>
+    function openWhatsApp(event) {
+        event.preventDefault(); // Prevent form submission
+        const message = document.getElementById('whatsappMessage').value;
+        const phoneNumber = '60133340224'; // Replace with your phone number in international format
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank'); // Open in a new tab
+    }
+</script>
+
+<style>
+    .whatsapp-form {
+        text-align: center; /* Center the form */
+        margin: 20px 0; /* Add margin for spacing */
+    }
+    .whatsapp-form h4 {
+        margin-bottom: 5px; /* Space between header and input box */
+    }
+    .whatsapp-form input {
+        width: 90%; /* Responsive width */
+        max-width: 600px; /* Max width for larger screens */
+        padding: 10px; /* Add padding */
+        margin-bottom: 10px; /* Space between input and button */
+        border: 2px solid #455A64; /* Border color */
+        border-radius: 5px; /* Rounded corners */
+    }
+    .whatsapp-form button {
+        background-color: #455A64; /* Button color */
+        color: white; /* Text color */
+        border: none; /* Remove border */
+        padding: 10px 20px; /* Add padding */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor */
+    }
+    .whatsapp-form button:hover {
+        background-color: #1C313A; /* Darker on hover */
+    }
+</style>
+
+</body>
+</html>
