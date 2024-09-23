@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-home/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-home/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon-home/favicon.ico">
+
+  <title>FYRUS SYSTEM</title>
+
+  <!-- meta tags for responsive web on mobile/desktop -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Make sure body and html take up the full height */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+   /*   font-family: Helvetica, Arial, sans-serif; */
+      background-color: #000000; /* Set background to black */
+      color: #ffffff; /* Set font color to white */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Style for the welcome container */
+    .welcome-container {
+      flex-grow: 1; /* Make the container take up available space */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; /* Move content to the top */
+      text-align: center;
+      padding-top: 50px; /* Optional padding for spacing */
+    }
+
+    /* Style for the welcome image */
+    .welcome-image {
+      max-width: 200px; /* Resize the image */
+      height: auto;
+      position: relative;
+      /*top: -10px; /* Move image up by 50px */
+      margin-bottom: 20px;
+    }
+
+    /* Animation to slide the text from left */
+    @keyframes slide-in-left {
+      from {
+        transform: translateX(-100%); /* Start off-screen to the left */
+        opacity: 0; /* Invisible at the start */
+      }
+      to {
+        transform: translateX(0); /* Move to the original position */
+        opacity: 1; /* Fully visible at the end */
+      }
+    }
+    
+    /* Animation to slide the text from right */
+    @keyframes slide-in-right {
+      from {
+        transform: translateX(100%); /* Start off-screen to the right */
+        opacity: 0; /* Invisible at the start */
+      }
+      to {
+        transform: translateX(0); /* Move to the original position */
+        opacity: 1; /* Fully visible at the end */
+      }
+    }
+    
+    /* Style for the welcome text (slides from left) */
+    .welcome-text {
+      font-size: 24px;
+      margin: 20px;
+      animation: slide-in-left 1s ease-out; /* Apply slide-in-left animation */
+    }
+
+    /* Style for the transparent grey box wrapping body-text */
+    .grey-box {
+      background-color: rgba(128, 128, 128, 0.5); /* Transparent grey */
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0; /* Initially invisible */
+      animation: fade-in-box 2s forwards; /* Fade-in animation */
+    }
+    /* Style for the body text (slides from right) */
+    .body-text {
+      font-size: 18px;
+      margin: 10px 20px;
+      animation: slide-in-right 1.5s ease-out; /* Apply slide-in-right animation */
+      text-align: left;
+    }
+
+    .desc-text {
+      font-size: 18px;
+      margin: 10px 20px;
+      animation: slide-in-left 1.5s ease-out; /* Apply slide-in-right animation */
+      text-align: left;
+    }
+
+    /* Style for the container with custom spacing */
+    .custom-spacing {
+      line-height: 1.2; /* Adjust line height for general spacing */
+    }
+    /* Specific style for <br> tags inside .custom-spacing */
+    .custom-spacing br {
+      margin: 0; /* Remove extra space around <br> */
+      line-height: 0.7; /* Reduce spacing caused by <br> */
+    }
+
+
+    /* Fade-in animation for the grey box */
+    @keyframes fade-in-box {
+      from {
+        opacity: 0; /* Start with invisible */
+      }
+      to {
+        opacity: 1; /* Fully visible */
+      }
+    }
+
+    /* Animation to slide the button from bottom */
+    @keyframes slide-in-bottom {
+      from {
+        transform: translateY(100%); /* Start off-screen at the bottom */
+        opacity: 0; /* Invisible at the start */
+      }
+      to {
+        transform: translateY(0); /* Move to the original position */
+        opacity: 1; /* Fully visible at the end */
+      }
+    }
+
+    /* Flexbox container for horizontal button alignment */
+    .button-container {
+      display: flex;
+      justify-content: center; /* Center the buttons horizontally */
+      gap: 10px; /* Add space between the buttons */
+    } 
+    /* Style for the button */
+    .redirect-button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center; /* Center the text within the button */
+      width: 65px; /* Set a fixed width */
+      animation: slide-in-bottom 1.5s ease-out; /* Apply slide-in-bottom animation */
+    }
+    .redirect-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Home button container style */
+    .home-container {
+      text-align: center; /* Center the home button */
+      margin-bottom: 20px; /* Add space between the home button and copyright */
+    }
+    /* Home button style */
+    .redirect-home {
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* Copyright text */
+    .copyright {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+      width: 100%; /* Ensure it takes up the full width */
+      padding: 10px 0;
+      background-color: #000;
+      margin-bottom: 10px;
+    }
+
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+      .welcome-text {
+        font-size: 20px;
+      }
+      .redirect-button {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <img class="welcome-image" src="/media/FyrusStripeRed.png" alt="Welcome Image">
+     
+    <p class="welcome-text">Choose Between 3 Apps</p>
+      <br>
+
+    <!-- Transparent grey box wrapping body-text -->
+    <div class="grey-box">
+    <p class="body-text">
+      Search value:
+      <br>
+      1010, 2020, 3030, 4040, 5050
+      <br>
+      or
+      <br>
+      1111, 2222, 3333, 4444, 5555
+      <br><br>
+      Use Comma for multiple data search.
+      <br>
+      ( example: 1010,3030 )
+      <br><br>
+      RESET the apps to test again.
+      <br>
+      ( the 'Clear Data' button )
+    </p>
+    </div
+    
+    <br><br>
+    
+    <!-- Button container for horizontal alignment -->
+    <div class="button-container">
+      <a href="/basic" class="redirect-button">Basic</a>
+      <a href="/standard" class="redirect-button">Standard</a>
+      <a href="/advance" class="redirect-button">Advance</a>
+    </div>
+    <br>
+
+    <p class="desc-text custom-spacing">
+      • <b>Basic:</b> No login, no record of user.
+      <br><br>
+      • <b>Standard:</b> User login, Marked user.
+      <br><br>
+      • <b>Advance:</b> User login, Marked user, 2 layer collection for use on two different screen.
+    </p>
+    
+    <br>
+  </div>
+
+  <!-- Home button container -->
+  <div class="home-container">
+    <a href="/index" class="redirect-home">back to home</a>
+  </div>
+
+  <div class="copyright">
+    &copy; 2024 Fyrus System. All rights reserved.
+  </div>
+  
+</body>
+</html>
