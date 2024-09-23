@@ -262,24 +262,24 @@
 	</script>
 	
 	   <!-- Modal structure -->
-  <div id="installModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeBtn">&times;</span>
-    <!-- Adding the text above icon -->
-    <div class="install-title">Install app?</div> 
-      <div class="modal-header">
-        <img src="/favicon-home/android-chrome-192x192.png" alt="App Icon">
-        <div>
-          <div class="app-name">Fyrus App</div>
-          <div class="app-url">iamfyrus.com</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-install" id="installBtn">Install</button>
-        <button class="btn btn-cancel" id="cancelBtn">Cancel</button>
-      </div>
-    </div>
-  </div> 
+	<div id="installModal" class="modal">
+		<div class="modal-content">
+			<span class="close" id="closeBtn">&times;</span>
+			<!-- Adding the text above icon -->
+			<div class="install-title">Install app?</div> 
+			<div class="modal-header">
+				<img src="/favicon-home/android-chrome-192x192.png" alt="App Icon">
+				<div>
+					<div class="app-name">Fyrus App</div>
+					<div class="app-url">iamfyrus.com</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-install" id="installBtn">Install</button>
+				<button class="btn btn-cancel" id="cancelBtn">Cancel</button>
+			</div>
+		</div>
+	</div> 
 
   <script>
   // Register the service worker
@@ -296,45 +296,57 @@
   }
 
   // PWA install prompt
-  let deferredPrompt;
-  const installModal = document.getElementById('installModal');
-  const installButton = document.getElementById('installBtn');
-  const closeModalButton = document.getElementById('closeBtn');
-  const cancelButton = document.getElementById('cancelBtn');
+let deferredPrompt;
+const installModal = document.getElementById('installModal');
+const installButton = document.getElementById('installBtn');
+const closeModalButton = document.getElementById('closeBtn');
+const cancelButton = document.getElementById('cancelBtn');
 
+// Check if the app is already installed
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+if (!isStandalone) {
+  // Show install prompt modal only if not in standalone mode
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     installModal.style.display = 'flex';  // Show the modal
   });
+} else {
+  console.log('App is already installed, hiding install prompt');
+}
 
-  installButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
-    deferredPrompt.prompt();
+// Handle the install button click
+installButton.addEventListener('click', () => {
+  installModal.style.display = 'none';  // Hide the modal
+  deferredPrompt.prompt();
 
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-      deferredPrompt = null;
-    });
-  });
-
-  closeModalButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
-  });
-
-  cancelButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
-  });
-
-  window.addEventListener('click', (e) => {
-    if (e.target === installModal) {
-      installModal.style.display = 'none';  // Close modal if user clicks outside of it
+  deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === 'accepted') {
+      console.log('User accepted the install prompt');
+    } else {
+      console.log('User dismissed the install prompt');
     }
+    deferredPrompt = null;
   });
+});
+
+// Handle the close button click
+closeModalButton.addEventListener('click', () => {
+  installModal.style.display = 'none';  // Hide the modal
+});
+
+// Handle the cancel button click
+cancelButton.addEventListener('click', () => {
+  installModal.style.display = 'none';  // Hide the modal
+});
+
+// Hide modal if clicked outside
+window.addEventListener('click', (e) => {
+  if (e.target === installModal) {
+    installModal.style.display = 'none';  // Close modal if user clicks outside of it
+  }
+});
 </script>
 	
 
