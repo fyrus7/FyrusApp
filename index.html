@@ -297,21 +297,32 @@
 
 // PWA install prompt
 let deferredPrompt;
-  const installModal = document.getElementById('installModal');
-  const installButton = document.getElementById('installBtn');
-  const closeModalButton = document.getElementById('closeBtn');
-  const cancelButton = document.getElementById('cancelBtn');
+const installModal = document.getElementById('installModal');
+const installButton = document.getElementById('installBtn');
+const closeModalButton = document.getElementById('closeBtn');
+const cancelButton = document.getElementById('cancelBtn');
 
+// Check if the app is already installed
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+// Check if the app is already installed, if not, handle the beforeinstallprompt event
+if (!isStandalone) {
   window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
     deferredPrompt = e;
+    // Show your custom install modal
     installModal.style.display = 'flex';  // Show the modal
   });
+} else {
+  console.log('App is already installed, no install prompt will be shown');
+}
 
-  installButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
+// Handle the install button click
+installButton.addEventListener('click', () => {
+  installModal.style.display = 'none';  // Hide the modal
+  if (deferredPrompt) {
     deferredPrompt.prompt();
-
     deferredPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the install prompt');
@@ -320,21 +331,25 @@ let deferredPrompt;
       }
       deferredPrompt = null;
     });
-  });
+  }
+});
 
-  closeModalButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
-  });
+// Handle the close button click
+closeModalButton.addEventListener('click', () => {
+  installModal.style.display = 'none';  // Hide the modal
+});
 
-  cancelButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
-  });
+// Handle the cancel button click
+cancelButton.addEventListener('click', () => {
+  installModal.style.display = 'none';  // Hide the modal
+});
 
-  window.addEventListener('click', (e) => {
-    if (e.target === installModal) {
-      installModal.style.display = 'none';  // Close modal if user clicks outside of it
-    }
-  });
+// Hide modal if clicked outside
+window.addEventListener('click', (e) => {
+  if (e.target === installModal) {
+    installModal.style.display = 'none';  // Close modal if user clicks outside of it
+  }
+});
 
 // Detect if the app is installed
 window.addEventListener('appinstalled', (evt) => {
@@ -342,7 +357,6 @@ window.addEventListener('appinstalled', (evt) => {
   // Hide the modal or disable the install prompt functionality
   installModal.style.display = 'none'; // Hide the modal if app is installed
 });
-
 </script>
 	
 
