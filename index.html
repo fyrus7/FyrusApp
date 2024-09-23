@@ -275,13 +275,13 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-install" id="installBtn">Install</button>
 				<button class="btn btn-cancel" id="cancelBtn">Cancel</button>
+				<button class="btn btn-install" id="installBtn">Install</button>
 			</div>
 		</div>
-	</div> 
+	</div>
 
-  <script>
+<script>
   // Register the service worker
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -295,21 +295,17 @@
     });
   }
 
-// PWA install prompt
-let deferredPrompt;
-const installModal = document.getElementById('installModal');
-const installButton = document.getElementById('installBtn');
-const closeModalButton = document.getElementById('closeBtn');
-const cancelButton = document.getElementById('cancelBtn');
+  // PWA install prompt
+  let deferredPrompt;
+  const installModal = document.getElementById('installModal');
+  const installButton = document.getElementById('installBtn');
+  const closeModalButton = document.getElementById('closeBtn');
+  const cancelButton = document.getElementById('cancelBtn');
 
-// Check if the app is running in standalone mode
-if (!window.matchMedia('(display-mode: standalone)').matches) {
-
-  // Listen for the beforeinstallprompt event
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    installModal.style.display = 'flex';  // Show the modal only if app is not installed
+    installModal.style.display = 'flex';  // Show the modal
   });
 
   installButton.addEventListener('click', () => {
@@ -339,17 +335,8 @@ if (!window.matchMedia('(display-mode: standalone)').matches) {
       installModal.style.display = 'none';  // Close modal if user clicks outside of it
     }
   });
-}
-
-// Listen for appinstalled event to hide prompt
-window.addEventListener('appinstalled', () => {
-  console.log('PWA was installed');
-  installModal.style.display = 'none';  // Hide the modal after installation
-  deferredPrompt = null;  // Prevent future prompts
-});
-
 </script>
-	
+
 
 <script>
     function openWhatsApp(event) {
