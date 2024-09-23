@@ -14,10 +14,117 @@
   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
     <title>Fyrus Apps</title>
+	
     <!-- <link rel="stylesheet" href="styles.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="stylesheet" href="styles.css?v=11.1">
+	<link rel="stylesheet" href="styles.css?v=11.7">
+
+<style>	
+	/* Modal background */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align closer to top */
+  padding-top: 30px; /* Space from the top */
+}
+
+/* Modal content */
+.modal-content {
+/*  background-color: rgba(45, 45, 45, 0.5); /* Dark gray background with transparency */
+  background-color: #2d2d2d; /* Dark gray background */
+  color: white; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  width: 63%; /* Reduced from 70% to 63% (10% smaller) */
+  max-width: 270px; /* Reduced from 300px to 270px (10% smaller) */
+  padding: 18px; /* Reduced padding to match content size */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+}
+
+/* "Install app?" title */
+.install-title {
+  font-size: 16px; /* Reduced from 24px to 22px */
+/*  font-weight: bold; */
+  margin-bottom: 18px; /* Reduced margin */
+  text-align: left;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 9px; /* Adjusted top position */
+  right: 9px; /* Adjusted right position */
+  font-size: 18px; /* Reduced from 20px to 18px */
+  color: white;
+  cursor: pointer;
+}
+
+/* App icon and text */
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px; /* Reduced margin */
+}
+
+.modal-header img {
+  width: 45px; /* Reduced from 50px to 45px */
+  height: 45px; /* Reduced from 50px to 45px */
+  margin-right: 13px; /* Reduced margin */
+}
+
+/* App name */
+.app-name {
+  font-size: 14px; /* Reduced from 16px to 14px */
+  font-weight: bold;
+}
+
+/* URL text */
+.app-url {
+  font-size: 11px; /* Reduced from 12px to 11px */
+  color: #b0b0b0; /* Lighter gray for URL */
+}
+
+/* Buttons container */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px; /* Reduced margin */
+}
+
+/* Common button styles */
+.btn {
+  padding: 9px 18px; /* Consistent button size */
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 13px;
+  margin-left: 9px;
+}
+
+/* Install button */
+.btn-install {
+  background-color: #4285F4; /* Blue for install */
+  color: white;
+  border: none; /* No border for Install button */
+}
+
+/* Cancel button */
+.btn-cancel {
+  background-color: transparent;
+  color: #b0b0b0; /* Gray for cancel */
+  border: 1px solid #b0b0b0; /* Add a gray border for Cancel */
+}
+  </style>
 
 </head>
 <body>
@@ -138,8 +245,8 @@
         <div class="social-links">
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://app.iamfyrus.com" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://api.whatsapp.com/send?text=RPC APP%20https://app.iamfyrus.com" target="_blank" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://app/iamfyrus.com&text=Check This Awesome App" target="_blank" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://telegram.me/share/url?url=https://app/iamfyrus.com" target="_blank" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://app.iamfyrus.com&text=Check This Awesome App" target="_blank" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://telegram.me/share/url?url=https://app.iamfyrus.com" target="_blank" target="_blank"><i class="fab fa-telegram"></i></a>
         </div>
 		<br>
 
@@ -153,6 +260,82 @@
     // Get the current year from the device and update the copyright span
     document.getElementById("year").textContent = new Date().getFullYear();
 	</script>
+	
+	   <!-- Modal structure -->
+  <div id="installModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeBtn">&times;</span>
+    <!-- Adding the text above icon -->
+    <div class="install-title">Install app?</div> 
+      <div class="modal-header">
+        <img src="/favicon-home/android-chrome-192x192.png" alt="App Icon">
+        <div>
+          <div class="app-name">Fyrus App</div>
+          <div class="app-url">iamfyrus.com</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-install" id="installBtn">Install</button>
+        <button class="btn btn-cancel" id="cancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div> 
+
+  <script>
+  // Register the service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+    });
+  }
+
+  // PWA install prompt
+  let deferredPrompt;
+  const installModal = document.getElementById('installModal');
+  const installButton = document.getElementById('installBtn');
+  const closeModalButton = document.getElementById('closeBtn');
+  const cancelButton = document.getElementById('cancelBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installModal.style.display = 'flex';  // Show the modal
+  });
+
+  installButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+
+  closeModalButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  cancelButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === installModal) {
+      installModal.style.display = 'none';  // Close modal if user clicks outside of it
+    }
+  });
+</script>
 	
 
 <script>
