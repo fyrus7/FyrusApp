@@ -302,51 +302,51 @@ const installButton = document.getElementById('installBtn');
 const closeModalButton = document.getElementById('closeBtn');
 const cancelButton = document.getElementById('cancelBtn');
 
-// Check if the PWA is already installed
+// Check if app is already installed
 const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
-// Only show the modal if the app is not installed
 if (!isStandalone) {
+  // Show install prompt modal only if app is not installed
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     installModal.style.display = 'flex';  // Show the modal
   });
+
+  installButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null; // Reset deferredPrompt
+    });
+  });
+
+  closeModalButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  cancelButton.addEventListener('click', () => {
+    installModal.style.display = 'none';  // Hide the modal
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === installModal) {
+      installModal.style.display = 'none';  // Close modal if user clicks outside of it
+    }
+  });
 }
 
-installButton.addEventListener('click', () => {
-  installModal.style.display = 'none';  // Hide the modal
-  deferredPrompt.prompt();  // Show the install prompt
-
-  deferredPrompt.userChoice.then((choiceResult) => {
-    if (choiceResult.outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-    } else {
-      console.log('User dismissed the install prompt');
-    }
-    deferredPrompt = null;
-  });
-});
-
-closeModalButton.addEventListener('click', () => {
-  installModal.style.display = 'none';  // Hide the modal
-});
-
-cancelButton.addEventListener('click', () => {
-  installModal.style.display = 'none';  // Hide the modal
-});
-
-window.addEventListener('click', (e) => {
-  if (e.target === installModal) {
-    installModal.style.display = 'none';  // Close modal if user clicks outside of it
-  }
-});
-
-// Handle the appinstalled event to ensure the modal doesn't show after install
+// Listen for app installed event
 window.addEventListener('appinstalled', () => {
   console.log('PWA was installed');
-  deferredPrompt = null;
-  installModal.style.display = 'none';  // Hide the modal once installed
+  installModal.style.display = 'none'; // Hide modal once installed
+  deferredPrompt = null; // Prevent future prompts
 });
 
 </script>
