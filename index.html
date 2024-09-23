@@ -295,7 +295,7 @@
     });
   }
 
-  // PWA install prompt
+// PWA install prompt
 let deferredPrompt;
 const installModal = document.getElementById('installModal');
 const installButton = document.getElementById('installBtn');
@@ -308,12 +308,18 @@ const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
 if (!isStandalone) {
   // Show install prompt modal only if not in standalone mode
   window.addEventListener('beforeinstallprompt', (e) => {
+    // If already installed, don't show the prompt
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+      console.log('App is already installed');
+      return; // Do not show the install prompt if the app is already installed
+    }
+
     e.preventDefault();
     deferredPrompt = e;
     installModal.style.display = 'flex';  // Show the modal
   });
 } else {
-  console.log('App is already installed, hiding install prompt');
+  console.log('App is already installed, no install prompt will be shown');
 }
 
 // Handle the install button click
@@ -347,6 +353,7 @@ window.addEventListener('click', (e) => {
     installModal.style.display = 'none';  // Close modal if user clicks outside of it
   }
 });
+
 </script>
 	
 
