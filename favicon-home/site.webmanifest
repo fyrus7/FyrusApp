@@ -1,6 +1,6 @@
 {
-    "name": "iamFyrus",
-    "short_name": "iamFyrus",
+    "name": "FyrusApp",
+    "short_name": "FyrusApp",
     "icons": [
         {
             "src": "/favicon-home/android-chrome-192x192.png",
