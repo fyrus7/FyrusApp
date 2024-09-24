@@ -52,6 +52,10 @@ header {
     margin: 0;
     padding: 20px;
 }
+.text-container .p2 {
+    font-size: 20px;
+    text-align: center; /* Left-aligned */
+}
 
 /* Responsive adjustments for tablets */
 @media (min-width: 768px) {
