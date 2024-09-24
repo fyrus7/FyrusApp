@@ -125,12 +125,12 @@ header {
     padding-bottom: 20px;
 }
 h2.choose-text {
-    font-weight: bold; 
+    font-size: clamp(18px, 4vw, 28px); /* Responsive font size */
+    font-weight: bold;
     color: #37474F;
-    text-align: center; /* Centering text inside the container */
+    text-align: center;
     margin: 0;
 }
-
 
 /* Horizontal Line Container */
 .hr-container {
