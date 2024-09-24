@@ -108,6 +108,68 @@ header {
     }
 }
 
+/* Text Button Section */
+.text-button {
+    margin-top: 20px;
+    text-align: center; /* Center content inside the container */
+    margin-bottom: -25px;
+    padding: 0 20px; /* Add some padding for mobile */
+}
+
+/* Responsive .choose-text */
+.choose-text {
+    font-size: 18px; /* Base font size for mobile */
+    font-weight: bold;
+    color: #37474F;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+/* Horizontal Line Container */
+.hr-container {
+    width: 100%; /* Full width on mobile */
+    margin: 10px auto; /* Center the container with auto margins */
+}
+
+/* Line Break */
+.line-break {
+    width: 100%; /* Full width on mobile */
+    border: none;
+    border-top: 1px solid #455A64;
+    margin: 10px 0;
+}
+
+/* Responsive adjustments for tablets */
+@media (min-width: 768px) {
+    .text-button {
+        padding: 0 50px; /* Add extra padding on wider screens */
+    }
+
+    .choose-text {
+        font-size: 20px; /* Larger font size on tablets */
+    }
+
+    .hr-container {
+        width: 60%; /* Narrower width for tablets */
+    }
+}
+
+/* Responsive adjustments for desktops */
+@media (min-width: 1200px) {
+    .text-button {
+        padding: 0 100px; /* More padding for larger screens */
+    }
+
+    .choose-text {
+        font-size: 22px; /* Slightly larger text for desktops */
+    }
+
+    .hr-container {
+        width: 40%; /* Even narrower for desktops */
+    }
+}
+
+
 /* Buttons Section */
 .buttons-section {
     display: flex;
