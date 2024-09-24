@@ -55,6 +55,7 @@ header {
 .text-container .p2 {
     font-size: 20px;
     text-align: center; /* Left-aligned */
+    padding-bottom: 0;
 }
 
 /* Responsive adjustments for tablets */
