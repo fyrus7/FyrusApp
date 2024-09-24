@@ -50,7 +50,7 @@ p {
 }
 
 .text-container {
-    max-width: 800px; /* Set a max width for the container */
+    max-width: 600px; /* Set a max width for the container */
     margin: 0 auto; /* Center the container horizontally */
     padding: 0 20px; /* Optional: Add padding to the left and right */
 }
@@ -60,6 +60,19 @@ p {
     color: #455A64; /* Set color for the paragraph */
     margin: 0; /* Reset margin for the paragraph */
     padding: 20px; /* Optional padding for aesthetics */
+}
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .text-container {
+        max-width: 800px; /* Match with .text-box */
+        margin: 10px auto; /* Adjust margins */
+    }
+}
+
+@media (min-width: 1200px) {
+    .text-container {
+        max-width: 1000px; /* Match with .text-box */
+    }
 }
 
 .text-box {
@@ -76,7 +89,6 @@ p {
     color: #FFFFFF; /* Change font color */
 	font-size: 16px;
 }
-
 /* Media query for larger screens */
 @media (min-width: 768px) {
     .text-box {
@@ -185,20 +197,6 @@ footer {
     color: #455A64; /* Copyright text color */
 }
 
-/* Responsive adjustments */
-/* Styles for mobile */
-@media (max-width: 600px) {
-    .text-container {
-        margin: 10px 5px; /* Keep vertical margin and small horizontal margin */
-    }
-}
-
-/* Styles for desktop */
-@media (min-width: 601px) {
-    .text-container {
-        margin: 10px 300px; /* Increase horizontal margin on desktop */
-    }
-}
 
     .btn {
         margin: 5px; /* Adjust margin for better spacing */
