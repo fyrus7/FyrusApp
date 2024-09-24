@@ -124,6 +124,13 @@ header {
     margin: 0;
     padding-bottom: 20px;
 }
+h2.choose-text {
+    font-weight: bold; 
+    color: #37474F;
+    text-align: center; /* Centering text inside the container */
+    margin: 0;
+}
+
 
 /* Horizontal Line Container */
 .hr-container {
