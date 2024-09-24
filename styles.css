@@ -39,9 +39,10 @@ header {
 
 /* Text Container (Mobile-First) */
 .text-container {
-    max-width: 100%; /* Full width for smaller devices */
-    margin: 0 10px;
-    padding: 0 20px;
+    width: 100%; /* Make the container full width by default */
+    max-width: 100%; /* Ensure it doesn't shrink */
+    margin: 10px auto; /* Center it with minimal margins */
+    padding: 0 20px; /* Keep the left/right padding */
 }
 
 .text-container p {
@@ -52,10 +53,18 @@ header {
     padding: 20px;
 }
 
-/* Responsive Adjustments */
+/* Responsive adjustments for tablets */
 @media (min-width: 768px) {
     .text-container {
-        max-width: 750px;
+        max-width: 800px; /* For tablets and larger screens */
+        margin: 10px auto; /* Center with wider margins */
+    }
+}
+
+/* Responsive adjustments for desktops */
+@media (min-width: 1200px) {
+    .text-container {
+        max-width: 1000px; /* Increase max-width for desktops */
         margin: 10px auto;
     }
 }
@@ -63,13 +72,6 @@ header {
 @media (min-width: 992px) {
     .text-container {
         max-width: 960px;
-        margin: 10px auto;
-    }
-}
-
-@media (min-width: 1200px) {
-    .text-container {
-        max-width: 1140px;
         margin: 10px auto;
     }
 }
