@@ -65,7 +65,7 @@ p {
 @media (min-width: 768px) {
     .text-container {
         max-width: 800px; /* Match with .text-box */
-        margin: 10px auto; /* Adjust margins */
+        margin: 10px 300px; /* Adjust margins */
     }
 }
 
