@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#37474F",
+    "theme_color": "#e8ecef",
     "background_color": "#dddddd",
     "display": "standalone",
 	"start_url": "/job/ngejob",
