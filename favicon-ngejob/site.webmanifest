@@ -15,7 +15,7 @@
     ],
     "theme_color": "#00b0ff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
 	"start_url": "/job/ngejob",
 	"scope": "/job/ngejob"
 }
