@@ -1,44 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-home/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-home/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-home/favicon-16x16.png">
-  <link rel="manifest" href="/favicon-home/site.webmanifest">
-  <link rel="mask-icon" href="/favicon-home/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="/favicon-home/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="/favicon-home/browserconfig.xml">
-  <meta name="theme-color" content="#37474F">
   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-    <title>Fyrus Apps</title>
+    <title>Fyrus Form</title>
 	
     <!-- <link rel="stylesheet" href="styles.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="stylesheet" href="styles.css?v=1.1">
+	<link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
     <header>
         <div class="header-content">
             <img src="/media/FyrusStripe.png" alt="Profile Picture" class="profile-pic">
-            <h1>RPC APPS</h1>
-            <p>SERVE & COLLECT SYSTEM</p>
         </div>
 		<br><br>
+    </header>
 
       <!-- WhatsApp Contact Form -->
 <div class="whatsapp-form">
-  <h4>Contact Me on WhatsApp</h4>
+  <h4>WhatsApp Form</h4>
   <form id="whatsappForm" onsubmit="openWhatsApp(event)">
-    <input type="text" id="name" placeholder="Enter your name..." required>
-    <input type="text" id="email" placeholder="Enter your email..." required>
-    <input type="text" id="subject" placeholder="Enter the subject..." required>
-    <input type="text" id="messageContent" placeholder="Enter your message..." required>
+    <input type="text" id="name" placeholder="Nama..." required>
+    <input type="text" id="event" placeholder="Jenis majlis..." required>
+    <input type="text" id="date" placeholder="Tarikh..." required>
+    <input type="text" id="location" placeholder="Lokasi..." required>
     <br>
     <button type="submit" class="btn">Send</button>
   </form>
@@ -50,12 +39,12 @@
 
   // Get input values
   const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const subject = document.getElementById('subject').value;
-  const messageContent = document.getElementById('messageContent').value;
+  const event = document.getElementById('event').value;
+  const date = document.getElementById('date').value;
+  const location = document.getElementById('location').value;
 
   // Define prefix texts and combine them with user input
-  const message = `Contact Request:\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${messageContent}`;
+  const message = `Nak Hire Photographer:\n\nNama: ${name}\nMajlis: ${event}\nTarikh: ${date}\nLokasi: ${location}`;
 
   const phoneNumber = '60133340224'; // Replace with your phone number in international format
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
