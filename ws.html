@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-home/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-home/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-home/favicon-16x16.png">
+  <link rel="manifest" href="/favicon-home/site.webmanifest">
+  <link rel="mask-icon" href="/favicon-home/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/favicon-home/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/favicon-home/browserconfig.xml">
+  <meta name="theme-color" content="#37474F">
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <title>Fyrus Apps</title>
+	
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" href="styles.css?v=1.1">
+
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="/media/FyrusStripe.png" alt="Profile Picture" class="profile-pic">
+            <h1>RPC APPS</h1>
+            <p>SERVE & COLLECT SYSTEM</p>
+        </div>
+		<br><br>
+
+      <!-- WhatsApp Contact Form -->
+<div class="whatsapp-form">
+  <h4>Contact Me on WhatsApp</h4>
+  <form id="whatsappForm" onsubmit="openWhatsApp(event)">
+    <input type="text" id="name" placeholder="Enter your name..." required>
+    <input type="text" id="email" placeholder="Enter your email..." required>
+    <input type="text" id="subject" placeholder="Enter the subject..." required>
+    <input type="text" id="messageContent" placeholder="Enter your message..." required>
+    <br>
+    <button type="submit" class="btn">Send</button>
+  </form>
+</div>
+
+<script>
+  function openWhatsApp(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get input values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value;
+  const messageContent = document.getElementById('messageContent').value;
+
+  // Define prefix texts and combine them with user input
+  const message = `Contact Request:\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${messageContent}`;
+
+  const phoneNumber = '60133340224'; // Replace with your phone number in international format
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
+  // Open WhatsApp with the combined message
+  window.open(whatsappUrl, '_blank'); // Open in a new tab
+}
+</script>
+
+      <style>
+        .whatsapp-form {
+  text-align: center; /* Center the form */
+  margin: 20px 0; /* Add margin for spacing */
+}
+.whatsapp-form h4 {
+  margin-bottom: 5px; /* Space between header and input box */
+}
+.whatsapp-form input {
+  width: 90%; /* Responsive width */
+  max-width: 600px; /* Max width for larger screens */
+  padding: 10px; /* Add padding */
+  margin-bottom: 10px; /* Space between input and button */
+  border: 2px solid #455A64; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+}
+.whatsapp-form button {
+  background-color: #455A64; /* Button color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Add padding */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+}
+.whatsapp-form button:hover {
+  background-color: #1C313A; /* Darker on hover */
+}
+
+      </style>
+
+      </body>
+</html>
