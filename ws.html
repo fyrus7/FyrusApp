@@ -24,10 +24,10 @@
 <div class="whatsapp-form">
   <h4>WhatsApp Form</h4>
   <form id="whatsappForm" onsubmit="openWhatsApp(event)">
-    <input type="text" id="name" placeholder="Nama..." required>
-    <input type="text" id="event" placeholder="Jenis majlis..." required>
-    <input type="text" id="date" placeholder="Tarikh..." required>
-    <input type="text" id="location" placeholder="Lokasi..." required>
+    <input type="text" id="nama" placeholder="Nama..." required>
+    <input type="text" id="majlis" placeholder="Jenis majlis / acara..." required>
+    <input type="text" id="tarikh" placeholder="Tarikh..." required>
+    <input type="text" id="lokasi" placeholder="Lokasi..." required>
     <br>
     <button type="submit" class="btn">Send</button>
   </form>
@@ -38,13 +38,13 @@
   event.preventDefault(); // Prevent form submission
 
   // Get input values
-  const name = document.getElementById('name').value;
-  const event = document.getElementById('event').value;
-  const date = document.getElementById('date').value;
-  const location = document.getElementById('location').value;
+  const nama = document.getElementById('nama').value;
+  const majlis = document.getElementById('majlis').value;
+  const tarikh = document.getElementById('tarikh').value;
+  const lokasi = document.getElementById('lokasi').value;
 
   // Define prefix texts and combine them with user input
-  const message = `Nak Hire Photographer:\n\nNama: ${name}\nMajlis: ${event}\nTarikh: ${date}\nLokasi: ${location}`;
+  const message = `Nak Hire Photographer:\n\nNama: ${nama}\nMajlis: ${majlis}\nTarikh: ${tarikh}\nLokasi: ${lokasi}`;
 
   const phoneNumber = '60133340224'; // Replace with your phone number in international format
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
