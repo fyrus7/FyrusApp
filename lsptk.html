@@ -185,46 +185,66 @@
     });
   }
 
-  // PWA install prompt
-  let deferredPrompt;
-  const installModal = document.getElementById('installModal');
-  const installButton = document.getElementById('installBtn');
-  const closeModalButton = document.getElementById('closeBtn');
-  const cancelButton = document.getElementById('cancelBtn');
+// Initialize deferredPrompt for use later to show browser install prompt.
+let deferredPrompt;
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installModal.style.display = 'flex';  // Show the modal
-  });
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can install the PWA
+  showInstallPromotion();
+  // Optionally, send analytics event that PWA install promo was shown.
+  console.log(`'beforeinstallprompt' event was fired.`);
+});
 
-  installButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
-    deferredPrompt.prompt();
+buttonInstall.addEventListener('click', async () => {
+  // Hide the app provided install promotion
+  hideInstallPromotion();
+  // Show the install prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  const { outcome } = await deferredPrompt.userChoice;
+  // Optionally, send analytics event with outcome of user choice
+  console.log(`User response to the install prompt: ${outcome}`);
+  // We've used the prompt and can't use it again, throw it away
+  deferredPrompt = null;
+});
 
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-      deferredPrompt = null;
-    });
-  });
+window.addEventListener('appinstalled', () => {
+  // Hide the app-provided install promotion
+  hideInstallPromotion();
+  // Clear the deferredPrompt so it can be garbage collected
+  deferredPrompt = null;
+  // Optionally, send analytics event to indicate successful install
+  console.log('PWA was installed');
+});
 
-  closeModalButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
-  });
+function getPWADisplayMode() {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+  if (document.referrer.startsWith('android-app://')) {
+    return 'twa';
+  } else if (navigator.standalone || isStandalone) {
+    return 'standalone';
+  }
+  return 'browser';
+}
 
-  cancelButton.addEventListener('click', () => {
-    installModal.style.display = 'none';  // Hide the modal
-  });
+window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
+  let displayMode = 'browser';
+  if (evt.matches) {
+    displayMode = 'standalone';
+  }
+  // Log display mode change to analytics
+  console.log('DISPLAY_MODE_CHANGED', displayMode);
+});
 
-  window.addEventListener('click', (e) => {
-    if (e.target === installModal) {
-      installModal.style.display = 'none';  // Close modal if user clicks outside of it
-    }
-  });
+@media all and (display-mode: standalone) {
+  body {
+    background-color: yellow;
+  }
+}
 </script>
 
 </body>
