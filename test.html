@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Set the background color for the entire page */
+    body {
+      background-color: #E8ECEF; /* Change to your preferred color */
+    }
+    .search-box {
+      width: 344px;
+      padding: 10px;
+      font-size: 16px;
+      position: relative;
+    }
+    .clear-button {
+      position: absolute;
+      top: -37px;
+      right: 0;
+      display: none;
+    }
+    .result-box {
+      margin-top: 10px;
+      font-size: 16px;
+      white-space: pre-wrap;
+      width: 360px;
+    }
+    .form-container {
+      margin-top: 5px;
+      position: relative;
+    }
+    .collect-box {
+      margin-top: 10px;
+      display: none;
+    }
+    .loader {
+      display: none;
+      text-align: center;
+      line-height: 88px;
+      position: absolute; /* Change from relative to absolute for centering */
+      padding: 0 50px;
+      font-size: 70px;
+      font-family: Helvetica, sans-serif;
+      font-weight: bold;
+      color: red; // #fff;
+      
+      /* Centering styles */
+      top: 35%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust to ensure perfect centering */
+    }
+    .loader:before, .loader:after {
+      content: "";
+      display: block;
+      width: 17px;
+      height: 17px;
+      background: #FFA500; // currentColor;
+      position: absolute;
+      animation: load .7s infinite alternate ease-in-out;
+      top: 0;
+    }
+    .loader:after {
+      top: auto;
+      bottom: 0;
+    }
+    @keyframes load {
+      0% {
+      left: 0;
+      height: 45px;
+      width: 17px;
+      transform: translateX(0);
+      }
+      50% {
+      height: 12px;
+      width: 42px;
+      }
+      100% {
+      left: 100%;
+      height: 45px;
+      width: 17px;
+      transform: translateX(-100%);
+      }
+    }
+    .result-box input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      transform: scale(1.0);
+      margin-right: 10px;
+    }
+    #reader {
+      width: 250px; /* Updated width */
+      height: 350px; /* Updated height */
+      margin: 0 auto; /* Center the QR scanner */
+      display: none; /* Hide the QR scanner initially */
+    }
+     /* Shared styles for the buttons */
+    #startButton, #stopButton, #searchButton, #uploadButton {
+      height: 35px;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      margin: 0; /* Reset margins to control layout in flex */
+    }
+
+    /* Specific styles for start and stop buttons */
+    #startButton {
+      background-color: #007BFF;
+      color: white;
+      width: 80px;
+      height: 40px;
+      border-color: #0056b3;
+    }
+
+    #stopButton {
+      background-color: #dc3545;
+      color: white;
+      width: 80px;
+      height: 40px;
+      border-color: #dc3545;
+      display: none; /* Initially hidden */
+    }
+
+    /* Specific style for the search button */
+    #searchButton {
+      background-color: #f8f9fa; /* Light gray, similar to default button background */
+      color: #000;
+      width: 210px;
+      height: 40px;
+      font-size: 16px;
+      padding: 5px;
+      border: 1px solid #000;  /* Light gray border */
+      border-radius: 5px;
+    }
+
+    #uploadButton {
+      background-color: #f8f9fa; /* Light gray, similar to default button background */
+      color: #000;
+      width: 45px;
+      height: 40px;
+      font-size: 16px;
+      padding: 5px;
+      border: 1px solid #000;  /* Light gray border */
+      border-radius: 5px;
+    }
+
+    /* Flex container to align buttons horizontally */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 17px; /* Set the gap between buttons */
+      margin-top: 10px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+<center>
+
+  <br><br>
+
+  <!-- Image above the page -->
+    <img src="https://github.com/fyrus7/FyrusApp/blob/main/media/demobasic.png?raw=true" alt="Logo" width="200">
+
+  <br><br>
+  <form style="text-align: left; display: inline-block;">
+    <!-- CLEAR button -->
+    <button type="button" onclick="clearSheetData()" style="width: 80px; height: 25px; font-size: 12px; background-color: red; color: white; border: none; border-radius: 5px; margin-bottom: 5px;"><i class="fa-solid fa-trash-can"></i> Reset</button>
+    : reset database
+    <br>
+    
+    <div id="success-message" style="color: green; font-weight: bold; display: none;">Data Cleared Successfully!</div>
+
+    <div class="form-container">
+      <input type="text" id="searchTerm" class="search-box" placeholder="Enter Reg ID, IC or Email..." onkeydown="handleEnter(event)">
+      <div id="clearButtonContainer" class="clear-button">
+        <button type="button" onclick="clearSearch()" style="width: 100px; height: 30px; font-size: 14px; padding: 5px;"><i class="fa-solid fa-eraser"></i> Clear</button>
+        </div>
+      </div>
+  </form>
+  
+  <div class="button-container">
+    <button id="startButton" onclick="startScanner()"><i class="fa-solid fa-qrcode fa"></i></button>
+    <button id="stopButton" onclick="stopScanner()"><i class="fa-solid fa-qrcode fa"></i></button>
+    <button id="uploadButton" onclick="document.getElementById('qr-input-file').click()"><i class="fa-solid fa-file-arrow-up"></i></button>
+    <button id="searchButton" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+  </div>
+  <br>
+
+  <div id="reader"></div> <!-- QR code scanner container -->
+  <input type="file" id="qr-input-file" accept="image/*" style="display:none;" onchange="scanFromFile(event)"> <!-- Hidden file input for image selection -->
+
+  <div id="result" class="result-box" style="text-align: left;"></div>
+
+  <div id="collectBoxes" class="collect-box">
+    collect by <input type="text" id="collectBy1" placeholder="Name" style="width: 100px; height: 10px; font-size: 12px; padding: 5px; margin-left: 5px;">
+    <input type="text" id="collectBy2" placeholder="Phone Number" style="width: 100px; height: 10px; font-size: 12px; padding: 5px; margin-left: 5px;">
+    <br><br>
+    <input type="button" id="collectButton" value="Collect" onclick="collect()" style="width: 345px; height: 35px; font-size: 16px; padding: 5px; display: none; background-color: green; color: white; border: none; border-radius: 5px;">
+    <br><br>
+  </div>
+
+  <div id="loader" class="loader">Demo</div>
+
+  <audio id="markSound" src="https://github.com/fyrus7/sound/blob/main/achive-sound-132273.mp3?raw=true"></audio>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js"></script>
+
+<script>
+    let html5QrCode;
+    let firstSearchDone = false;
+
+    function initializePage() {
+        // Initialization logic here
+        console.log("Page initialized");
+        document.getElementById('loader').style.display = 'none'; // Example of hiding loader on page load
+    }
+
+    function startScanner() {
+        if (!html5QrCode) {
+            html5QrCode = new Html5Qrcode("reader"); // Use the reader div for the scanner
+        }
+
+        document.getElementById('reader').style.display = 'block'; // Show the scanner
+
+        html5QrCode.start(
+            { facingMode: { exact: "environment" } }, // Back camera
+            {
+                fps: 10,    // Scanning speed
+                qrbox: { width: 250, height: 250 } // QR box size
+            },
+            (decodedText) => {
+                document.getElementById('searchTerm').value = decodedText; // Auto-fill the search box
+                stopScanner(); // Automatically stop scanner after success
+                search(); // Trigger the search function
+            },
+            (errorMessage) => {
+                // Handle scanning errors
+                console.log(errorMessage);
+            }
+        ).catch(err => {
+            console.error("Unable to start scanning", err);
+        });
+
+        document.getElementById('startButton').style.display = 'none';
+        document.getElementById('stopButton').style.display = 'inline-block';
+    }
+
+    function stopScanner() {
+        if (html5QrCode) {
+            html5QrCode.stop().then(() => {
+                document.getElementById('reader').style.display = 'none'; // Hide scanner
+                document.getElementById('startButton').style.display = 'inline-block';
+                document.getElementById('stopButton').style.display = 'none';
+            }).catch(err => {
+                console.error("Unable to stop scanning", err);
+            });
+        }
+    }
+
+    function refreshScanner() {
+        document.getElementById('reader').style.display = 'block'; // Show the QR code reader
+        initializeScanner(); // Reinitialize the QR scanner with the back camera
+    }
+
+    function scanFromFile(event) {
+        if (event.target.files.length === 0) {
+            return; // No file selected, ignore
+        }
+        
+        const imageFile = event.target.files[0];
+        const html5QrCode = new Html5Qrcode("reader");
+        
+        html5QrCode.scanFile(imageFile, true)
+        .then(decodedText => {
+            document.getElementById('searchTerm').value = decodedText; // Paste decoded text into search box
+            search(); // Trigger the search after scanning the QR code
+            html5QrCode.clear(); // Clear the QR code reader
+        })
+        .catch(err => {
+            console.log(`Error scanning file: ${err}`);
+        });
+    }
+
+    function handleEnter(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent form submission or page reload
+            search(); // Trigger the search function
+        }
+    }
+
+    function search() {
+    var searchTerm = document.getElementById('searchTerm').value.trim(); // Get search term from the input box
+
+    document.getElementById('loader').style.display = 'flex';
+
+    if (!searchTerm) {
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('clearButtonContainer').style.display = 'none';
+        document.getElementById('collectButton').style.display = 'none';
+        document.getElementById('loader').style.display = 'none';
+        return;
+    }
+
+    fetch(`https://script.google.com/macros/s/AKfycbwVVr6zy2BVSNbBISB6lDwi-vLduNb-oWhAtgg7lNm6I2cVeXB_MnauaF5D_gkVwXXANQ/exec`, {
+    method: 'POST',
+    body: JSON.stringify({ searchTerm: searchTerm }), // Use the actual search term here
+    headers: {
+        'Content-Type': "application/json" // Set appropriate content type
+    }
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json(); // Parse response as JSON
+})
+.then(result => {
+    console.log(result); // Output the result
+    showResult(result.results); // Display results using showResult function
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+    document.getElementById('loader').style.display = 'none'; // Hide loader on error
+});
+
+
+    firstSearchDone = true; // Mark that the first search is done
+}
+
+
+    function collect() {
+        document.getElementById('loader').style.display = 'flex';
+
+        var checkboxes = document.getElementsByClassName('markGreenCheckBox');
+        var markedRows = [];
+        var collectBy1 = document.getElementById('collectBy1').value.trim();
+        var collectBy2 = document.getElementById('collectBy2').value.trim();
+        var markSound = document.getElementById('markSound');
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                markedRows.push({
+                    row: checkboxes[i].getAttribute('data-row'),
+                    collectBy1: collectBy1,
+                    collectBy2: collectBy2
+                });
+            }
+        }
+
+        if (markedRows.length > 0) {
+            setTimeout(function() {
+                markSound.play();
+            }, 3000);
+
+            // Send markedRows to the backend
+            fetch(`${webAppUrl}/processMarkedRows`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(markedRows)
+            })
+            .then(() => {
+                // Trigger another search after collection
+                search();
+                document.getElementById('loader').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error processing marked rows:', error);
+                document.getElementById('loader').style.display = 'none';
+            });
+        } else {
+            document.getElementById('loader').style.display = 'none';
+        }
+    }
+
+    function showResult(result) {
+        var resultContainer = document.getElementById('result');
+        resultContainer.innerHTML = '';  // Clear previous results
+
+        if (result.length === 0) {
+            resultContainer.innerHTML = '<span style="color: blue;">No matching records found. Please try again with different criteria.</span>';
+            document.getElementById('collectBoxes').style.display = 'none';
+            document.getElementById('collectButton').style.display = 'none';  // Hide collect button
+            return;
+        }
+
+        // Loop through the result and display each record
+        result.forEach(function(item) {
+            var div = document.createElement('div');
+            div.innerHTML = `ID: ${item.id}, Name: ${item.name}, Other Field: ${item.otherField}`;
+            resultContainer.appendChild(div);
+        });
+
+        // Show collect button if checkboxes are present
+        var checkboxes = document.getElementsByClassName('markGreenCheckBox');
+        if (checkboxes.length > 0) {
+            document.getElementById('collectBoxes').style.display = 'block';
+            document.getElementById('collectButton').style.display = 'block';
+        } else {
+            document.getElementById('collectBoxes').style.display = 'none';
+            document.getElementById('collectButton').style.display = 'none';
+        }
+
+        // Show the clear button when there's a result
+        document.getElementById('clearButtonContainer').style.display = result.length ? 'block' : 'none';
+    }
+
+    function clearSearch() {
+        document.getElementById('searchTerm').value = '';
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('collectBy1').value = '';
+        document.getElementById('collectBy2').value = '';
+        document.getElementById('collectBoxes').style.display = 'none';
+        document.getElementById('collectButton').style.display = 'none';
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('clearButtonContainer').style.display = 'none';
+        firstSearchDone = false;
+    }
+
+    function clearSheetData() {
+        fetch(`${webAppUrl}/clearDataInRange`, {
+            method: 'POST'
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Data cleared successfully.");
+                // Optionally, you can refresh the results after clearing
+                clearSearch(); // Refresh the search
+            } else {
+                console.error("Error clearing data.");
+            }
+        })
+        .catch(error => {
+            console.error("Error clearing data:", error);
+        });
+    }
+
+    window.onload = initializePage; // Call the initialize function when the page loads
+</script>
+
+
+
+</body>
+</html>
