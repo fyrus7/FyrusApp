@@ -1,21 +1,28 @@
 {
-    "name": "FyrusApp",
-    "short_name": "FyrusApp",
-    "icons": [
-        {
-            "src": "/favicon-home/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/favicon-home/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#37474f",
-    "background_color": "#5c5c5c",
-    "display": "standalone",
-	"start_url": "/",
-	"scope": "/"
+  "name": "FyrusApp",
+  "short_name": "FyrusApp",
+  "icons": [
+    {
+      "src": "/favicon-home/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-home/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#37474f",
+  "background_color": "#5c5c5c",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "description": "RPC apps",
+  "orientation": "portrait",
+  "display_override": [
+    "fullscreen",
+    "standalone",
+    "window-controls-overlay"
+  ]
 }
