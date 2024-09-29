@@ -17,6 +17,6 @@
     "background_color": "#e8ecef",
     "display": "standalone",
 	"start_url": "/job/ngejob",
-	"scope": "/job/ngejob"
+	"scope": "/job/"
 
 }
