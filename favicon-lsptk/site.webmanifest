@@ -17,5 +17,9 @@
   "background_color": "#000000",
   "display": "standalone",
   "start_url": "/rpc/lsptk",
-  "scope": "/"
+  "scope": "/",
+  "display_override": [
+    "fullscreen",
+    "window-controls-overlay"
+  ]
 }
