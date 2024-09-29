@@ -3,14 +3,14 @@
 <head>
 
   <!-- favicon & app install to phone/pc -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/job/asset/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/job/asset/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/job/asset/favicon-16x16.png">
-  <link rel="manifest" href="/job/asset/site.webmanifest">
-  <link rel="mask-icon" href="/job/asset/safari-pinned-tab.svg" color="#c5c5c5">
-  <link rel="shortcut icon" href="/job/asset/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/ngejob/asset/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ngejob/asset/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ngejob/asset/favicon-16x16.png">
+  <link rel="manifest" href="/ngejob/asset/site.webmanifest">
+  <link rel="mask-icon" href="/ngejob/asset/safari-pinned-tab.svg" color="#c5c5c5">
+  <link rel="shortcut icon" href="/ngejob/asset/favicon.ico">
   <meta name="msapplication-TileColor" content="#e8ecef">
-  <meta name="msapplication-config" content="/job/asset/browserconfig.xml">
+  <meta name="msapplication-config" content="/ngejob/asset/browserconfig.xml">
   <meta name="theme-color" content="#e8ecef">
   
   <title>Fyrus | Ngejob</title>
