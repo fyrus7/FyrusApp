@@ -3,12 +3,12 @@
     "short_name": "Ngejob",
     "icons": [
         {
-            "src": "/job/asset/android-chrome-192x192.png",
+            "src": "/ngejob/asset/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/job/asset/android-chrome-512x512.png",
+            "src": "/ngejob/asset/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
@@ -16,7 +16,7 @@
     "theme_color": "#e8ecef",
     "background_color": "#e8ecef",
     "display": "standalone",
-	"start_url": "/job/ngejob",
-	"scope": "/job/"
+	"start_url": "/ngejob/",
+	"scope": "/ngejob/"
 
 }
