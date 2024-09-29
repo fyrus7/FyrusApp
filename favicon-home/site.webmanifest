@@ -21,8 +21,7 @@
   "description": "RPC apps",
   "orientation": "portrait",
   "display_override": [
-    "fullscreen",
     "standalone",
-    "window-controls-overlay"
+    "fullscreen"
   ]
 }
