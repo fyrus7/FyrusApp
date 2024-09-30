@@ -16,13 +16,7 @@
   "theme_color": "#37474f",
   "background_color": "#5c5c5c",
   "display": "standalone",
-  "start_url": "/index.html",
-  "scope": "/",
-  "description": "RPC apps",
-  "orientation": "portrait",
-  "display_override": [
-    "standalone",
-    "fullscreen",
-    "window-controls-overlay"
+  "start_url": "/index",
+  "scope": "/"
   ]
 }
