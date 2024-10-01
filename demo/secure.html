@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  
+
+  <title>FYRUS SYSTEM | ADVANCE DEMO</title>
+
+  <!-- meta tags for responsive web on mobile/desktop -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="/demo/DemoStyles.css"> <!-- Linking to external CSS file -->
+  
+</head>
+<body>
+  <iframe 
+    src="https://script.google.com/macros/s/AKfycbxnAHo1cwHb0rL6BquwrjwgYS7RxxE4lzADhMjYb1FwUaZNxRRkvdSmrgE5u1KBPzey/exec"
+    allow="camera">
+  </iframe>
+
+    <!-- Footer area to center the home button and copyright -->
+  <footer>
+
+    <div class="copyright">
+      &copy; <span id="year"></span> Fyrus Apps. All rights reserved.
+    </div>
+  </footer>
+ 
+
+    <script>
+        document.getElementById('reloadButton').addEventListener('click', function() {
+            // Force reload without cache (Ctrl+F5)
+            window.location.reload(true);
+        });
+    </script>
+	
+	<script>
+	    // Get the current year from the device and update the copyright span
+		document.getElementById("year").textContent = new Date().getFullYear();
+	</script>
+  
+</body>
+</html>
