@@ -17,5 +17,5 @@
     "background_color": "#e8ecef",
     "display": "standalone"
 	"start_url": "/demo/myrpc",
-	"scope": "/demo"
+	"scope": "/demo/"
 }
