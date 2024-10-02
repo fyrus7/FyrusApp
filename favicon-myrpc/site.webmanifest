@@ -1,0 +1,21 @@
+{
+    "name": "MY RPC",
+    "short_name": "MY RPC",
+    "icons": [
+        {
+            "src": "/favicon-myrpc/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-myrpc/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#e8ecef",
+    "background_color": "#e8ecef",
+    "display": "standalone"
+	"start_url": "/demo/secure",
+	"scope": "/demo/secure"
+}
