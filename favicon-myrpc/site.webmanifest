@@ -16,6 +16,6 @@
     "theme_color": "#e8ecef",
     "background_color": "#e8ecef",
     "display": "standalone"
-	"start_url": "/demo/secure",
-	"scope": "/demo/secure"
+	"start_url": "/demo/myrpc",
+	"scope": "/demo/myrpc"
 }
