@@ -189,6 +189,19 @@ footer {
     color: #455A64;
 }
 
+/* By default, <br> for mobile screens (smaller screens) */
+.mobile-br {
+    display: inline;
+}
+
+/* On larger screens, hide the <br> */
+@media (min-width: 768px) {
+    .mobile-br {
+        display: none;
+    }
+}
+
+
 /* Mobile-Specific (e.g., 600px and below) */
 @media (max-width: 600px) {
     .mobile-text {
