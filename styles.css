@@ -58,26 +58,28 @@ header {
     padding-bottom: 0;
 }
 
-/* Responsive adjustments for tablets */
-@media (min-width: 768px) {
-    .text-container {
-        max-width: 800px; /* For tablets and larger screens */
-        margin: 10px auto; /* Center with wider margins */
-    }
-}
-
 /* Responsive adjustments for desktops */
 @media (min-width: 1200px) {
     .text-container {
         max-width: 1000px; /* Increase max-width for desktops */
         margin: 10px auto;
     }
-}
 
-@media (min-width: 992px) {
-    .text-container {
-        max-width: 960px;
-        margin: 10px auto;
+    .text-box {
+        width: 50%;
+        max-width: 1000px;
+    }
+
+    .text-button {
+        padding: 0 100px; /* More padding for larger screens */
+    }
+
+    .choose-text {
+        font-size: 22px; /* Slightly larger text for desktops */
+    }
+
+    .hr-container {
+        width: 40%; /* Even narrower for desktops */
     }
 }
 
@@ -96,21 +98,6 @@ header {
     text-align: left;
     color: white;
     font-size: 16px;
-}
-
-/* Media Queries for Larger Screens */
-@media (min-width: 768px) {
-    .text-box {
-        width: 70%;
-        max-width: 800px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .text-box {
-        width: 50%;
-        max-width: 1000px;
-    }
 }
 
 /* Text Button Section */
@@ -150,37 +137,6 @@ h2.choose-text {
     border-top: 1px solid #455A64;
     margin: 10px 0;
 }
-
-/* Responsive adjustments for tablets */
-@media (min-width: 768px) {
-    .text-button {
-        padding: 0 50px; /* Add extra padding on wider screens */
-    }
-
-    .choose-text {
-        font-size: 20px; /* Larger font size on tablets */
-    }
-
-    .hr-container {
-        width: 60%; /* Narrower width for tablets */
-    }
-}
-
-/* Responsive adjustments for desktops */
-@media (min-width: 1200px) {
-    .text-button {
-        padding: 0 100px; /* More padding for larger screens */
-    }
-
-    .choose-text {
-        font-size: 22px; /* Slightly larger text for desktops */
-    }
-
-    .hr-container {
-        width: 40%; /* Even narrower for desktops */
-    }
-}
-
 
 /* Buttons Section */
 .buttons-section {
