@@ -39,7 +39,7 @@ header {
 
 /* Text Container (Mobile-First) */
 .text-container {
-    width: 80%; /* Make the container full width by default */
+    width: 100%; /* Make the container full width by default */
     max-width: 100%; /* Ensure it doesn't shrink */
     margin: 10px auto; /* Center it with minimal margins */
     padding: 0 20px; /* Keep the left/right padding */
@@ -90,7 +90,7 @@ header {
     border-radius: 5px;
     background-color: #455A64;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
