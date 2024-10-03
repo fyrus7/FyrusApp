@@ -50,7 +50,7 @@ header {
     font-size: 16px;
     color: #455A64;
     margin: 0;
-    padding: 20px;
+    padding: 20px 10px; /* top bottom & left right padding */
 }
 .text-container .p2 {
     font-size: 20px;
