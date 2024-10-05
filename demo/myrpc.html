@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-<style>
+<!-- <style>
 html, body {
       margin: 0;
       padding: 0;
@@ -36,7 +36,7 @@ footer {
     color: #455A64; /* Change text color for visibility */
     text-align: center;
 }
-</style>
+</style> -->
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="/demo/asset/favicon-myrpc/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/demo/asset/favicon-myrpc/favicon-32x32.png">
@@ -49,12 +49,12 @@ footer {
 	<meta name="theme-color" content="#E8ECEF">
 
 
-  <title>FYRUS SYSTEM | DEMO</title>
+  <title>MYRPC | DEMO</title>
 
   <!-- meta tags for responsive web on mobile/desktop -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- <link rel="stylesheet" href="/demo/DemoStyles.css"> <!-- Linking to external CSS file -->
+   <link rel="stylesheet" href="/demo/DemoStyles.css?v=1.1"> <!-- Linking to external CSS file -->
   
 </head>
 <body>
@@ -65,14 +65,26 @@ footer {
 
     <!-- Footer area to center the home button and copyright -->
   <footer>
+  <section class="buttons-section">
+    <a href="/" class="btn-link">
+            <button class="btn">Back</button></a>
+    </section>
+
     <div class="copyright">
       &copy; <span id="year"></span> Fyrus Apps. All rights reserved.
     </div>
   </footer>
+ 
 
-
+    <script>
+        document.getElementById('reloadButton').addEventListener('click', function() {
+            // Force reload without cache (Ctrl+F5)
+            window.location.reload(true);
+        });
+    </script>
+	
 	<script>
-		// Get the current year from the device and update the copyright span
+	    // Get the current year from the device and update the copyright span
 		document.getElementById("year").textContent = new Date().getFullYear();
 	</script>
   

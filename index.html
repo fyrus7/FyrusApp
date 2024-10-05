@@ -2,6 +2,28 @@
 <html lang="en">
 <head>
 
+<style>
+  .responsive-img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* For screens wider than 768px (desktops and tablets) */
+  @media (min-width: 768px) {
+    .responsive-img {
+      width: 50%; /* Set width to 50% for larger screens */
+    }
+  }
+    .bullet-text::before {
+    content: "\2022"; /* Unicode for bullet point */
+    color: white; /* Bullet color */
+    font-size: 20px; /* Bullet size */
+    display: inline-block; 
+    width: 1em; /* Space between bullet and text */
+    margin-right: 10px; /* Adjust spacing if needed */
+  }
+</style>
+
         <!-- Open Graph meta tags -->
     <meta property="og:title" content="Fyrus Apps">
     <meta property="og:description" content="easy to use event collection app, optimize for mobile">
@@ -27,7 +49,7 @@
 	
     <!-- <link rel="stylesheet" href="styles.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="stylesheet" href="styles.css?">
+	<link rel="stylesheet" href="styles.css?v=1.0">
 
 </head>
 <body>
@@ -60,71 +82,26 @@
     <hr class="line-break">
 	</div>
 	
-	<div class="text-container">
-	<p class="p2"><b>Choose from 3 Apps</b></b></p>
-	</div>
-
-	<div class="text-container">
-	<p>
-	• <b>Basic &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :</b> No login, no record of user.
-     <br>
-    • <b>Standard :</b> User login, Marked user.
-     <br>
-    • <b>Advance &nbsp;:</b> User login, Marked user, 2 layer collection for use on two different screen.
-	</p>
+	<center>
+	<img src="https://app.iamfyrus.com/media/myrpc1.jpg" alt="myrpc1" class="responsive-img">
+	<img src="https://app.iamfyrus.com/media/myrpc2.jpg" alt="myrpc2" class="responsive-img">
+	<img src="https://app.iamfyrus.com/media/myrpc3.jpg" alt="myrpc3" class="responsive-img">
+	<img src="https://app.iamfyrus.com/media/myrpc4.jpg" alt="myrpc4" class="responsive-img">
+	<img src="https://app.iamfyrus.com/media/myrpc5.jpg" alt="myrpc5" class="responsive-img">
+	</center>
+	
+	<div class="hr-container">
+    <hr class="line-break">
 	</div>
   
     <section class="buttons-section">
-        <a href="/demo/basic" class="btn-link">
-            <button class="btn">BASIC</button>
-        </a>
-        <a href="/demo/standard" class="btn-link">
-            <button class="btn">STANDARD</button>
-        </a>
-        <a href="/demo/advance" class="btn-link">
-            <button class="btn">ADVANCE</button>
+        <a href="/demo/myrpc" class="btn-link">
+            <button class="btn">TEST THE APP NOW</button>
         </a>
     </section>
 	
 	<div class="hr-container">
     <hr class="line-break">
-	</div>
-	
-	<div class="text-container">
-	<p>
-	  <b>Test search value:</b>
-      <br><br>
-      1010, 2020, 3030, 4040, 5050
-      <br class="mobile-br">
-      or
-      <br class="mobile-br">
-      1111, 2222, 3333, 4444, 5555
-      <br><br>
-      Use Comma for multiple data search.
-	  <br class="mobile-br">
-      ( example: 1010,3030,5050 )
-      <br><br>
-      RESET the apps to test again.
-	  <br class="mobile-br">
-	  ( the 'Clear Data' button )
-	  </p>
-	</div>
-	<br>
-	
-	<div class="text-box">
-	<p>
-	  <b>Future App Posiblility</b>
-      <br><br>
-      Buy & Sell Bib Marketplace.
-      <br class="mobile-br">
-      ( in the making )
-      <br><br>
-      Runner info swap
-	  <br class="mobile-br">
-      ( in the making )
-	  <br><br>
-	  More to come...
-	  </p>
 	</div>
 	
 	    <br><br>
@@ -136,6 +113,26 @@
         <input type="text" id="whatsappMessage" placeholder="Type your message here..." required>
         <br><button type="submit" class="btn">Send</button>
     </form>
+	</div>
+	
+	<div class="hr-container">
+    <hr class="line-break">
+	</div>
+	
+		<div class="text-box">
+	<p>
+	  <b>Future App Posiblility</b></p>
+      <br>
+      <p class="bullet-text">Buy & Sell Bib Marketplace.</p>
+      <!--<br class="mobile-br">
+      ( in the making )-->
+
+      <p class="bullet-text">Runner info swap/trade</p>
+	  <!--<br class="mobile-br">
+      ( in the making )-->
+	  <br><p>
+	  More to come...
+	  </p>
 	</div>
 	
 	

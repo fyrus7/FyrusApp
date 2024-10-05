@@ -60,7 +60,7 @@
 footer {
     margin-top: auto; /* Pushes footer to the bottom */
     background-color: #E8ECEF; /* Match background color */
-    padding: 10px; /* Add padding */
+    padding: 5px; /* Add padding */
     color: #455A64; /* Change text color for visibility */
     text-align: center;
 }
