@@ -49,13 +49,6 @@
   </iframe>
 
   <script>
-    // Listen for messages from the iframe
-    window.addEventListener('message', function(event) {
-      if (event.origin === 'https://script.google.com') {
-        console.log(event.data);  // Handle the message received from iframe
-      }
-    }, false);
-    
   // Register the service worker
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
