@@ -83,13 +83,6 @@ footer {
         console.log(event.data);  // Handle the message received from iframe
       }
     }, false);
-
-	    
-        document.getElementById('reloadButton').addEventListener('click', function() {
-            // Force reload without cache (Ctrl+F5)
-            window.location.reload(true);
-        });
-
 	    
 	    // Get the current year from the device and update the copyright span
 		document.getElementById("year").textContent = new Date().getFullYear();
