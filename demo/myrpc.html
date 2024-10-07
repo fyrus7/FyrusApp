@@ -37,9 +37,114 @@ footer {
     text-align: center;
 }
 
-.prompt {
-  display: none;
+/* Basic styling for the modal overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
 }
+
+/* Modal content styling */
+.modal-content {
+  background-color: #fff; /* White background */
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px; /* Some padding */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px; /* Maximum width for larger screens */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+/* Close button styling */
+.close {
+  color: #aaa; /* Gray color */
+  float: right; /* Right align */
+  font-size: 28px; /* Larger font size */
+  font-weight: bold; /* Bold text */
+}
+
+.close:hover,
+.close:focus {
+  color: black; /* Change color on hover */
+  text-decoration: none; /* No underline */
+  cursor: pointer; /* Pointer cursor */
+}
+
+/* Install title styling */
+.install-title {
+  font-size: 20px; /* Larger title font */
+  font-weight: bold; /* Bold title */
+  margin-bottom: 15px; /* Space below title */
+  text-align: center; /* Center align */
+}
+
+/* Modal header styling */
+.modal-header {
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 15px; /* Space below header */
+}
+
+/* App icon image styling */
+.modal-header img {
+  width: 50px; /* Fixed size for the icon */
+  height: 50px; /* Fixed size for the icon */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* App name and URL styling */
+.app-name {
+  font-size: 18px; /* Font size for app name */
+  font-weight: bold; /* Bold text */
+}
+
+.app-url {
+  font-size: 14px; /* Font size for URL */
+  color: #888; /* Gray color for URL */
+}
+
+/* Modal footer styling */
+.modal-footer {
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Space between buttons */
+  margin-top: 20px; /* Space above footer */
+}
+
+/* Button styling */
+.prompt__install,
+.prompt__close {
+  background-color: #4CAF50; /* Green background for install button */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 15px; /* Padding inside buttons */
+  text-align: center; /* Center align text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block for proper padding */
+  font-size: 16px; /* Font size for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.prompt__close {
+  background-color: #f44336; /* Red background for cancel button */
+}
+
+/* Button hover effects */
+.prompt__install:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.prompt__close:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
 </style>
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="/demo/asset/favicon-myrpc/apple-touch-icon.png">
@@ -67,11 +172,29 @@ footer {
   </iframe>
   
 
-   <div class="prompt">
-  <p>Do you want to add this site to your home screen?</p>
-  <button type="button" class="prompt__install">Yes Please</button>
-  <button type="button" class="prompt__close">No Thanks</button>
+   <!-- Modal structure -->
+   <div id="installModal" class="modal">
+   <div class="modal-content">
+    <span class="close" id="closeBtn">&times;</span>
+    
+    <!-- Adding the text above icon -->
+    <div class="install-title">Install app?</div> 
+    
+    <div class="modal-header">
+      <img src="/favicon-lsptk/android-chrome-192x192.png" alt="App Icon">
+      <div>
+        <div class="app-name">MyRPC | Custom RPC App</div>
+        <div class="app-url">app.iamfyrus.com</div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="prompt__install" id="installBtn">Install</button>
+      <button class="prompt__close" id="cancelBtn">Cancel</button>
+    </div>
+  </div>
 </div>
+
 
 
     <!-- Footer area to center the home button and copyright -->
