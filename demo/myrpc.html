@@ -177,18 +177,18 @@ const overlay = document.querySelector('.overlay'); // Select the overlay
 let installEvent;
 
 function getVisited() {
-  return localStorage.getItem('install-prompt');
+  return sessionStorage.getItem('install-prompt');
 }
 
 function setVisited() {
-  localStorage.setItem('install-prompt', true);
+  sessionStorage.setItem('install-prompt', true);
 }
 
 // This event will only fire if the user does not have the PWA installed
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();
 
-  // If no localStorage is set, first-time visitor
+  // If no sessionStorage is set, first-time visitor in this session
   if (!getVisited()) {
     // Show the prompt banner and overlay
     prompt.style.display = 'block';
@@ -210,7 +210,7 @@ installButton.addEventListener('click', () => {
   // Check what choice the user made
   installEvent.userChoice.then((choice) => {
     // If the user declined, we don't want to show the button again
-    // Set localStorage to true
+    // Set sessionStorage to true
     if (choice.outcome !== 'accepted') {
       setVisited();
     }
@@ -221,14 +221,13 @@ installButton.addEventListener('click', () => {
 
 // Close the modal when clicking outside of it
 overlay.addEventListener('click', () => {
-  setVisited(); // Set localStorage to true
+  setVisited(); // Set sessionStorage to true
   prompt.style.display = 'none';  // Hide the prompt banner
   overlay.style.display = 'none'; // Hide the overlay
   installEvent = null;
 });
 
 </script>
-
   
 </body>
 </html>
