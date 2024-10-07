@@ -37,72 +37,73 @@ footer {
     text-align: center;
 }
 
-/* Main prompt container */
 .prompt {
-  display: none; /* Hidden by default */
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 20px;
-  max-width: 300px; /* Limit max width for desktop */
-  width: 50%; /* Responsive for mobile */
-  background-color: #1C1C1E; /* Dark background */
-  padding: 10px;
-  z-index: 1000;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
+  display: none; /* Initially hidden */
+  position: fixed; /* Ensures the modal stays in one place on the screen */
+  top: 10px; /* Align 10px from the top */
+  left: 50%; /* Center the modal horizontally */
+  transform: translateX(-50%); /* Adjust for perfect centering */
+  width: 90%; /* Make it responsive */
+  max-width: 500px; /* Limit width for larger screens */
+  padding: 10px 20px;
+  background-color: #202c36; /* Background color for the modal */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for a floating effect */
+  border-radius: 8px; /* Rounded corners */
+  z-index: 9999; /* Ensures it stays above other content */
+}
+
+.prompt .modal-header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensure logo/text on left and button on right */
+  justify-content: space-between; /* Ensure space between the logo and install */
 }
 
-/* Flex container for app logo and text */
-.app-info {
-  display: flex;
-  align-items: center; /* Align items (logo, text) in the center vertically */
-}
-
-/* App icon styling */
-.app-icon {
-  width: 40px;
-  height: 40px;
+.prompt .modal-header img {
+  width: 48px;
+  height: 48px;
   margin-right: 10px;
-  border-radius: 10px; /* Rounded corners */
 }
 
-/* App details (name and URL) */
-.app-details {
+.prompt .app-info {
   display: flex;
-  flex-direction: column; /* Stack app name and URL vertically */
+  flex-direction: column;
 }
 
-.app-name {
+.prompt .app-name {
   font-size: 16px;
-  color: white;
   font-weight: bold;
+  color: #ffffff;
 }
 
-.app-url {
-  font-size: 14px;
-  color: #A0A0A0; /* Lighter gray for the URL */
+.prompt .app-url {
+  font-size: 12px;
+  color: #b0bec5;
 }
 
-/* Install button styling */
 .prompt__install {
-  background-color: transparent;
-  color: #4DA1FF; /* Blue color for the Install button */
-  font-size: 16px;
+  background-color: #0277bd;
+  color: #ffffff;
+  padding: 8px 16px;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  padding: 10px 15px;
-  align-self: center; /* Ensure it's vertically centered with the app details */
+  font-size: 14px;
+  margin-left: auto; /* Ensure it's pushed to the right */
 }
 
-/* Hover effect for the Install button */
 .prompt__install:hover {
-  text-decoration: underline;
+  background-color: #01579b;
 }
 
+.prompt__install:active {
+  background-color: #004f8a;
+}
+
+.prompt .modal-footer {
+  display: flex;
+  justify-content: flex-end; /* Aligns the button to the right */
+  margin-top: 10px;
+}
 
 </style>
 	
@@ -126,15 +127,16 @@ footer {
 <body>
 
 <div class="prompt">
-  <div class="app-info">
-    <img src="/demo/asset/favicon-myrpc/android-chrome-192x192.png" alt="App Icon" class="app-icon">
-    <div class="app-details">
+  <div class="modal-header">
+    <img src="/favicon-lsptk/android-chrome-192x192.png" alt="App Icon">
+    <div class="app-info">
       <div class="app-name">MyRPC</div>
       <div class="app-url">app.iamfyrus.com</div>
     </div>
+    <button type="button" class="prompt__install">Install</button>
   </div>
-  <button class="prompt__install">Install</button>
 </div>
+
 
   <iframe 
     src="https://script.google.com/macros/s/AKfycbyI5Lv2QF9LIzRdicEdK7ux931PCPC_LeCDz8AYEtD7Qh2VBlduO_zg29NdwKB29dkXIQ/exec"
