@@ -37,73 +37,69 @@ footer {
     text-align: center;
 }
 
+/* Main prompt container */
 .prompt {
   display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1000; /* Sit on top */
-  left: 0;
-  top: 20%; /* Position from the top */
-  width: 100%; /* Full width */
-  text-align: center; /* Center text */
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  position: fixed;
+  left: 50%; /* Center the modal horizontally */
+  transform: translateX(-50%); /* Centering trick */
+  top: 20px; /* A bit lower from the top */
+  max-width: 500px; /* Set max width for desktop */
+  width: 90%; /* Responsive width for mobile */
+  background-color: #1C1C1E; /* Dark background color */
+  padding: 10px 20px;
+  z-index: 1000;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Soft shadow */
+  border-radius: 12px; /* Rounded corners for a modern look */
 }
 
-/* Content of the modal */
+/* Content inside the prompt */
 .prompt-content {
-  background-color: #2d2d2d; /* Dark gray background */
-  border-radius: 8px; /* Rounded corners */
-  padding: 20px; /* Padding around content */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
-  width: 300px; /* Fixed width */
-  margin: 0 auto; /* Center horizontally */
-  position: relative; /* Position relative for footer positioning */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the left */
+  width: 100%;
 }
 
-/* Text for install prompt */
-.install-text {
-  font-size: 18px; /* Font size */
-  margin-bottom: 20px; /* Space below text */
-  text-align: left;
+/* App icon styling */
+.app-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 10px; /* Optional: round corners */
 }
 
-/* Footer for buttons */
-.prompt-footer {
-  display: flex; /* Flexbox for alignment */
-  justify-content: flex-end; /* Align buttons to the right */
-  gap: 10px; /* Space between buttons */
-  position: absolute; /* Absolute positioning for footer */
-  bottom: 20px; /* Distance from the bottom of the content */
-  right: 20px; /* Distance from the right */
+/* App details (name and URL) */
+.app-details {
+  flex-grow: 1;
 }
 
-/* Button styling */
-.prompt__install,
-.prompt__close {
-  background-color: #4285F4; /* Blue for install */
-  color: white; /* White text */
-  border: none; /* No border */
-  padding: 10px 15px; /* Padding inside buttons */
-  text-align: center; /* Center align text */
-  text-decoration: none; /* No underline */
-  display: inline-block; /* Inline block for proper padding */
-  font-size: 16px; /* Font size for buttons */
-  cursor: pointer; /* Pointer cursor on hover */
-  border-radius: 5px; /* Rounded corners */
+.app-name {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
 }
 
-.prompt__close {
-  background-color: transparent; /* Red background for dismiss button */
-  color: #b0b0b0; /* Gray for cancel */
+.app-url {
+  font-size: 14px;
+  color: #A0A0A0; /* Lighter gray for the URL */
 }
 
-/* Button hover effects */
+/* Install button styling */
+.prompt__install {
+  background-color: transparent;
+  color: #4DA1FF; /* Blue color for the Install button */
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+/* Hover effect for the Install button */
 .prompt__install:hover {
-  background-color: #45a049; /* Darker green on hover */
+  text-decoration: underline;
 }
 
-.prompt__close:hover {
-  background-color: #d32f2f; /* Darker red on hover */
-}
 
 </style>
 	
@@ -128,13 +124,17 @@ footer {
 
 <div class="prompt">
   <div class="prompt-content">
-    <p class="install-text">MyRPC | Install the app?</p>
-    <div class="prompt-footer">
+    <div class="prompt-header">
+      <img src="/demo/asset/favicon-myrpc/android-chrome-192x192.png" alt="App Icon" class="app-icon">
+      <div class="app-details">
+        <div class="app-name">MyRPC</div>
+        <div class="app-url">app.iamfyrus.com</div>
+      </div>
       <button type="button" class="prompt__install">Install</button>
-      <button type="button" class="prompt__close">Dismiss</button>
     </div>
   </div>
 </div>
+
 
 
   <iframe 
