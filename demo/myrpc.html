@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-<!-- <style>
+ <style>
 html, body {
       margin: 0;
       padding: 0;
@@ -36,7 +36,11 @@ footer {
     color: #455A64; /* Change text color for visibility */
     text-align: center;
 }
-</style> -->
+
+.prompt {
+  display: none;
+}
+</style>
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="/demo/asset/favicon-myrpc/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/demo/asset/favicon-myrpc/favicon-32x32.png">
@@ -54,22 +58,24 @@ footer {
   <!-- meta tags for responsive web on mobile/desktop -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-   <link rel="stylesheet" href="/demo/DemoStyles.css?v=1.1"> <!-- Linking to external CSS file -->
-  
 </head>
 <body>
+
   <iframe 
     src="https://script.google.com/macros/s/AKfycbyI5Lv2QF9LIzRdicEdK7ux931PCPC_LeCDz8AYEtD7Qh2VBlduO_zg29NdwKB29dkXIQ/exec"
     allow="camera">
   </iframe>
+  
+
+   <div class="prompt">
+  <p>Do you want to add this site to your home screen?</p>
+  <button type="button" class="prompt__install">Yes Please</button>
+  <button type="button" class="prompt__close">No Thanks</button>
+</div>
+
 
     <!-- Footer area to center the home button and copyright -->
   <footer>
-  <section class="buttons-section">
-    <a href="/" class="btn-link">
-            <button class="btn">Back</button></a>
-    </section>
-
     <div class="copyright">
       &copy; <span id="year"></span> Fyrus Apps. All rights reserved.
     </div>
@@ -80,6 +86,65 @@ footer {
 	    // Get the current year from the device and update the copyright span
 		document.getElementById("year").textContent = new Date().getFullYear();
 	</script>
+
+<script>
+  const prompt = document.querySelector('.prompt');
+const installButton = prompt.querySelector('.prompt__install');
+const closeButton = prompt.querySelector('.prompt__close');
+let installEvent;
+
+function getVisited() {
+  return localStorage.getItem('install-prompt');
+}
+
+function setVisited() {
+  localStorage.setItem('install-prompt', true);
+}
+
+// this event will only fire if the user does not have the pwa installed
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+
+  // if no localStorage is set, first time visitor
+  if (!getVisited()) {
+    // show the prompt banner
+    prompt.style.display = 'block';
+
+    // store the event for later use
+    installEvent = event;
+  }
+});
+
+installButton.addEventListener('click', () => {
+  // hide the prompt banner
+  prompt.style.display = 'none';
+
+  // trigger the prompt to show to the user
+  installEvent.prompt();
+
+  // check what choice the user made
+  installEvent.userChoice.then((choice) => {
+    // if the user declined, we don't want to show the button again
+    // set localStorage to true
+    if (choice.outcome !== 'accepted') {
+      setVisited();
+    }
+
+    installEvent = null;
+  });
+});
+
+closeButton.addEventListener('click', () => {
+  // set localStorage to true
+  setVisited();
+
+  // hide the prompt banner
+  prompt.style.display = 'none';  
+
+  installEvent = null;
+});
+</script>
+
   
 </body>
 </html>
