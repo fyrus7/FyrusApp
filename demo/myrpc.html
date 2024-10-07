@@ -42,40 +42,44 @@ footer {
   position: fixed; /* Stay in place */
   z-index: 1000; /* Sit on top */
   left: 0;
-  top: 0;
+  top: 20%; /* Position from the top */
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
   text-align: center; /* Center text */
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
 }
 
 /* Content of the modal */
 .prompt-content {
-  background-color: #fff; /* White background */
+  background-color: #2d2d2d; /* Dark gray background */
   border-radius: 8px; /* Rounded corners */
   padding: 20px; /* Padding around content */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
   width: 300px; /* Fixed width */
+  margin: 0 auto; /* Center horizontally */
+  position: relative; /* Position relative for footer positioning */
 }
 
 /* Text for install prompt */
 .install-text {
   font-size: 18px; /* Font size */
   margin-bottom: 20px; /* Space below text */
+  text-align: left;
 }
 
 /* Footer for buttons */
 .prompt-footer {
   display: flex; /* Flexbox for alignment */
-  justify-content: space-between; /* Space between buttons */
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Space between buttons */
+  position: absolute; /* Absolute positioning for footer */
+  bottom: 20px; /* Distance from the bottom of the content */
+  right: 20px; /* Distance from the right */
 }
 
 /* Button styling */
 .prompt__install,
 .prompt__close {
-  background-color: #4CAF50; /* Green background for install button */
+  background-color: #4285F4; /* Blue for install */
   color: white; /* White text */
   border: none; /* No border */
   padding: 10px 15px; /* Padding inside buttons */
@@ -88,7 +92,8 @@ footer {
 }
 
 .prompt__close {
-  background-color: #f44336; /* Red background for dismiss button */
+  background-color: transparent; /* Red background for dismiss button */
+  color: #b0b0b0; /* Gray for cancel */
 }
 
 /* Button hover effects */
@@ -99,7 +104,6 @@ footer {
 .prompt__close:hover {
   background-color: #d32f2f; /* Darker red on hover */
 }
-
 
 </style>
 	
@@ -124,7 +128,7 @@ footer {
 
 <div class="prompt">
   <div class="prompt-content">
-    <p class="install-text">MyRPC | Install app?</p>
+    <p class="install-text">MyRPC | Install the app?</p>
     <div class="prompt-footer">
       <button type="button" class="prompt__install">Install</button>
       <button type="button" class="prompt__close">Dismiss</button>
@@ -137,16 +141,7 @@ footer {
     src="https://script.google.com/macros/s/AKfycbyI5Lv2QF9LIzRdicEdK7ux931PCPC_LeCDz8AYEtD7Qh2VBlduO_zg29NdwKB29dkXIQ/exec"
     allow="camera">
   </iframe>
-  
-    
-    <div class="modal-footer">
-      <button class="prompt__install" id="installBtn">Install</button>
-      <button class="prompt__close" id="cancelBtn">Cancel</button>
-    </div>
-  </div>
-</div>
-
-
+ 
 
     <!-- Footer area to center the home button and copyright -->
   <footer>
