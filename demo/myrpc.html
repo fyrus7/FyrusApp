@@ -44,8 +44,8 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   top: 20px;
-  max-width: 500px; /* Limit max width on desktop */
-  width: 90%; /* Responsive for mobile */
+  max-width: 300px; /* Limit max width for desktop */
+  width: 70%; /* Responsive for mobile */
   background-color: #1C1C1E; /* Dark background */
   padding: 10px 20px;
   z-index: 1000;
@@ -53,7 +53,7 @@ footer {
   border-radius: 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space between logo and button */
+  justify-content: space-between; /* Ensure logo/text on left and button on right */
 }
 
 /* Flex container for app logo and text */
@@ -95,6 +95,7 @@ footer {
   border: none;
   cursor: pointer;
   padding: 10px 15px;
+  align-self: center; /* Ensure it's vertically centered with the app details */
 }
 
 /* Hover effect for the Install button */
@@ -126,7 +127,7 @@ footer {
 
 <div class="prompt">
   <div class="app-info">
-    <img src="/favicon-lsptk/android-chrome-192x192.png" alt="App Icon" class="app-icon">
+    <img src="/demo/asset/favicon-myrpc/android-chrome-192x192.png" alt="App Icon" class="app-icon">
     <div class="app-details">
       <div class="app-name">MyRPC</div>
       <div class="app-url">app.iamfyrus.com</div>
