@@ -41,24 +41,25 @@ footer {
 .prompt {
   display: none; /* Hidden by default */
   position: fixed;
-  left: 50%; /* Center the modal horizontally */
-  transform: translateX(-50%); /* Centering trick */
-  top: 20px; /* A bit lower from the top */
-  max-width: 500px; /* Set max width for desktop */
-  width: 90%; /* Responsive width for mobile */
-  background-color: #1C1C1E; /* Dark background color */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  max-width: 500px; /* Limit max width on desktop */
+  width: 90%; /* Responsive for mobile */
+  background-color: #1C1C1E; /* Dark background */
   padding: 10px 20px;
   z-index: 1000;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Soft shadow */
-  border-radius: 12px; /* Rounded corners for a modern look */
-}
-
-/* Content inside the prompt */
-.prompt-content {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align content to the left */
-  width: 100%;
+  justify-content: space-between; /* Space between logo and button */
+}
+
+/* Flex container for app logo and text */
+.app-info {
+  display: flex;
+  align-items: center; /* Align items (logo, text) in the center vertically */
 }
 
 /* App icon styling */
@@ -66,12 +67,13 @@ footer {
   width: 40px;
   height: 40px;
   margin-right: 10px;
-  border-radius: 10px; /* Optional: round corners */
+  border-radius: 10px; /* Rounded corners */
 }
 
 /* App details (name and URL) */
 .app-details {
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column; /* Stack app name and URL vertically */
 }
 
 .app-name {
@@ -123,19 +125,15 @@ footer {
 <body>
 
 <div class="prompt">
-  <div class="prompt-content">
-    <div class="prompt-header">
-      <img src="/demo/asset/favicon-myrpc/android-chrome-192x192.png" alt="App Icon" class="app-icon">
-      <div class="app-details">
-        <div class="app-name">MyRPC</div>
-        <div class="app-url">app.iamfyrus.com</div>
-      </div>
-      <button type="button" class="prompt__install">Install</button>
+  <div class="app-info">
+    <img src="/favicon-lsptk/android-chrome-192x192.png" alt="App Icon" class="app-icon">
+    <div class="app-details">
+      <div class="app-name">MyRPC</div>
+      <div class="app-url">app.iamfyrus.com</div>
     </div>
   </div>
+  <button class="prompt__install">Install</button>
 </div>
-
-
 
   <iframe 
     src="https://script.google.com/macros/s/AKfycbyI5Lv2QF9LIzRdicEdK7ux931PCPC_LeCDz8AYEtD7Qh2VBlduO_zg29NdwKB29dkXIQ/exec"
