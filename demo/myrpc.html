@@ -41,8 +41,7 @@ footer {
   display: none; /* Initially hidden */
   position: fixed; /* Ensures the modal stays in one place on the screen */
   top: 10px; /* Align 10px from the top */
-  left: 10px; /* Center the modal horizontally */
-//  transform: translateX(-70%); /* Adjust for perfect centering */
+  left: 10px; /* Align left */
   width: 90%; /* Make it responsive */
   max-width: 250px; /* Limit width for larger screens */
   padding: 10px 20px;
@@ -50,20 +49,34 @@ footer {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for a floating effect */
   border-radius: 8px; /* Rounded corners */
   z-index: 9999; /* Ensures it stays above other content */
+  box-sizing: border-box; /* Ensures padding is included in width */
 }
 
+/* Close (X) button */
+.prompt__close {
+  position: absolute; /* Positioned absolutely in the modal */
+  top: 8px; /* Close to the top */
+  right: 8px; /* Close to the right edge */
+  font-size: 18px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Modal header (logo + app info + install button) */
 .prompt .modal-header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensure space between the logo and install */
+  justify-content: space-between; /* Ensure space between logo and install button */
 }
 
+/* App logo */
 .prompt .modal-header img {
   width: 48px;
   height: 48px;
   margin-right: 10px;
 }
 
+/* App info section */
 .prompt .app-info {
   display: flex;
   flex-direction: column;
@@ -80,6 +93,7 @@ footer {
   color: #b0bec5;
 }
 
+/* Install button */
 .prompt__install {
   background-color: #0277bd;
   color: #ffffff;
@@ -88,7 +102,7 @@ footer {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  margin-left: auto; /* Ensure it's pushed to the right */
+  margin-left: auto; /* Push it to the right */
 }
 
 .prompt__install:hover {
@@ -99,11 +113,13 @@ footer {
   background-color: #004f8a;
 }
 
+/* Footer (to position the Install button in modal) */
 .prompt .modal-footer {
   display: flex;
   justify-content: flex-end; /* Aligns the button to the right */
   margin-top: 10px;
 }
+
 
 </style>
 	
@@ -127,6 +143,7 @@ footer {
 <body>
 
 <div class="prompt">
+  <span class="prompt__close">&times;</span> <!-- X button for closing -->
   <div class="modal-header">
     <img src="/demo/asset/favicon-myrpc/android-chrome-192x192.png" alt="App Icon">
     <div class="app-info">
@@ -136,7 +153,6 @@ footer {
     <button type="button" class="prompt__install">Install</button>
   </div>
 </div>
-
 
   <iframe 
     src="https://script.google.com/macros/s/AKfycbyI5Lv2QF9LIzRdicEdK7ux931PCPC_LeCDz8AYEtD7Qh2VBlduO_zg29NdwKB29dkXIQ/exec"
