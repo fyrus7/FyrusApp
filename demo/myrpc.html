@@ -41,7 +41,8 @@ footer {
   display: none; /* Initially hidden */
   position: fixed; /* Ensures the modal stays in one place on the screen */
   top: 10px; /* Align 10px from the top */
-  left: 10px; /* Align left */
+  left: 10px; /* Center the modal horizontally */
+//  transform: translateX(-70%); /* Adjust for perfect centering */
   width: 90%; /* Make it responsive */
   max-width: 250px; /* Limit width for larger screens */
   padding: 10px 20px;
@@ -49,34 +50,20 @@ footer {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for a floating effect */
   border-radius: 8px; /* Rounded corners */
   z-index: 9999; /* Ensures it stays above other content */
-  box-sizing: border-box; /* Ensures padding is included in width */
 }
 
-/* Close (X) button */
-.prompt__close {
-  position: absolute; /* Positioned absolutely in the modal */
-  top: 8px; /* Close to the top */
-  right: 8px; /* Close to the right edge */
-  font-size: 18px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-/* Modal header (logo + app info + install button) */
 .prompt .modal-header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensure space between logo and install button */
+  justify-content: space-between; /* Ensure space between the logo and install */
 }
 
-/* App logo */
 .prompt .modal-header img {
   width: 48px;
   height: 48px;
   margin-right: 10px;
 }
 
-/* App info section */
 .prompt .app-info {
   display: flex;
   flex-direction: column;
@@ -93,7 +80,6 @@ footer {
   color: #b0bec5;
 }
 
-/* Install button */
 .prompt__install {
   background-color: #0277bd;
   color: #ffffff;
@@ -102,7 +88,7 @@ footer {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  margin-left: auto; /* Push it to the right */
+  margin-left: auto; /* Ensure it's pushed to the right */
 }
 
 .prompt__install:hover {
@@ -113,11 +99,20 @@ footer {
   background-color: #004f8a;
 }
 
-/* Footer (to position the Install button in modal) */
 .prompt .modal-footer {
   display: flex;
   justify-content: flex-end; /* Aligns the button to the right */
   margin-top: 10px;
+}
+.overlay {
+  display: none; /* Initially hidden */
+  position: fixed; /* Covers the whole screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent; /* Semi-transparent background */
+  z-index: 9998; /* Below the modal */
 }
 
 
@@ -142,8 +137,8 @@ footer {
 </head>
 <body>
 
+<div class="overlay"></div>
 <div class="prompt">
-  <span class="prompt__close">&times;</span> <!-- X button for closing -->
   <div class="modal-header">
     <img src="/demo/asset/favicon-myrpc/android-chrome-192x192.png" alt="App Icon">
     <div class="app-info">
@@ -153,6 +148,8 @@ footer {
     <button type="button" class="prompt__install">Install</button>
   </div>
 </div>
+
+
 
   <iframe 
     src="https://script.google.com/macros/s/AKfycbyI5Lv2QF9LIzRdicEdK7ux931PCPC_LeCDz8AYEtD7Qh2VBlduO_zg29NdwKB29dkXIQ/exec"
@@ -174,9 +171,9 @@ footer {
 	</script>
 
 <script>
-  const prompt = document.querySelector('.prompt');
+const prompt = document.querySelector('.prompt');
 const installButton = prompt.querySelector('.prompt__install');
-const closeButton = prompt.querySelector('.prompt__close');
+const overlay = document.querySelector('.overlay'); // Select the overlay
 let installEvent;
 
 function getVisited() {
@@ -187,31 +184,33 @@ function setVisited() {
   localStorage.setItem('install-prompt', true);
 }
 
-// this event will only fire if the user does not have the pwa installed
+// This event will only fire if the user does not have the PWA installed
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();
 
-  // if no localStorage is set, first time visitor
+  // If no localStorage is set, first-time visitor
   if (!getVisited()) {
-    // show the prompt banner
+    // Show the prompt banner and overlay
     prompt.style.display = 'block';
+    overlay.style.display = 'block';
 
-    // store the event for later use
+    // Store the event for later use
     installEvent = event;
   }
 });
 
 installButton.addEventListener('click', () => {
-  // hide the prompt banner
+  // Hide the prompt banner and overlay
   prompt.style.display = 'none';
+  overlay.style.display = 'none';
 
-  // trigger the prompt to show to the user
+  // Trigger the prompt to show to the user
   installEvent.prompt();
 
-  // check what choice the user made
+  // Check what choice the user made
   installEvent.userChoice.then((choice) => {
-    // if the user declined, we don't want to show the button again
-    // set localStorage to true
+    // If the user declined, we don't want to show the button again
+    // Set localStorage to true
     if (choice.outcome !== 'accepted') {
       setVisited();
     }
@@ -220,15 +219,14 @@ installButton.addEventListener('click', () => {
   });
 });
 
-closeButton.addEventListener('click', () => {
-  // set localStorage to true
-  setVisited();
-
-  // hide the prompt banner
-  prompt.style.display = 'none';  
-
+// Close the modal when clicking outside of it
+overlay.addEventListener('click', () => {
+  setVisited(); // Set localStorage to true
+  prompt.style.display = 'none';  // Hide the prompt banner
+  overlay.style.display = 'none'; // Hide the overlay
   installEvent = null;
 });
+
 </script>
 
   
