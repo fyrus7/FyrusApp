@@ -17,5 +17,7 @@
   ],
   "theme_color": "#E8ECEF",
   "background_color": "#E8ECEF",
-  "display": "standalone"
+  "display": "standalone",
+	"start_url": "/app2/expense",
+	"scope": "/app2/"
 }
