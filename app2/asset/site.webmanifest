@@ -1,6 +1,6 @@
 {
-  "name": "Expense",
-  "short_name": "Expense",
+  "name": "MyExpense",
+  "short_name": "MyExpense",
   "icons": [
     {
       "src": "/app2/asset/web-app-manifest-192x192.png",
