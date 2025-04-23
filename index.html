@@ -22,6 +22,51 @@
     width: 1em; /* Space between bullet and text */
     margin-right: 10px; /* Adjust spacing if needed */
   }
+  
+  
+  .carousel-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+.carousel-slides {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 ratio */
+}
+.carousel-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 0;
+}
+.carousel-img.active {
+  opacity: 1;
+  z-index: 1;
+}
+.carousel-indicators {
+  text-align: center;
+  margin-top: 10px;
+}
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.dot.active {
+  background-color: #333;
+}
+
 </style>
 
         <!-- Open Graph meta tags -->
@@ -49,17 +94,17 @@
 	
     <!-- <link rel="stylesheet" href="styles.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="stylesheet" href="styles.css?v=1.0">
+	<link rel="stylesheet" href="styles.css?v=1.13">
 
 </head>
 <body>
     <header>
         <div class="header-content">
-            <img src="/media/FyrusStripe.png" alt="Profile Picture" class="profile-pic">
-            <h1>RPC APPS</h1>
-            <p>SERVE & COLLECT SYSTEM</p>
+            <img src="/media/flogo.png" alt="Profile Picture" class="profile-pic">
+            <h1>MYRPC</h1>
+            <p>Race Pack Collection</p>
         </div>
-	<br><br>
+	<br><br><br>
     </header>
 	<br>
 	<div class="text-container">
@@ -83,12 +128,23 @@
 	</div>
 	
 	<center>
-	<img src="https://app.iamfyrus.com/media/myrpc1.jpg" alt="myrpc1" class="responsive-img">
-	<img src="https://app.iamfyrus.com/media/myrpc2.jpg" alt="myrpc2" class="responsive-img">
-	<img src="https://app.iamfyrus.com/media/myrpc3.jpg" alt="myrpc3" class="responsive-img">
-	<img src="https://app.iamfyrus.com/media/myrpc4.jpg" alt="myrpc4" class="responsive-img">
-	<img src="https://app.iamfyrus.com/media/myrpc5.jpg" alt="myrpc5" class="responsive-img">
-	</center>
+  <div class="carousel-container">
+    <div class="carousel-slides">
+      <img src="https://app.iamfyrus.com/media/myrpc1.jpg" class="carousel-img active" alt="myrpc1">
+      <img src="https://app.iamfyrus.com/media/myrpc2.jpg" class="carousel-img" alt="myrpc2">
+      <img src="https://app.iamfyrus.com/media/myrpc3.jpg" class="carousel-img" alt="myrpc3">
+      <img src="https://app.iamfyrus.com/media/myrpc4.jpg" class="carousel-img" alt="myrpc4">
+      <img src="https://app.iamfyrus.com/media/myrpc5.jpg" class="carousel-img" alt="myrpc5">
+    </div>
+    <div class="carousel-indicators">
+      <span class="dot active" onclick="showSlide(0)"></span>
+      <span class="dot" onclick="showSlide(1)"></span>
+      <span class="dot" onclick="showSlide(2)"></span>
+      <span class="dot" onclick="showSlide(3)"></span>
+      <span class="dot" onclick="showSlide(4)"></span>
+    </div>
+  </div>
+</center>
 	
 	<div class="hr-container">
     <hr class="line-break">
@@ -96,7 +152,7 @@
   
     <section class="buttons-section">
         <a href="/demo/myrpc2" class="btn-link">
-            <button class="btn">TEST THE APP NOW</button>
+            <button class="btn">❮ TEST THE APP NOW ❯</button>
         </a>
     </section>
 	
@@ -119,20 +175,17 @@
     <hr class="line-break">
 	</div>
 	
-		<div class="text-box">
+	<div class="client-wrapper">
+	<div class="client-box">
 	<p>
-	  <b>Future App Posiblility</b></p>
+	  <b>Our Clients</b></p>
       <br>
-      <p class="bullet-text">Buy & Sell Bib Marketplace.</p>
-      <!--<br class="mobile-br">
-      ( in the making )-->
-
-      <p class="bullet-text">Runner info swap/trade</p>
-	  <!--<br class="mobile-br">
-      ( in the making )-->
-	  <br><p>
-	  More to come...
-	  </p>
+      <div class="logo-row">
+	  <img src="/media/lsptklogo.png" alt="Client Logo" class="client-pic">
+	  <br class="mobile-br-move">
+	  <img src="/media/titilogo.png" alt="Client Logo" class="client-pic">
+	  </div>
+	</div>
 	</div>
 	
 	
@@ -196,6 +249,41 @@
     }
 </style>
 
+<script>
+let currentSlide = 0;
+let slides = document.querySelectorAll('.carousel-img');
+let dots = document.querySelectorAll('.dot');
+let slideInterval;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+  currentSlide = index;
+}
+
+function nextSlide() {
+  let next = (currentSlide + 1) % slides.length;
+  showSlide(next);
+}
+
+function manualSlide(index) {
+  showSlide(index);
+  resetInterval();
+}
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 3000);
+}
+
+window.addEventListener('load', () => {
+  slideInterval = setInterval(nextSlide, 3000);
+});
+</script>
 
 </body>
 </html>

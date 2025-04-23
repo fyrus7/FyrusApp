@@ -30,12 +30,42 @@ header {
 
 /* Profile Pic */
 .profile-pic {
-    width: 70%;
+    width: 40%;
     max-width: 500px;
     height: auto;
     display: block;
     margin: 0 auto 20px;
 }
+.logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Image style */
+.client-pic {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Show <br> on small screen only */
+.mobile-br-move {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .logo-row {
+    flex-direction: column;
+  }
+
+  .mobile-br-move {
+    display: block;
+  }
+}
+
+
 
 /* Text Container (Mobile-First) */
 .text-container {
@@ -84,15 +114,25 @@ header {
 }
 
 /* Text Box */
-.text-box {
-    border: 2px solid #455A64;
+.client-box {
+    border: 2px solid #607D8B;
     padding: 20px 30px;
     border-radius: 5px;
-    background-color: #455A64;
+    background-color: transpprent; /*#607D8B; /* #455A64; */
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
 }
+.client-wrapper {
+  padding: 0 15px; /* default: mobile screen ada ruang kiri kanan */
+}
+
+@media (min-width: 768px) {
+  .client-wrapper {
+    padding: 0; /* besar: buang padding sebab ada margin auto */
+  }
+}
+
 
 .text-box p {
     text-align: left;
@@ -150,7 +190,7 @@ h2.choose-text {
     color: white;
     border: none;
     padding: 5px 10px;
-    width: 200px;
+    width: 210px;
     height: 40px;
     margin: 0 5px;
     font-size: 16px;
