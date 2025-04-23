@@ -285,5 +285,13 @@ window.addEventListener('load', () => {
 });
 </script>
 
+<script>
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); // block default prompt
+    console.log('Install prompt blocked');
+    // optionally: store the event in a variable if needed
+  });
+</script>
+
 </body>
 </html>
