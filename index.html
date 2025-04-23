@@ -276,6 +276,7 @@ let currentSlide = 0;
 let slides = document.querySelectorAll('.carousel-img');
 let dots = document.querySelectorAll('.dot');
 let slideInterval;
+let startX = 0;
 
 function showSlide(index) {
   slides.forEach((slide, i) => {
@@ -292,6 +293,11 @@ function nextSlide() {
   showSlide(next);
 }
 
+function prevSlide() {
+  let prev = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(prev);
+}
+
 function manualSlide(index) {
   showSlide(index);
   resetInterval();
@@ -304,8 +310,26 @@ function resetInterval() {
 
 window.addEventListener('load', () => {
   slideInterval = setInterval(nextSlide, 5000);
+
+  const slideArea = document.querySelector('.carousel-slides');
+
+  slideArea.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  slideArea.addEventListener('touchend', (e) => {
+    let endX = e.changedTouches[0].clientX;
+    if (endX < startX - 30) {
+      nextSlide();
+      resetInterval();
+    } else if (endX > startX + 30) {
+      prevSlide();
+      resetInterval();
+    }
+  });
 });
 </script>
+
 
 </body>
 </html>
