@@ -24,16 +24,32 @@
   }
   
   
-  .carousel-container {
+.carousel-container {
   max-width: 100%;
   position: relative;
   margin: auto;
   overflow: hidden;
 }
+
+/* Tambah media query untuk skrin besar */
+@media (min-width: 1200px) {
+  .carousel-container {
+    max-width: 80%; /* Supaya tak penuh sangat di skrin besar */
+  }
+}
+
 .carousel-slides {
   position: relative;
-  padding-top: 56.25%; /* 16:9 ratio */
+  padding-top: 56.25%; /* Default 16:9 ratio */
 }
+
+/* Tambah media query untuk skrin kecil (telefon) */
+@media (max-width: 768px) {
+  .carousel-slides {
+    padding-top: 75%; /* Besarkan image di phone */
+  }
+}
+
 .carousel-img {
   position: absolute;
   top: 0;
@@ -45,14 +61,23 @@
   transition: opacity 1s ease;
   z-index: 0;
 }
+
+@media (max-width: 768px) {
+  .carousel-img {
+    object-fit: cover; /* Isi ruang penuh, crop sikit takpe */
+  }
+}
+
 .carousel-img.active {
   opacity: 1;
   z-index: 1;
 }
+
 .carousel-indicators {
   text-align: center;
   margin-top: 10px;
 }
+
 .dot {
   display: inline-block;
   width: 12px;
@@ -63,9 +88,11 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .dot.active {
   background-color: #333;
 }
+
 
 </style>
 
