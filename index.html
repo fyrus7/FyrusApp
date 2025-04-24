@@ -305,11 +305,11 @@ function manualSlide(index) {
 
 function resetInterval() {
   clearInterval(slideInterval);
-  slideInterval = setInterval(nextSlide, 5000);
+  slideInterval = setInterval(nextSlide, 3000);
 }
 
 window.addEventListener('load', () => {
-  slideInterval = setInterval(nextSlide, 5000);
+  slideInterval = setInterval(nextSlide, 3000);
 
   const slideArea = document.querySelector('.carousel-slides');
 
