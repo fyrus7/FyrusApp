@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.iamfyrus.app.twa",
+        "sha256_cert_fingerprints": ["B0:73:97:D6:7F:4B:90:7A:F9:6F:B4:2A:18:12:4A:8E:D7:2C:26:EB:40:62:05:BE:54:AF:66:3A:09:CE:95:61"]
+      }
+    }]
