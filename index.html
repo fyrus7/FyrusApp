@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,8 +65,6 @@ header h1{
     max-width:1000px;
     margin:40px auto;
     padding:0 20px;
-    position:relative;
-    z-index:1;
 }
 
 .section h2{
@@ -105,36 +102,17 @@ header h1{
     margin-right:10px;
 }
 
-/* ===== CAROUSEL FIXED ===== */
-.carousel-container{
+/* ===== STATIC PREVIEW (FIXED) ===== */
+.preview-container{
+    text-align:center;
     margin:40px auto;
-    max-width:900px;
-    width:100%;
 }
 
-.carousel-slides{
-    position:relative;
+.preview-img{
     width:100%;
-    height:0;
-    padding-top:56.25%;
-    overflow:hidden;
-    border-radius:10px;
-    background:#000;
-}
-
-.carousel-img{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    opacity:0;
-    transition:opacity 0.6s ease;
-}
-
-.carousel-img.active{
-    opacity:1;
+    max-width:350px; /* portrait friendly */
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
 /* ===== CLIENT ===== */
@@ -234,9 +212,9 @@ Optimized for handling large crowd efficiently without lag
 </div>
 
 <div class="feature">
-<i class="fas fa-cloud"></i>
-<b>Cloud-Based System</b><br>
-No installation required. Access anywhere instantly
+<i class="fas fa-layer-group"></i>
+<b>Flexible Platform</b><br>
+Available on Web browser and Android APK for on-site operations
 </div>
 
 <div class="feature">
@@ -248,19 +226,12 @@ Instant update when participant is collected
 </div>
 </div>
 
-<!-- PREVIEW TITLE -->
+<!-- PREVIEW -->
 <div class="section">
 <h2>System Preview</h2>
-</div>
 
-<!-- CAROUSEL -->
-<div class="carousel-container">
-<div class="carousel-slides">
-<img src="https://appfyrus.pages.dev/media/myrpc11.png" class="carousel-img active">
-<img src="https://appfyrus.pages.dev/media/myrpc22.png" class="carousel-img">
-<img src="https://appfyrus.pages.dev/media/myrpc33.png" class="carousel-img">
-<img src="https://appfyrus.pages.dev/media/myrpc44.png" class="carousel-img">
-<img src="https://appfyrus.pages.dev/media/myrpc55.png" class="carousel-img">
+<div class="preview-container">
+<img src="https://appfyrus.pages.dev/media/myrpc11.png" class="preview-img">
 </div>
 </div>
 
@@ -294,18 +265,7 @@ Proven in live race environments with multiple organizers
 
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
-
-/* carousel */
-let i=0;
-let slides=document.querySelectorAll(".carousel-img");
-
-setInterval(()=>{
-slides.forEach(s=>s.classList.remove("active"));
-i=(i+1)%slides.length;
-slides[i].classList.add("active");
-},3000);
 </script>
 
 </body>
 </html>
-
