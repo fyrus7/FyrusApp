@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +33,12 @@ header h1{
     margin-bottom:10px;
 }
 
-header .tagline{
+.tagline{
     font-size:18px;
     opacity:0.9;
 }
 
-header .sub{
+.sub{
     font-size:14px;
     opacity:0.7;
     margin-top:10px;
@@ -66,6 +66,8 @@ header .sub{
     max-width:1000px;
     margin:40px auto;
     padding:0 20px;
+    position:relative;
+    z-index:1;
 }
 
 .section h2{
@@ -88,7 +90,6 @@ header .sub{
 /* ===== FEATURES ===== */
 .features{
     display:grid;
-    grid-template-columns:1fr;
     gap:15px;
 }
 
@@ -104,27 +105,37 @@ header .sub{
     margin-right:10px;
 }
 
-/* ===== CAROUSEL ===== */
+/* ===== CAROUSEL FIXED ===== */
 .carousel-container{
-    margin:30px auto;
+    margin:40px auto;
     max-width:900px;
+    width:100%;
 }
 
 .carousel-slides{
     position:relative;
-    padding-top:56%;
+    width:100%;
+    height:0;
+    padding-top:56.25%;
+    overflow:hidden;
+    border-radius:10px;
+    background:#000;
 }
 
 .carousel-img{
     position:absolute;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
     opacity:0;
-    transition:0.6s;
+    transition:opacity 0.6s ease;
 }
 
-.carousel-img.active{opacity:1;}
+.carousel-img.active{
+    opacity:1;
+}
 
 /* ===== CLIENT ===== */
 .clients{
@@ -141,6 +152,12 @@ header .sub{
 .client-pic{
     max-width:120px;
     opacity:0.8;
+    transition:0.3s;
+}
+
+.client-pic:hover{
+    opacity:1;
+    transform:scale(1.05);
 }
 
 /* ===== CTA BLOCK ===== */
@@ -172,7 +189,7 @@ footer{
 <header>
 <h1>FyRPC</h1>
 <div class="tagline">Professional Race Pack Collection System</div>
-<div class="sub">Fast. Accurate. Built for real event operations.</div>
+<div class="sub">Fast. Accurate. Built for real event environments.</div>
 
 <a href="https://fyrpc-sample.pages.dev">
 <button class="cta-btn">🚀 Try Live Demo</button>
@@ -231,18 +248,28 @@ Instant update when participant is collected
 </div>
 </div>
 
-<!-- PREVIEW -->
+<!-- PREVIEW TITLE -->
+<div class="section">
+<h2>System Preview</h2>
+</div>
+
+<!-- CAROUSEL -->
 <div class="carousel-container">
 <div class="carousel-slides">
 <img src="https://appfyrus.pages.dev/media/myrpc11.png" class="carousel-img active">
 <img src="https://appfyrus.pages.dev/media/myrpc22.png" class="carousel-img">
 <img src="https://appfyrus.pages.dev/media/myrpc33.png" class="carousel-img">
+<img src="https://appfyrus.pages.dev/media/myrpc44.png" class="carousel-img">
+<img src="https://appfyrus.pages.dev/media/myrpc55.png" class="carousel-img">
 </div>
 </div>
 
 <!-- CLIENT -->
 <div class="section clients">
-<h2>Trusted By Events</h2>
+<h2>Trusted by Real Events</h2>
+<p style="opacity:0.6; font-size:14px; margin-bottom:20px;">
+Proven in live race environments with multiple organizers
+</p>
 
 <div class="logo-row">
 <img src="/media/lsptklogo.png" class="client-pic">
@@ -281,4 +308,4 @@ slides[i].classList.add("active");
 
 </body>
 </html>
-```
+
