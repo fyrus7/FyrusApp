@@ -24,12 +24,17 @@ header{
     background: linear-gradient(135deg,#37474F,#263238);
     color:white;
     text-align:center;
-    padding:50px 20px 80px;
+    padding:40px 20px 70px;
+}
+
+.logo{
+    width:120px;
+    margin-bottom:10px;
 }
 
 header h1{
-    font-size:34px;
-    margin-bottom:10px;
+    font-size:30px;
+    margin-bottom:5px;
 }
 
 .tagline{
@@ -40,12 +45,12 @@ header h1{
 .sub{
     font-size:14px;
     opacity:0.7;
-    margin-top:10px;
+    margin-top:8px;
 }
 
 /* CTA */
 .cta-btn{
-    margin-top:25px;
+    margin-top:20px;
     background:#00ACC1;
     border:none;
     padding:14px 28px;
@@ -102,17 +107,25 @@ header h1{
     margin-right:10px;
 }
 
-/* ===== STATIC PREVIEW (FIXED) ===== */
+/* ===== PREVIEW 3 IMAGES ===== */
 .preview-container{
-    text-align:center;
-    margin:40px auto;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:20px;
 }
 
 .preview-img{
     width:100%;
-    max-width:350px; /* portrait friendly */
+    max-width:260px;
     border-radius:12px;
     box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.preview-img:hover{
+    transform:scale(1.03);
 }
 
 /* ===== CLIENT ===== */
@@ -165,6 +178,9 @@ footer{
 
 <!-- HERO -->
 <header>
+
+<img src="https://appfyrus.pages.dev/media/fyrpclogo.png" class="logo">
+
 <h1>FyRPC</h1>
 <div class="tagline">Professional Race Pack Collection System</div>
 <div class="sub">Fast. Accurate. Built for real event environments.</div>
@@ -172,6 +188,7 @@ footer{
 <a href="https://fyrpc-sample.pages.dev">
 <button class="cta-btn">🚀 Try Live Demo</button>
 </a>
+
 </header>
 
 <!-- PROBLEM -->
@@ -214,7 +231,7 @@ Optimized for handling large crowd efficiently without lag
 <div class="feature">
 <i class="fas fa-layer-group"></i>
 <b>Flexible Platform</b><br>
-Available on Web browser and Android APK for on-site operations
+Available online or offline on Web browser and Android APK for on-site operations
 </div>
 
 <div class="feature">
@@ -232,6 +249,8 @@ Instant update when participant is collected
 
 <div class="preview-container">
 <img src="https://appfyrus.pages.dev/media/myrpc11.png" class="preview-img">
+<img src="https://appfyrus.pages.dev/media/myrpc22.png" class="preview-img">
+<img src="https://appfyrus.pages.dev/media/myrpc33.png" class="preview-img">
 </div>
 </div>
 
