@@ -1,166 +1,165 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Fyrus Apps</title>
+<title>FyRPC - Race Pack Collection System</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
 
 /* ===== GLOBAL ===== */
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
+body{
     font-family: Arial, sans-serif;
-    background:#E8ECEF;
+    background:#F4F7F9;
+    color:#263238;
 }
 
-/* ===== HEADER ===== */
-header {
-    background:#37474F;
-    padding:30px 20px 60px;
-    text-align:center;
+/* ===== HERO ===== */
+header{
+    background: linear-gradient(135deg,#37474F,#263238);
     color:white;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-}
-
-.profile-pic {
-    width:40%;
-    max-width:500px;
-    margin-bottom:15px;
-}
-
-header h1 { font-size:32px; }
-
-header p { opacity:0.9; }
-
-/* ===== TEXT ===== */
-.text-container {
-    max-width:900px;
-    margin:20px auto;
-    padding:0 20px;
-}
-
-.text-container p {
-    font-size:16px;
-    color:#455A64;
-    line-height:1.7;
-}
-
-/* ===== DIVIDER ===== */
-.hr-container {
-    width:60%;
-    margin:20px auto;
-}
-
-.line-break {
-    border:none;
-    border-top:1px solid #455A64;
-}
-
-/* ===== CAROUSEL ===== */
-.carousel-container {
-  max-width:90%;
-  margin:auto;
-}
-
-.carousel-slides {
-  position: relative;
-  padding-top: 56.25%;
-}
-
-.carousel-img {
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  opacity:0;
-  transition:0.6s;
-}
-
-.carousel-img.active { opacity:1; }
-
-.carousel-indicators { text-align:center; margin-top:10px; }
-
-.dot {
-  width:10px;
-  height:10px;
-  background:#bbb;
-  display:inline-block;
-  margin:5px;
-  border-radius:50%;
-}
-
-.dot.active { background:#333; }
-
-/* ===== BUTTON ===== */
-.buttons-section {
     text-align:center;
-    margin:20px 0;
+    padding:50px 20px 80px;
 }
 
-.btn {
-    background:#455A64;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:16px;
-}
-
-.btn:hover { background:#1C313A; }
-
-/* ===== WHATSAPP ===== */
-.whatsapp-form {
-    text-align:center;
-    margin:30px;
-}
-
-.whatsapp-form input {
-    width:90%;
-    max-width:500px;
-    padding:10px;
-    border:2px solid #455A64;
-    border-radius:5px;
+header h1{
+    font-size:34px;
     margin-bottom:10px;
 }
 
-/* ===== CLIENT ===== */
-.client-box {
-    border:2px solid #607D8B;
-    padding:20px;
-    border-radius:6px;
-    max-width:800px;
-    margin:auto;
+header .tagline{
+    font-size:18px;
+    opacity:0.9;
 }
 
-.logo-row {
+header .sub{
+    font-size:14px;
+    opacity:0.7;
+    margin-top:10px;
+}
+
+/* CTA */
+.cta-btn{
+    margin-top:25px;
+    background:#00ACC1;
+    border:none;
+    padding:14px 28px;
+    font-size:16px;
+    border-radius:6px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.cta-btn:hover{
+    background:#00838F;
+}
+
+/* ===== SECTION ===== */
+.section{
+    max-width:1000px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.section h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/* ===== PROBLEM ===== */
+.problem{
+    background:#fff;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+.problem p{
+    margin:10px 0;
+}
+
+/* ===== FEATURES ===== */
+.features{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:15px;
+}
+
+.feature{
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+.feature i{
+    color:#00ACC1;
+    margin-right:10px;
+}
+
+/* ===== CAROUSEL ===== */
+.carousel-container{
+    margin:30px auto;
+    max-width:900px;
+}
+
+.carousel-slides{
+    position:relative;
+    padding-top:56%;
+}
+
+.carousel-img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    opacity:0;
+    transition:0.6s;
+}
+
+.carousel-img.active{opacity:1;}
+
+/* ===== CLIENT ===== */
+.clients{
+    text-align:center;
+}
+
+.logo-row{
     display:flex;
     justify-content:center;
-    gap:20px;
+    gap:25px;
     flex-wrap:wrap;
 }
 
-.client-pic {
+.client-pic{
     max-width:120px;
+    opacity:0.8;
+}
+
+/* ===== CTA BLOCK ===== */
+.cta-block{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.cta-block h2{
+    margin-bottom:10px;
 }
 
 /* ===== FOOTER ===== */
-footer {
+footer{
     text-align:center;
     padding:20px;
-    color:#455A64;
-}
-
-.social-links a {
-    margin:0 10px;
-    font-size:20px;
-    color:#455A64;
+    font-size:13px;
 }
 
 </style>
@@ -169,39 +168,70 @@ footer {
 
 <body>
 
+<!-- HERO -->
 <header>
-    <img src="/media/flogo.png" class="profile-pic">
+<h1>FyRPC</h1>
+<div class="tagline">Professional Race Pack Collection System</div>
+<div class="sub">Fast. Accurate. Built for real event operations.</div>
 
-    <h1>FyRPC</h1>
-    <p>Smart Race Pack Collection System</p>
-
-    <p style="font-size:13px; opacity:0.8;">
-        Built for speed, accuracy & real event environments
-    </p>
+<a href="https://fyrpc-sample.pages.dev">
+<button class="cta-btn">🚀 Try Live Demo</button>
+</a>
 </header>
 
-<div class="text-container">
-<p>
-<b>A modern solution to streamline Race Pack Collection (RPC).</b>
-<br><br>
+<!-- PROBLEM -->
+<div class="section">
+<div class="problem">
+<h2>Common Problems During RPC</h2>
 
-• Built-in QR / barcode scanner support (mobile & external scanner devices)
-<br>
-• Automatically adapts to device type (mobile, tablet, desktop)
-<br>
-• Fast, clean, and optimized for high-volume collection flow
-<br>
-• Eliminate manual Excel or paper-based tracking
-<br>
-• Mobile-first experience with seamless cross-device support
-<br>
-• Lightweight, low-cost, and easy to deploy
-</p>
+<p>❌ Long queues & slow manual checking</p>
+<p>❌ Messy Excel or paper tracking</p>
+<p>❌ Human errors during peak hours</p>
+<p>❌ No real-time tracking or status visibility</p>
+
+</div>
 </div>
 
-<div class="hr-container"><hr class="line-break"></div>
+<!-- SOLUTION -->
+<div class="section">
+<h2>Our Solution</h2>
 
-<!-- CAROUSEL -->
+<div class="features">
+
+<div class="feature">
+<i class="fas fa-qrcode"></i>
+<b>Scanner Ready</b><br>
+Supports mobile camera & external scanner devices for instant check-in
+</div>
+
+<div class="feature">
+<i class="fas fa-mobile-alt"></i>
+<b>Smart Device Detection</b><br>
+Automatically adapts UI for mobile, tablet, or desktop usage
+</div>
+
+<div class="feature">
+<i class="fas fa-bolt"></i>
+<b>High-Speed Processing</b><br>
+Optimized for handling large crowd efficiently without lag
+</div>
+
+<div class="feature">
+<i class="fas fa-cloud"></i>
+<b>Cloud-Based System</b><br>
+No installation required. Access anywhere instantly
+</div>
+
+<div class="feature">
+<i class="fas fa-check-circle"></i>
+<b>Real-Time Status</b><br>
+Instant update when participant is collected
+</div>
+
+</div>
+</div>
+
+<!-- PREVIEW -->
 <div class="carousel-container">
 <div class="carousel-slides">
 <img src="https://appfyrus.pages.dev/media/myrpc11.png" class="carousel-img active">
@@ -210,34 +240,10 @@ footer {
 </div>
 </div>
 
-<div class="hr-container"><hr class="line-break"></div>
-
-<div class="buttons-section">
-<a href="https://fyrpc-sample.pages.dev">
-<button class="btn">🚀 Try Live Demo</button>
-</a>
-</div>
-
-<div class="hr-container"><hr class="line-break"></div>
-
-<!-- WHATSAPP -->
-<div class="whatsapp-form">
-<h4>Get in Touch</h4>
-<p style="font-size:13px; opacity:0.7;">Have questions or need a demo setup?</p>
-
-<form onsubmit="openWhatsApp(event)">
-<input type="text" id="msg" placeholder="Type your message..." required>
-<br>
-<button class="btn">Send</button>
-</form>
-</div>
-
-<div class="hr-container"><hr class="line-break"></div>
-
 <!-- CLIENT -->
-<div class="client-box">
-<b>Our Clients</b>
-<br><br>
+<div class="section clients">
+<h2>Trusted By Events</h2>
+
 <div class="logo-row">
 <img src="/media/lsptklogo.png" class="client-pic">
 <img src="/media/titilogo.png" class="client-pic">
@@ -245,43 +251,32 @@ footer {
 </div>
 </div>
 
-<br><br>
+<!-- CTA -->
+<div class="cta-block">
+<h2>Ready to Simplify Your RPC?</h2>
+<p>Start using FyRPC for your next event</p>
+
+<a href="https://api.whatsapp.com/send?phone=60133340224">
+<button class="cta-btn">📲 Contact Now</button>
+</a>
+</div>
 
 <footer>
-
-<div class="social-links">
-<a href="#"><i class="fab fa-facebook"></i></a>
-<a href="#"><i class="fab fa-whatsapp"></i></a>
-<a href="#"><i class="fab fa-twitter"></i></a>
-</div>
-
-<br>
-
-<div style="font-size:12px;">
 © <span id="year"></span> Fyrus Apps
-</div>
-
 </footer>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-function openWhatsApp(e){
- e.preventDefault();
- let msg=document.getElementById("msg").value;
- window.open("https://api.whatsapp.com/send?phone=60133340224&text="+encodeURIComponent(msg));
-}
+document.getElementById("year").textContent=new Date().getFullYear();
 
 /* carousel */
 let i=0;
 let slides=document.querySelectorAll(".carousel-img");
 
 setInterval(()=>{
- slides.forEach(s=>s.classList.remove("active"));
- i=(i+1)%slides.length;
- slides[i].classList.add("active");
+slides.forEach(s=>s.classList.remove("active"));
+i=(i+1)%slides.length;
+slides[i].classList.add("active");
 },3000);
-
 </script>
 
 </body>
