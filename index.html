@@ -175,6 +175,22 @@ footer{
     margin-bottom:15px;
 }
 
+.cta-row{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.cta-btn.secondary{
+    background:#37474F;
+}
+
+.cta-btn.secondary:hover{
+    background:#1C313A;
+}
+
 </style>
 
 </head>
@@ -254,10 +270,16 @@ Instant update when participant is collected
 </div>
 </div>
 
-<div style="text-align:center; margin-top:25px;">
+<div class="cta-row">
+
   <a href="https://fyrpc-sample.pages.dev">
     <button class="cta-btn">Try Live Demo</button>
   </a>
+
+  <a href="https://github.com/fyrus7/FyrusApp/releases/download/v1/FyRPC.v2.apk">
+    <button class="cta-btn secondary">Download APK</button>
+  </a>
+
 </div>
 
 <!-- CLIENT -->
